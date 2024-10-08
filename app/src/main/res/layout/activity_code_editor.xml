@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jkas.androidpe.ui.DrawerLayoutCloseLocked
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:animateLayoutChanges="true"
+    tools:openDrawer="start"
+    tools:ignore="DuplicateIncludedIds">
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/linContainer">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/linForFullScreen">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_width="match_parent"
+                    app:title="@string/app_name"
+                    app:menu="@menu/main_code_editor"
+                    android:id="@+id/toolBar" />
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <HorizontalScrollView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:paddingRight="8dp"
+                    android:textSize="8dp"
+                    android:paddingLeft="8dp"
+                    android:id="@+id/tvInfo"
+                    android:text="..." />
+
+            </HorizontalScrollView>
+
+            <com.google.android.material.tabs.TabLayout
+                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/tab_layout_bg"
+                app:tabMode="scrollable"
+                app:tabIndicator="@drawable/tab_indicator"
+                app:tabGravity="start"
+                app:tabTextColor="?colorOnSurface"
+                app:tabTextAppearance="@style/AppTheme.Tabs.TextAppearance"
+                app:tabIndicatorFullWidth="false"
+                app:tabSelectedTextColor="?colorPrimary"
+                android:id="@+id/tab_layout"
+                app:tabRippleColor="?colorPrimaryVariant" />
+
+        </LinearLayout>
+
+        <ViewFlipper
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/view_flipper">
+
+        </ViewFlipper>
+
+    </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_gravity="left"
+        android:id="@+id/left_drawer" />
+
+</jkas.androidpe.ui.DrawerLayoutCloseLocked>

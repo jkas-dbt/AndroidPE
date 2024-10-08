@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_height="match_parent"
+     android:layout_width="match_parent"
+     android:orientation="vertical">
+
+    <ViewFlipper
+         android:layout_height="match_parent"
+         android:layout_width="match_parent"
+         android:id="@+id/viewFlipper">
+
+        <LinearLayout
+             android:layout_height="match_parent"
+             android:layout_width="match_parent"
+             android:padding="8dp"
+             android:orientation="vertical">
+
+            <LinearLayout
+                 android:layout_height="wrap_content"
+                 android:layout_width="match_parent"
+                 android:gravity="center_vertical"
+                 android:padding="2dp"
+                 android:orientation="horizontal"
+                 android:id="@+id/linTools">
+
+                <TextView
+                     android:layout_height="wrap_content"
+                     android:layout_width="wrap_content"
+                     android:padding="2dp"
+                     android:textSize="20sp"
+                     android:text="Res Values"
+                     android:textStyle="bold" />
+
+                <TextView
+                     android:layout_height="wrap_content"
+                     android:layout_width="wrap_content"
+                     android:gravity="center"
+                     android:padding="8dp"
+                     android:layout_weight="1.0"
+                     android:id="@+id/tvCurrentPosition"
+                     android:text="0" />
+
+                <com.google.android.material.button.MaterialButton
+                     android:layout_height="30dp"
+                     android:layout_width="wrap_content"
+                     app:icon="@drawable/ic_add"
+                     android:padding="4dp"
+                     android:layout_margin="2dp"
+                     android:textSize="10sp"
+                     style="?attr/materialButtonOutlinedStyle"
+                     android:id="@+id/btnAdd"
+                     android:text="@string/add" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                 android:layout_height="wrap_content"
+                 android:layout_width="match_parent"
+                 android:gravity="center_vertical"
+                 android:padding="8dp"
+                 android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                     android:layout_height="40dp"
+                     android:layout_width="40dp"
+                     android:gravity="center"
+                     android:padding="4dp"
+                     android:layout_margin="2dp"
+                     android:textSize="14sp"
+                     style="?attr/materialButtonOutlinedStyle"
+                     android:id="@+id/btnPrevious"
+                     android:textStyle="bold"
+                     android:text="-" />
+
+                <com.google.android.material.slider.RangeSlider
+                     android:layout_height="wrap_content"
+                     android:layout_width="match_parent"
+                     android:layout_marginEnd="4dp"
+                     android:valueTo="43.0"
+                     android:valueFrom="1.0"
+                     android:layout_marginStart="4dp"
+                     android:stepSize="1.0"
+                     android:layout_weight="1.0"
+                     android:id="@+id/discreteRangeSlider" />
+
+                <com.google.android.material.button.MaterialButton
+                     android:layout_height="40dp"
+                     android:layout_width="40dp"
+                     android:gravity="center"
+                     android:padding="4dp"
+                     android:layout_margin="2dp"
+                     android:textSize="14sp"
+                     style="?attr/materialButtonOutlinedStyle"
+                     android:id="@+id/btnNext"
+                     android:textStyle="bold"
+                     android:text="+" />
+
+            </LinearLayout>
+
+            <TextView
+                 android:layout_height="wrap_content"
+                 android:layout_width="match_parent"
+                 android:gravity="center"
+                 android:textSize="12dp"
+                 android:textColor="?colorTertiary"
+                 android:typeface="monospace"
+                 android:text="@string/info_the_info_will_be_save_when_modify_text" />
+
+            <LinearLayout
+                 android:layout_height="wrap_content"
+                 android:layout_width="match_parent"
+                 android:gravity="center"
+                 android:padding="4dp"
+                 android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                     android:layout_height="wrap_content"
+                     android:layout_width="match_parent"
+                     android:hint="Name (attr)"
+                     android:padding="10dp"
+                     android:layout_weight="1.0"
+                     android:id="@+id/TILname">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                         android:layout_height="wrap_content"
+                         android:layout_width="match_parent"
+                         android:padding="10dp"
+                         android:textSize="12sp"
+                         android:singleLine="true"
+                         android:inputType="textNoSuggestions"
+                         android:id="@+id/textInputName" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                     android:layout_height="wrap_content"
+                     android:layout_width="wrap_content"
+                     android:gravity="right|center_vertical"
+                     android:padding="8dp"
+                     android:orientation="horizontal"
+                     android:layout_marginTop="2dp">
+
+                    <ImageView
+                         android:layout_height="30dp"
+                         android:layout_width="30dp"
+                         android:adjustViewBounds="true"
+                         android:src="@drawable/ic_delete"
+                         android:padding="4dp"
+                         android:id="@+id/icDelete" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                 android:layout_height="match_parent"
+                 android:layout_width="match_parent"
+                 android:hint="@string/value"
+                 android:layout_weight="1.0"
+                 android:id="@+id/TILvalue">
+
+                <com.google.android.material.textfield.TextInputEditText
+                     android:layout_height="match_parent"
+                     android:layout_width="match_parent"
+                     android:gravity="left|top"
+                     android:textSize="12sp"
+                     android:id="@+id/textInputValue" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                 android:layout_height="43dp"
+                 android:layout_width="match_parent"
+                 android:gravity="center"
+                 android:layout_margin="8dp"
+                 android:padding="8dp"
+                 android:textSize="14dp"
+                 android:foreground="@drawable/draw_dash"
+                 android:id="@+id/tvTemplate" />
+
+        </LinearLayout>
+
+        <LinearLayout
+             android:layout_height="match_parent"
+             android:layout_width="match_parent"
+             android:gravity="center"
+             android:orientation="vertical">
+
+            <ImageView
+                 android:layout_height="60dp"
+                 android:layout_width="60dp"
+                 android:src="@drawable/ic_robot_confused_outline"
+                 android:adjustViewBounds="true"
+                 android:layout_margin="4dp"
+                 android:tint="?colorPrimary" />
+
+            <TextView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:gravity="center"
+                 android:textSize="18sp"
+                 android:textColor="?colorTertiary"
+                 android:text="@string/warning_initialization_falure"
+                 android:textStyle="bold" />
+
+            <TextView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:gravity="center"
+                 android:padding="8dp"
+                 android:textSize="12sp"
+                 android:text="@string/info_check_your_xml_code" />
+
+            <ScrollView
+                 android:layout_height="wrap_content"
+                 android:layout_width="match_parent">
+
+                <TextView
+                     android:layout_height="wrap_content"
+                     android:layout_width="match_parent"
+                     android:padding="8dp"
+                     android:textSize="12sp"
+                     android:text="..."
+                     android:id="@+id/tvMoreInfo" />
+
+            </ScrollView>
+
+        </LinearLayout>
+
+    </ViewFlipper>
+
+</LinearLayout>

@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_height="wrap_content"
+	android:layout_width="match_parent"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:gravity="center"
+		android:padding="8dp"
+		android:orientation="horizontal">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:padding="8dp"
+			android:textSize="12dp"
+			android:layout_weight="1.0"
+			android:id="@+id/tv"
+			android:text="..."/>
+
+		<com.google.android.material.button.MaterialButtonToggleGroup
+			android:layout_height="35dp"
+			android:layout_width="wrap_content"
+			app:singleSelection="true"
+			android:layout_marginRight="4dp"
+			app:selectionRequired="true"
+			android:layout_gravity="right"
+			android:id="@+id/toggleType">
+
+			<com.google.android.material.button.MaterialButton
+				android:layout_height="wrap_content"
+				android:layout_width="50dp"
+				app:strokeColor="#72777E"
+				android:padding="4dp"
+				android:textSize="10sp"
+				style="?attr/materialButtonOutlinedStyle"
+				android:id="@+id/btnParent"
+				android:text="Parent"/>
+
+			<com.google.android.material.button.MaterialButton
+				android:layout_height="wrap_content"
+				android:layout_width="50dp"
+				app:strokeColor="#72777E"
+				android:padding="4dp"
+				android:textSize="10sp"
+				style="?attr/materialButtonOutlinedStyle"
+				android:id="@+id/btnCenter"
+				android:text="Center"/>
+
+			<com.google.android.material.button.MaterialButton
+				android:layout_height="wrap_content"
+				android:layout_width="50dp"
+				app:strokeColor="#72777E"
+				android:padding="4dp"
+				android:textSize="10sp"
+				style="?attr/materialButtonOutlinedStyle"
+				android:id="@+id/btnAlign"
+				android:text="Align"/>
+
+			<com.google.android.material.button.MaterialButton
+				android:layout_height="wrap_content"
+				android:layout_width="50dp"
+				app:strokeColor="#72777E"
+				android:padding="4dp"
+				android:textSize="10sp"
+				style="?attr/materialButtonOutlinedStyle"
+				android:id="@+id/btnOthers"
+				android:text="Others"/>
+
+		</com.google.android.material.button.MaterialButtonToggleGroup>
+
+	</LinearLayout>
+
+	<com.google.android.material.card.MaterialCardView
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:elevation="10dp"
+		android:layout_margin="8dp"
+		android:layout_weight="1.0"
+		android:id="@+id/card">
+
+		<ScrollView
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent">
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:padding="4dp"
+				android:orientation="vertical">
+
+				<ViewFlipper
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:paddingBottom="8dp"
+					android:id="@+id/viewFlipper">
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:padding="8dp"
+						android:orientation="vertical">
+
+						<com.google.android.material.materialswitch.MaterialSwitch
+							android:layout_height="40dp"
+							android:layout_width="match_parent"
+							android:padding="4dp"
+							android:text="android:layout_alignParentLeft"
+							android:id="@+id/switchLAPL"/>
+
+						<com.google.android.material.materialswitch.MaterialSwitch
+							android:layout_height="40dp"
+							android:layout_width="match_parent"
+							android:padding="4dp"
+							android:text="android:layout_alignParentTop"
+							android:id="@+id/switchLAPT"/>
+
+						<com.google.android.material.materialswitch.MaterialSwitch
+							android:layout_height="40dp"
+							android:layout_width="match_parent"
+							android:padding="4dp"
+							android:text="android:layout_alignParentRight"
+							android:id="@+id/switchLAPR"/>
+
+						<com.google.android.material.materialswitch.MaterialSwitch
+							android:layout_height="40dp"
+							android:layout_width="match_parent"
+							android:padding="4dp"
+							android:text="android:layout_alignParentBottom"
+							android:id="@+id/switchLAPB"/>
+
+						<com.google.android.material.materialswitch.MaterialSwitch
+							android:layout_height="40dp"
+							android:layout_width="match_parent"
+							android:padding="4dp"
+							android:text="android:layout_alignParentStart"
+							android:id="@+id/switchLAPS"/>
+
+						<com.google.android.material.materialswitch.MaterialSwitch
+							android:layout_height="40dp"
+							android:layout_width="match_parent"
+							android:padding="4dp"
+							android:text="android:layout_alignParentEnd"
+							android:id="@+id/switchLAPE"/>
+
+					</LinearLayout>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:padding="8dp"
+						android:orientation="vertical">
+
+						<com.google.android.material.materialswitch.MaterialSwitch
+							android:layout_height="40dp"
+							android:layout_width="match_parent"
+							android:padding="4dp"
+							android:text="android:layout_centerHorizontal"
+							android:id="@+id/switchLCH"/>
+
+						<com.google.android.material.materialswitch.MaterialSwitch
+							android:layout_height="40dp"
+							android:layout_width="match_parent"
+							android:padding="4dp"
+							android:text="android:layout_centerVertical"
+							android:id="@+id/switchLCV"/>
+
+						<com.google.android.material.materialswitch.MaterialSwitch
+							android:layout_height="40dp"
+							android:layout_width="match_parent"
+							android:padding="4dp"
+							android:text="android:layout_centerInParent"
+							android:id="@+id/switchLCIP"/>
+
+					</LinearLayout>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:padding="8dp"
+						android:orientation="vertical">
+
+						<com.google.android.material.textfield.TextInputLayout
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:hint="android:layout_alignLeft"
+							android:layout_margin="4dp"
+							android:id="@+id/tilAL">
+
+							<AutoCompleteTextView
+								android:layout_height="wrap_content"
+								android:layout_width="match_parent"
+								android:padding="12dp"
+								android:textSize="12sp"
+								android:id="@+id/editAL"/>
+
+						</com.google.android.material.textfield.TextInputLayout>
+
+						<com.google.android.material.textfield.TextInputLayout
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:hint="android:layout_alignTop"
+							android:layout_margin="4dp"
+							android:id="@+id/tilAT">
+
+							<AutoCompleteTextView
+								android:layout_height="wrap_content"
+								android:layout_width="match_parent"
+								android:padding="12dp"
+								android:textSize="12sp"
+								android:id="@+id/editAT"/>
+
+						</com.google.android.material.textfield.TextInputLayout>
+
+						<com.google.android.material.textfield.TextInputLayout
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:hint="android:layout_alignRight"
+							android:layout_margin="4dp"
+							android:id="@+id/tilAR">
+
+							<AutoCompleteTextView
+								android:layout_height="wrap_content"
+								android:layout_width="match_parent"
+								android:padding="12dp"
+								android:textSize="12sp"
+								android:id="@+id/editAR"/>
+
+						</com.google.android.material.textfield.TextInputLayout>
+
+						<com.google.android.material.textfield.TextInputLayout
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:hint="android:layout_alignBottom"
+							android:layout_margin="4dp"
+							android:id="@+id/tilAB">
+
+							<AutoCompleteTextView
+								android:layout_height="wrap_content"
+								android:layout_width="match_parent"
+								android:padding="12dp"
+								android:textSize="12sp"
+								android:id="@+id/editAB"/>
+
+						</com.google.android.material.textfield.TextInputLayout>
+
+						<com.google.android.material.textfield.TextInputLayout
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:hint="android:layout_alignStart"
+							android:layout_margin="4dp"
+							android:id="@+id/tilAS">
+
+							<AutoCompleteTextView
+								android:layout_height="wrap_content"
+								android:layout_width="match_parent"
+								android:padding="12dp"
+								android:textSize="12sp"
+								android:id="@+id/editAS"/>
+
+						</com.google.android.material.textfield.TextInputLayout>
+
+						<com.google.android.material.textfield.TextInputLayout
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:hint="android:layout_alignEnd"
+							android:layout_margin="4dp"
+							android:id="@+id/tilAE">
+
+							<AutoCompleteTextView
+								android:layout_height="wrap_content"
+								android:layout_width="match_parent"
+								android:padding="12dp"
+								android:textSize="12sp"
+								android:id="@+id/editAE"/>
+
+						</com.google.android.material.textfield.TextInputLayout>
+
+						<com.google.android.material.textfield.TextInputLayout
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:hint="android:layout_alignBaseline"
+							android:layout_margin="4dp"
+							android:id="@+id/tilABL">
+
+							<AutoCompleteTextView
+								android:layout_height="wrap_content"
+								android:layout_width="match_parent"
+								android:padding="12dp"
+								android:textSize="12sp"
+								android:id="@+id/editABL"/>
+
+						</com.google.android.material.textfield.TextInputLayout>
+
+					</LinearLayout>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:padding="8dp"
+						android:orientation="vertical">
+
+						<com.google.android.material.textfield.TextInputLayout
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:hint="android:layout_toLeftOf"
+							android:layout_margin="4dp"
+							android:id="@+id/tilTL">
+
+							<AutoCompleteTextView
+								android:layout_height="wrap_content"
+								android:layout_width="match_parent"
+								android:padding="12dp"
+								android:textSize="12sp"
+								android:id="@+id/editTL"/>
+
+						</com.google.android.material.textfield.TextInputLayout>
+
+						<com.google.android.material.textfield.TextInputLayout
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:hint="android:layout_toRightOf"
+							android:layout_margin="4dp"
+							android:id="@+id/tilTR">
+
+							<AutoCompleteTextView
+								android:layout_height="wrap_content"
+								android:layout_width="match_parent"
+								android:padding="12dp"
+								android:textSize="12sp"
+								android:id="@+id/editTR"/>
+
+						</com.google.android.material.textfield.TextInputLayout>
+
+						<com.google.android.material.textfield.TextInputLayout
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:hint="android:layout_toStartOf"
+							android:layout_margin="4dp"
+							android:id="@+id/tilTS">
+
+							<AutoCompleteTextView
+								android:layout_height="wrap_content"
+								android:layout_width="match_parent"
+								android:padding="12dp"
+								android:textSize="12sp"
+								android:id="@+id/editTS"/>
+
+						</com.google.android.material.textfield.TextInputLayout>
+
+						<com.google.android.material.textfield.TextInputLayout
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:hint="android:layout_toEndOf"
+							android:layout_margin="4dp"
+							android:id="@+id/tilTE">
+
+							<AutoCompleteTextView
+								android:layout_height="wrap_content"
+								android:layout_width="match_parent"
+								android:padding="12dp"
+								android:textSize="12sp"
+								android:id="@+id/editTE"/>
+
+						</com.google.android.material.textfield.TextInputLayout>
+
+						<com.google.android.material.textfield.TextInputLayout
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:hint="android:layout_above"
+							android:layout_margin="4dp"
+							android:id="@+id/tilABV">
+
+							<AutoCompleteTextView
+								android:layout_height="wrap_content"
+								android:layout_width="match_parent"
+								android:padding="12dp"
+								android:textSize="12sp"
+								android:id="@+id/editABV"/>
+
+						</com.google.android.material.textfield.TextInputLayout>
+
+						<com.google.android.material.textfield.TextInputLayout
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:hint="android:layout_below"
+							android:layout_margin="4dp"
+							android:id="@+id/tilBL">
+
+							<AutoCompleteTextView
+								android:layout_height="wrap_content"
+								android:layout_width="match_parent"
+								android:padding="12dp"
+								android:textSize="12sp"
+								android:id="@+id/editBL"/>
+
+						</com.google.android.material.textfield.TextInputLayout>
+
+					</LinearLayout>
+
+				</ViewFlipper>
+
+			</LinearLayout>
+
+		</ScrollView>
+
+	</com.google.android.material.card.MaterialCardView>
+
+	<CheckBox
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:padding="8dp"
+		android:layout_marginLeft="8dp"
+		android:checked="true"
+		android:enabled="false"
+		android:id="@+id/checkBoxRec"
+		android:text="@string/delete_attr_if_empty"/>
+
+</LinearLayout>

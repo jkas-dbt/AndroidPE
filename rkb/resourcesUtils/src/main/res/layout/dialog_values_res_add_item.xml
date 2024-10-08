@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+         android:layout_height="match_parent"
+         android:layout_width="match_parent"
+         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+         android:id="@+id/nested_scroll_view">
+
+        <LinearLayout
+             android:layout_height="match_parent"
+             android:layout_width="match_parent"
+             android:gravity="center_horizontal"
+             android:padding="12dp"
+             android:orientation="vertical">
+
+            <TextView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:gravity="center"
+                 android:id="@+id/tvInfo"
+                 android:text="Tag Name" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                 android:layout_height="wrap_content"
+                 android:layout_width="match_parent"
+                 app:endIconMode="clear_text"
+                 android:hint="@string/name"
+                 android:layout_margin="8dp"
+                 app:errorEnabled="true"
+                 android:id="@+id/TILName">
+
+                <com.google.android.material.textfield.TextInputEditText
+                     android:layout_height="wrap_content"
+                     android:layout_width="match_parent"
+                     android:textSize="12sp"
+                     android:text=""
+                     android:id="@+id/textInputName" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                 android:layout_height="wrap_content"
+                 android:layout_width="match_parent"
+                 app:endIconMode="clear_text"
+                 android:hint="@string/value"
+                 android:layout_margin="8dp"
+                 app:errorEnabled="true"
+                 android:id="@+id/TILValue">
+
+                <com.google.android.material.textfield.TextInputEditText
+                     android:layout_height="wrap_content"
+                     android:layout_width="match_parent"
+                     android:textSize="12sp"
+                     android:text=""
+                     android:id="@+id/textInputValue" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RadioGroup
+                 android:layout_height="wrap_content"
+                 android:layout_width="match_parent"
+                 android:gravity="center"
+                 android:padding="12dp"
+                 android:orientation="horizontal"
+                 android:id="@+id/radioGroup">
+
+                <RadioButton
+                     android:layout_height="wrap_content"
+                     android:layout_width="wrap_content"
+                     android:padding="8dp"
+                     android:layout_marginLeft="14dp"
+                     android:checked="true"
+                     android:layout_weight="1.0"
+                     android:id="@+id/btnString"
+                     android:text="string" />
+
+                <RadioButton
+                     android:layout_height="wrap_content"
+                     android:layout_width="wrap_content"
+                     android:padding="8dp"
+                     android:checked="false"
+                     android:layout_weight="1.0"
+                     android:id="@+id/btnColor"
+                     android:text="color" />
+
+                <RadioButton
+                     android:layout_height="wrap_content"
+                     android:layout_width="wrap_content"
+                     android:padding="8dp"
+                     android:checked="false"
+                     android:layout_weight="1.0"
+                     android:id="@+id/btnDimen"
+                     android:text="dimen" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

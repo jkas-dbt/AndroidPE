@@ -1,0 +1,73 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style
+        name="Theme.Base.NoActionBar"
+        parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="preferenceTheme">@style/ThemeOverlay.App.Preference</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+
+    <style
+        name="Theme.Application"
+        parent="Theme.Base.NoActionBar">
+        <item name="colorPrimary">@color/light_colorPrimary</item>
+        <item name="colorPrimaryContainer">@color/light_colorPrimaryContainer</item>
+        <item name="colorPrimaryDark">@color/light_colorPrimaryDark</item>
+        <item name="colorPrimaryInverse">@color/light_colorPrimaryInverse</item>
+        <item name="colorOnPrimary">@color/light_colorOnPrimary</item>
+        <item name="colorOnPrimaryContainer">@color/light_colorOnPrimaryContainer</item>
+
+        <item name="colorSecondary">@color/light_colorSecondary</item>
+        <item name="colorSecondaryContainer">@color/light_colorSecondaryContainer</item>
+        <item name="colorOnSecondary">@color/light_colorOnSecondary</item>
+        <item name="colorOnSecondaryContainer">@color/light_colorOnSecondaryContainer</item>
+
+        <item name="colorTertiary">@color/light_colorTertiary</item>
+        <item name="colorTertiaryContainer">@color/light_colorTertiaryContainer</item>
+        <item name="colorOnTertiary">@color/light_colorOnTertiary</item>
+        <item name="colorOnTertiaryContainer">@color/light_colorOnTertiaryContainer</item>
+
+        <item name="colorError">@color/light_colorError</item>
+        <item name="colorErrorContainer">@color/light_colorErrorContainer</item>
+        <item name="colorOnError">@color/light_colorOnError</item>
+        <item name="colorOnErrorContainer">@color/light_colorOnErrorContainer</item>
+
+        <item name="android:colorBackground">@color/light_colorBackground</item>
+        <item name="colorOnBackground">@color/light_colorOnBackground</item>
+
+        <item name="colorSurface">@color/light_colorSurface</item>
+        <item name="colorSurfaceContainerHigh">@color/light_colorSurfaceContainerHigh</item>
+        <item name="colorSurfaceContainerLow">@color/light_colorSurfaceContainerLow</item>
+        <item name="colorSurfaceInverse">@color/light_colorSurfaceInverse</item>
+        <item name="colorSurfaceVariant">@color/light_colorSurfaceVariant</item>
+        <item name="colorOnSurface">@color/light_colorOnSurface</item>
+        <item name="colorOnSurfaceInverse">@color/light_colorOnSurfaceInverse</item>
+        <item name="colorOnSurfaceVariant">@color/light_colorOnSurfaceVariant</item>
+
+        <item name="colorOutline">@color/colorOutline</item>
+    </style>
+
+    <style
+        name="AppTheme.Tabs.TextAppearance"
+        parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:textSize">10dp</item>
+    </style>
+
+    <style
+        name="ThemeOverlay.App.Preference"
+        parent="PreferenceThemeOverlay">
+        <item name="switchPreferenceCompatStyle">@style/PreferenceMaterialSwitch</item>
+    </style>
+
+    <style
+        name="PreferenceMaterialSwitch"
+        parent="@style/Preference.SwitchPreferenceCompat.Material">
+        <item name="widgetLayout">@layout/ui_preference_material_switch</item>
+    </style>
+
+</resources>

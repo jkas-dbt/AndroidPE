@@ -1,0 +1,45 @@
+plugins {
+    alias libs.plugins.android.library
+}
+
+android {
+    namespace 'jkas.androidpe.explorer'
+    compileSdkVersion 34
+    buildToolsVersion "34.0.4"
+
+    defaultConfig {
+        minSdk 26
+        targetSdk 33
+        
+        testInstrumentationRunner "androidx.text.runner.AndroidJUnitRunner"
+    }
+    
+    compileOptions {
+		sourceCompatibility JavaVersion.VERSION_11
+		targetCompatibility JavaVersion.VERSION_11
+	}
+    
+    buildFeatures {
+        viewBinding true
+    }
+    
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation project(':rkb:resources')
+    implementation project(':rkb:resourcesUtils')
+    implementation project(':rkb:project')
+    implementation project(':rkb:projectUtils')
+    implementation project(':rkb:codeUtil')
+    implementation project(':rkb:logger')
+    
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.coordinatorlayout
+    implementation libs.google.material
+    implementation libs.androidsvg
+    implementation libs.picasso
+    implementation libs.lottie
+}

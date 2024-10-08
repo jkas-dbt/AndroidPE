@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <!-- for light theme -->
+    <color name="light_colorPrimary">#ff6b4800</color>
+    <color name="light_colorPrimaryContainer">#fff4d6c0</color>
+    <color name="light_colorPrimaryDark">#fffffeff</color>
+    <color name="light_colorPrimaryInverse">#ffd4baa7</color>
+    <color name="light_colorOnPrimary">#ffffffff</color>
+    <color name="light_colorOnPrimaryContainer">#ff251900</color>
+
+    <color name="light_colorSecondary">#ff0b4f65</color>
+    <color name="light_colorSecondaryContainer">#ffc0d9d1</color>
+    <color name="light_colorOnSecondary">#ff6e979c</color>
+    <color name="light_colorOnSecondaryContainer">#ff0e1c1f</color>
+
+    <color name="light_colorTertiary">#ff036057</color>
+    <color name="light_colorTertiaryContainer">#ff9fd2c1</color>
+    <color name="light_colorOnTertiary">#ff06cebb</color>
+    <color name="light_colorOnTertiaryContainer">#ff012421</color>
+
+    <color name="light_colorError">#ffaa1010</color>
+    <color name="light_colorErrorContainer">#ffedd4d2</color>
+    <color name="light_colorOnError">#ffffffff</color>
+    <color name="light_colorOnErrorContainer">#ff410e0b</color>
+
+    <color name="light_colorBackground">#fffffdf5</color>
+    <color name="light_colorOnBackground">#ff251900</color>
+
+    <color name="light_colorSurface">#fffffdf5</color>
+    <color name="light_colorSurfaceContainerHigh">#fffffdf5</color>
+    <color name="light_colorSurfaceContainerLow">#fffffdf5</color>
+    <color name="light_colorSurfaceInverse">#ff083c4d</color>
+    <color name="light_colorSurfaceVariant">#ffcee0d6</color>
+    <color name="light_colorOnSurface">#ff0e1c1f</color>
+    <color name="light_colorOnSurfaceInverse">#ffa7b9b3</color>
+    <color name="light_colorOnSurfaceVariant">#ff083c4d</color>
+
+    <!-- for dark theme -->
+    <color name="dark_colorPrimary">#ffffd184</color>
+    <color name="dark_colorPrimaryContainer">#ff412c19</color>
+    <color name="dark_colorPrimaryDark">#ff201a1a</color>
+    <color name="dark_colorPrimaryInverse">#ff775c44</color>
+    <color name="dark_colorOnPrimary">#ff412c19</color>
+    <color name="dark_colorOnPrimaryContainer">#ff0b4f65</color>
+
+    <color name="dark_colorSecondary">#ffbfefec</color>
+    <color name="dark_colorSecondaryContainer">#ff0b4f65</color>
+    <color name="dark_colorOnSecondary">#ff0a323c</color>
+    <color name="dark_colorOnSecondaryContainer">#ffbfefec</color>
+
+    <color name="dark_colorTertiary">#ff9fd2c1</color>
+    <color name="dark_colorTertiaryContainer">#ff036057</color>
+    <color name="dark_colorOnTertiary">#ff023e38</color>
+    <color name="dark_colorOnTertiaryContainer">#ffc1ffea</color>
+
+    <color name="dark_colorError">#ffe56065</color>
+    <color name="dark_colorErrorContainer">#ff8c282f</color>
+    <color name="dark_colorOnError">#ff772228</color>
+    <color name="dark_colorOnErrorContainer">#ffffbdbd</color>
+
+    <color name="dark_colorBackground">#ff08171a</color>
+    <color name="dark_colorOnBackground">#ffd7e1d4</color>
+
+    <color name="dark_colorSurface">#ff08171a</color>
+    <color name="dark_colorSurfaceContainerHigh">#ff08171a</color>
+    <color name="dark_colorSurfaceContainerLow">#ff08171a</color>
+    <color name="dark_colorSurfaceInverse">#fffcfff1</color>
+    <color name="dark_colorSurfaceVariant">#ff083c4d</color>
+    <color name="dark_colorOnSurface">#fffafff7</color>
+    <color name="dark_colorOnSurfaceInverse">#ff083c4d</color>
+    <color name="dark_colorOnSurfaceVariant">#ffc1c2bf</color>
+
+    <color name="colorOutline">#ff777e78</color>
+
+    <color name="error">#ffbf224c</color>
+    <color name="info">#ff07546f</color>
+    <color name="warning">#ffcaa64a</color>
+    <color name="success">#ff0f6a4a</color>
+    <color name="roseDark">#ffff4474</color>
+    <color name="roseLight">#ffffbdbd</color>
+
+</resources>

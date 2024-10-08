@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:layout_height="match_parent"
+     android:layout_width="match_parent"
+     android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+         android:layout_height="wrap_content"
+         android:layout_width="match_parent"
+         android:elevation="8dp"
+         app:elevation="8dp"
+         android:fitsSystemWindows="true"
+         android:id="@+id/appbar">
+
+        <com.google.android.material.appbar.MaterialToolbar
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             app:title="@string/about"
+             android:id="@+id/toolbar" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+         android:layout_height="match_parent"
+         android:layout_width="match_parent">
+
+        <LinearLayout
+             android:layout_height="match_parent"
+             android:layout_width="match_parent"
+             android:orientation="vertical">
+
+            <LinearLayout
+                 android:layout_height="300dp"
+                 android:layout_width="match_parent"
+                 android:gravity="center"
+                 android:padding="26dp"
+                 android:layout_margin="8dp"
+                 android:orientation="vertical">
+
+                <com.airbnb.lottie.LottieAnimationView
+                     android:layout_height="100dp"
+                     android:layout_width="100dp"
+                     android:scaleType="fitCenter"
+                     android:layout_margin="12dp"
+                     android:id="@+id/lottieIcon"
+                     app:lottie_loop="true"
+                     app:lottie_autoPlay="true" />
+
+                <com.google.android.material.card.MaterialCardView
+                     android:layout_height="wrap_content"
+                     android:layout_width="wrap_content"
+                     android:padding="8dp">
+
+                    <LinearLayout
+                         android:layout_height="wrap_content"
+                         android:layout_width="match_parent"
+                         android:gravity="center"
+                         android:paddingRight="20dp"
+                         android:orientation="vertical"
+                         android:paddingBottom="8dp"
+                         android:paddingLeft="20dp"
+                         android:paddingTop="8dp">
+
+                        <TextView
+                             android:layout_height="wrap_content"
+                             android:layout_width="wrap_content"
+                             android:padding="2dp"
+                             android:textSize="20dp"
+                             android:textColor="?colorPrimary"
+                             android:typeface="serif"
+                             android:text="@string/app_name"
+                             android:textStyle="bold" />
+
+                        <TextView
+                             android:layout_height="wrap_content"
+                             android:layout_width="wrap_content"
+                             android:padding="2dp"
+                             android:textSize="10dp"
+                             android:textColor="?colorOnSurface"
+                             android:typeface="monospace"
+                             android:text="@string/complementary_application" />
+
+                        <TextView
+                             android:layout_height="wrap_content"
+                             android:layout_width="wrap_content"
+                             android:padding="2dp"
+                             android:textSize="8dp"
+                             android:textColor="?colorTertiary"
+                             android:typeface="monospace"
+                             android:text="v1.3-alpha (181102)"
+                             android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <TextView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:padding="8dp"
+                 android:textColor="?colorTertiary"
+                 android:layout_gravity="center_horizontal"
+                 android:text="@string/for_more_informations" />
+
+            <com.google.android.material.card.MaterialCardView
+                 android:layout_height="wrap_content"
+                 android:layout_width="match_parent"
+                 android:layout_marginBottom="8dp"
+                 android:padding="8dp"
+                 android:layout_marginLeft="18dp"
+                 android:layout_marginRight="18dp"
+                 android:layout_marginTop="8dp">
+
+                <LinearLayout
+                     android:layout_height="match_parent"
+                     android:layout_width="match_parent"
+                     android:padding="8dp"
+                     android:orientation="vertical">
+
+                    <LinearLayout
+                         android:layout_height="wrap_content"
+                         android:layout_width="match_parent"
+                         android:layout_marginBottom="8dp"
+                         android:gravity="center_vertical"
+                         android:padding="8dp"
+                         android:orientation="horizontal"
+                         android:id="@+id/linTelegram">
+
+                        <ImageView
+                             android:layout_height="43dp"
+                             android:layout_width="43dp"
+                             android:src="@drawable/ic_telegram"
+                             android:padding="8dp" />
+
+                        <LinearLayout
+                             android:layout_height="wrap_content"
+                             android:layout_width="wrap_content"
+                             android:orientation="vertical"
+                             android:paddingLeft="8dp">
+
+                            <TextView
+                                 android:layout_height="wrap_content"
+                                 android:layout_width="wrap_content"
+                                 android:textSize="16dp"
+                                 android:textColor="?colorOnSurface"
+                                 android:text="Telegram"
+                                 android:textStyle="bold" />
+
+                            <TextView
+                                 android:layout_height="wrap_content"
+                                 android:layout_width="wrap_content"
+                                 android:textSize="10dp"
+                                 android:text="@string/telegram_link" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                         android:layout_height="wrap_content"
+                         android:layout_width="match_parent"
+                         android:layout_marginBottom="8dp"
+                         android:gravity="center_vertical"
+                         android:padding="8dp"
+                         android:orientation="horizontal"
+                         android:id="@+id/linGmail">
+
+                        <ImageView
+                             android:layout_height="43dp"
+                             android:layout_width="43dp"
+                             android:src="@drawable/ic_gmail"
+                             android:padding="8dp" />
+
+                        <LinearLayout
+                             android:layout_height="wrap_content"
+                             android:layout_width="wrap_content"
+                             android:orientation="vertical"
+                             android:paddingLeft="8dp">
+
+                            <TextView
+                                 android:layout_height="wrap_content"
+                                 android:layout_width="wrap_content"
+                                 android:textSize="16dp"
+                                 android:textColor="?colorOnSurface"
+                                 android:text="Gmail"
+                                 android:textStyle="bold" />
+
+                            <TextView
+                                 android:layout_height="wrap_content"
+                                 android:layout_width="wrap_content"
+                                 android:textSize="10dp"
+                                 android:text="@string/gmail_link" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                         android:layout_height="wrap_content"
+                         android:layout_width="match_parent"
+                         android:layout_marginBottom="8dp"
+                         android:gravity="center_vertical"
+                         android:padding="8dp"
+                         android:orientation="horizontal"
+                         android:id="@+id/linGithub">
+
+                        <ImageView
+                             android:layout_height="43dp"
+                             android:layout_width="43dp"
+                             android:src="@drawable/ic_github"
+                             android:padding="8dp" />
+
+                        <LinearLayout
+                             android:layout_height="wrap_content"
+                             android:layout_width="wrap_content"
+                             android:orientation="vertical"
+                             android:paddingLeft="8dp">
+
+                            <TextView
+                                 android:layout_height="wrap_content"
+                                 android:layout_width="wrap_content"
+                                 android:textSize="16dp"
+                                 android:textColor="?colorOnSurface"
+                                 android:text="GitHub"
+                                 android:textStyle="bold" />
+
+                            <TextView
+                                 android:layout_height="wrap_content"
+                                 android:layout_width="wrap_content"
+                                 android:textSize="10dp"
+                                 android:text="@string/github_link" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                 android:layout_height="wrap_content"
+                 android:layout_width="match_parent"
+                 android:gravity="center"
+                 android:alpha="0.06"
+                 android:paddingBottom="50dp"
+                 android:paddingTop="50dp">
+
+                <com.google.android.material.divider.MaterialDivider
+                     android:layout_height="wrap_content"
+                     android:layout_width="match_parent"
+                     android:layout_weight="1" />
+
+                <TextView
+                     android:layout_height="wrap_content"
+                     android:layout_width="wrap_content"
+                     android:layout_margin="8dp"
+                     android:textSize="12dp"
+                     android:textColor="?colorOnSurface"
+                     android:typeface="monospace"
+                     android:text="@string/jkas_dev_tag" />
+
+                <com.google.android.material.divider.MaterialDivider
+                     android:layout_height="wrap_content"
+                     android:layout_width="match_parent"
+                     android:layout_weight="1" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

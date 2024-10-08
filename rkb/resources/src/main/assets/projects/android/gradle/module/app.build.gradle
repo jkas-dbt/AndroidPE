@@ -1,0 +1,42 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdk 33
+    buildToolsVersion "33.0.4"
+    namespace '$PACKAGE_NAME$'
+    
+    defaultConfig {
+        applicationId "$PACKAGE_NAME$"
+        minSdkVersion $MIN_SDK$
+        targetSdkVersion $TARGET_SDK$
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+    }
+    
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles 'proguard-rules.pro'
+        }
+    }
+    
+    compileOptions {
+		sourceCompatibility JavaVersion.VERSION_11
+		targetCompatibility JavaVersion.VERSION_11
+	}
+    
+	buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.android.material:material:1.8.0'
+}

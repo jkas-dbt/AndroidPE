@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	android:gravity="center"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:gravity="center_horizontal"
+		android:orientation="horizontal">
+
+		<LinearLayout
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:orientation="vertical"
+			android:layout_weight="1.0">
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:gravity="center"
+				android:padding="8dp"
+				android:orientation="horizontal">
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:padding="8dp"
+					android:textSize="14sp"
+					android:textColor="?colorTertiary"
+					android:typeface="monospace"
+					android:layout_weight="1.0"
+					android:text="Source Code"
+					android:textStyle="bold"/>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:orientation="vertical">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:textSize="10sp"
+						android:id="@+id/tvFilesPkgCount"
+						android:text="Package found : 0"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:textSize="10sp"
+						android:id="@+id/tvFilesCount"
+						android:text="Files : 0"/>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+
+				<ScrollView
+					android:layout_height="match_parent"
+					android:layout_width="match_parent">
+
+					<LinearLayout
+						android:layout_height="match_parent"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:id="@+id/linDataSC"
+						android:paddingBottom="143dp"
+						android:paddingTop="8dp"
+						android:paddingLeft="8dp"
+						android:paddingRight="8dp"/>
+
+				</ScrollView>
+
+				<View
+					android:layout_height="16dp"
+					android:layout_width="match_parent"
+					android:id="@+id/viewClassGradientTop"/>
+
+				<View
+					android:layout_height="16dp"
+					android:layout_width="match_parent"
+					android:layout_alignParentBottom="true"
+					android:id="@+id/viewClassGradientBottom"/>
+
+			</RelativeLayout>
+
+		</LinearLayout>
+
+		<com.google.android.material.divider.MaterialDivider
+			android:layout_height="match_parent"
+			android:layout_width="1dp"
+			android:layout_margin="8dp"/>
+
+		<LinearLayout
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:orientation="vertical"
+			android:layout_weight="1.0">
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:gravity="center"
+				android:padding="8dp"
+				android:orientation="horizontal">
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:padding="8dp"
+					android:textSize="14sp"
+					android:textColor="?colorTertiary"
+					android:typeface="monospace"
+					android:layout_weight="1.0"
+					android:text="Layouts"
+					android:textStyle="bold"/>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:orientation="vertical">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:textSize="10sp"
+						android:id="@+id/tvFilesPkgCount2"
+						android:text="Package found : 0"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:textSize="10sp"
+						android:id="@+id/tvFilesCount2"
+						android:text="Files : 0"/>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+
+				<ScrollView
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent">
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:id="@+id/linDataLayouts"
+						android:paddingBottom="143dp"
+						android:paddingTop="8dp"
+						android:paddingLeft="8dp"
+						android:paddingRight="8dp"/>
+
+				</ScrollView>
+
+				<View
+					android:layout_height="16dp"
+					android:layout_width="match_parent"
+					android:id="@+id/viewLayoutGradientTop"/>
+
+				<View
+					android:layout_height="16dp"
+					android:layout_width="match_parent"
+					android:layout_alignParentBottom="true"
+					android:id="@+id/viewLayoutGradientBottom"/>
+
+			</RelativeLayout>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</RelativeLayout>

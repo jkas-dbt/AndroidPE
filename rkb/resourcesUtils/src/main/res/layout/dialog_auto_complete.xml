@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:id="@+id/nested_scroll_view">
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:padding="12dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="4dp"
+                android:textSize="12dp"
+                android:layout_margin="8dp"
+                android:textColor="?colorTertiary"
+                android:textStyle="bold"
+                android:id="@+id/tvInfo"
+                android:text=". . ." />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="12dp"
+                android:padding="16dp"
+                app:endIconMode="clear_text"
+                android:id="@+id/til">
+
+                <AutoCompleteTextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:textSize="12sp"
+                    android:padding="16dp"
+                    android:id="@+id/autoComp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:id="@+id/linAdditional"
+                android:orientation="vertical" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="16sp"
+                android:textColor="?colorPrimary"
+                android:paddingLeft="8dp"
+                android:paddingTop="20dp"
+                android:text="@string/project_compression"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="8dp"
+                android:textSize="10sp"
+                android:text="@string/dialog_archive_description1" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_margin="4dp"
+                style="?attr/materialCardViewElevatedStyle">
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:textSize="14sp"
+                        android:text="@string/exclude" />
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:textSize="12sp"
+                        android:typeface="serif"
+                        android:text=" build "
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:textSize="12sp"
+                        android:text="(" />
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:textSize="12sp"
+                        android:text="@string/recommanded" />
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:textSize="12sp"
+                        android:layout_weight="1.0"
+                        android:text=")" />
+
+                    <com.google.android.material.materialswitch.MaterialSwitch
+                        android:layout_height="40dp"
+                        android:layout_width="60dp"
+                        android:checked="true"
+                        android:id="@+id/switchExcludeBuildFolder" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_margin="4dp"
+                android:backgroundTint="?colorSurface"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_marginTop="16dp">
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:padding="8dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:padding="8dp"
+                            android:textColor="?colorTertiary"
+                            android:layout_weight="1.0"
+                            android:text="@string/exclude_folders" />
+
+                        <Button
+                            android:layout_height="40dp"
+                            android:layout_width="wrap_content"
+                            android:padding="8dp"
+                            style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+                            android:text="@string/add"
+                            android:id="@+id/btnAddFolder" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:padding="4dp"
+                        android:orientation="vertical"
+                        android:id="@+id/linExcludedFolders">
+
+                    </LinearLayout>
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:layout_margin="12dp" />
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:padding="8dp"
+                            android:textColor="?colorTertiary"
+                            android:layout_weight="1.0"
+                            android:text="@string/exclude_files" />
+
+                        <Button
+                            android:layout_height="40dp"
+                            android:layout_width="wrap_content"
+                            android:padding="8dp"
+                            style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+                            android:text="@string/add"
+                            android:id="@+id/btnAddFile" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:padding="4dp"
+                        android:orientation="vertical"
+                        android:id="@+id/linExcludedFiles">
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:endIconMode="password_toggle"
+                android:hint="@string/pass_word"
+                android:layout_margin="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:inputType="textPassword"
+                    android:id="@+id/editTextPassWord" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_layouts"
+        android:icon="@drawable/ic_view_split_vertical"
+        android:title="Layouts" />
+
+    <item
+        android:id="@+id/menu_widgets"
+        android:icon="@drawable/ic_developer_board"
+        android:title="Widgets" />
+
+    <item
+        android:id="@+id/menu_material3"
+        android:icon="@drawable/ic_material_design"
+        android:title="Material 3" />
+
+</menu>

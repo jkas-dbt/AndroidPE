@@ -1,0 +1,31 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    namespace 'rkb.datasaver'
+    compileSdkVersion 34
+    buildToolsVersion "34.0.4"
+    
+    defaultConfig {
+        minSdk 26
+        targetSdk 28
+        
+        testInstrumentationRunner "androidx.text.runner.AndroidJUnitRunner"
+    }
+    
+    compileOptions {
+		sourceCompatibility JavaVersion.VERSION_17
+		targetCompatibility JavaVersion.VERSION_17
+	}
+    
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation project(':rkb:codeUtil')
+    implementation project(':rkb:resources')
+    implementation project(':rkb:projectUtils')
+}

@@ -1,0 +1,43 @@
+plugins {
+    alias libs.plugins.android.library
+}
+
+android {
+    compileSdk 34
+    buildToolsVersion "34.0.4"
+    
+    namespace 'jkas.androidpe.layoutUiDesigner'
+    
+    defaultConfig {
+        minSdk 26
+        targetSdk 34
+    }
+    
+    compileOptions {
+		sourceCompatibility JavaVersion.VERSION_17
+		targetCompatibility JavaVersion.VERSION_17
+	}
+    
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation project(':rkb:project')
+    implementation project(':rkb:projectUtils')
+    implementation project(':rkb:codeUtil')
+    implementation project(':rkb:explorer')
+    implementation project(':rkb:resources')
+    implementation project(':rkb:resourcesUtils')
+    implementation project(":rkb:logger")
+    
+    implementation libs.google.material
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.coordinatorlayout
+    implementation libs.androidx.swiperefreshlayout
+    implementation libs.group.box.layout
+    
+    implementation 'io.github.Rosemoe.sora-editor:editor:0.22.1'
+    implementation 'io.github.Rosemoe.sora-editor:language-textmate:0.22.1'
+}

@@ -1,0 +1,36 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/") }
+        maven { url = uri("https://jitpack.io") }
+        maven { url = uri("https://repo.gradle.org/gradle/libs-releases/") }
+        maven { url = uri("https://repo.eclipse.org/content/repositories/lemminx-snapshots/") }
+    }
+}
+
+rootProject.name = "AndroidPE"
+include ':app'
+include ':rkb:resources'
+include ':rkb:resourcesUtils'
+include ':rkb:rkbDataSaver'
+include ':rkb:codeUtil'
+include ':rkb:project'
+include ':rkb:projectUtils'
+include ':rkb:explorer'
+include ':rkb:logger'
+include ':rkb:codeEV:codeEditor'
+include ':rkb:codeEV:mainEditorView'
+include ':rkb:codeEV:menuItemDesigner'
+include ':rkb:codeEV:layoutUiDesigner'
+include ':rkb:codeEV:resValuesModifier'

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:id="@+id/coordinator">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:id="@+id/nested_scroll_view">
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:padding="12dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="8dp"
+                android:textColor="?colorTertiary"
+                android:textStyle="bold"
+                android:text="@string/module_type" />
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                app:singleSelection="true"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/toggleBtnModuleType">
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    app:icon="@drawable/ic_android"
+                    android:padding="4dp"
+                    android:textSize="12sp"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:id="@+id/btnApplication"
+                    android:text="Application" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    app:icon="@drawable/ic_package"
+                    android:padding="4dp"
+                    android:textSize="12sp"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:id="@+id/btnAndroidLib"
+                    android:text="Android Lib" />
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="8dp"
+                android:textColor="?colorTertiary"
+                android:layout_marginTop="8dp"
+                android:textStyle="bold"
+                android:text="@string/name_pkg" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:endIconMode="clear_text"
+                android:hint="@string/module_name"
+                android:id="@+id/TILModuleName"
+                android:layout_margin="4dp"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:textSize="12sp"
+                    android:text="my_new_module"
+                    android:id="@+id/textInputModuleName" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:endIconMode="clear_text"
+                android:hint="@string/package_name"
+                android:layout_margin="4dp"
+                android:id="@+id/TILModulePackage"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:textSize="12sp"
+                    android:text="my_new_module"
+                    android:id="@+id/textInputPkg" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="8dp"
+                android:textColor="?colorTertiary"
+                android:layout_marginTop="4dp"
+                android:textStyle="bold"
+                android:text="@string/final_informations" />
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                app:singleSelection="true"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/toggleBtnLanguage">
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    app:icon="@drawable/ic_language_java"
+                    android:padding="4dp"
+                    android:textSize="12sp"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:id="@+id/btnJava"
+                    android:text="Java " />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    app:icon="@drawable/ic_language_kotlin"
+                    android:padding="4dp"
+                    android:textSize="12sp"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:id="@+id/btnKotlin"
+                    android:text="Kotlin" />
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:hint="@string/path_way"
+                android:layout_margin="4dp"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:textSize="12sp"
+                    android:text="my_new_module"
+                    android:id="@+id/textInputFinalPath" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="12sp"
+                android:id="@+id/cbKotlinScript"
+                android:text="@string/kotlin_script_for_gradle_config" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

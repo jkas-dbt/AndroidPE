@@ -1,0 +1,31 @@
+plugins {
+    alias libs.plugins.android.library
+}
+
+android {
+    namespace 'jkas.androidpe.codeUtil'
+    compileSdkVersion 34
+    buildToolsVersion "34.0.4"
+    
+    defaultConfig {
+        minSdk 26
+        targetSdk 33
+        versionCode 3
+        versionName "1.0.3"
+        
+        testInstrumentationRunner "androidx.text.runner.AndroidJUnitRunner"
+    }
+    
+    compileOptions {
+		sourceCompatibility JavaVersion.VERSION_17
+		targetCompatibility JavaVersion.VERSION_17
+	}
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core:1.9.0'
+    implementation 'com.caverock:androidsvg-aar:1.4'
+    implementation 'org.apache.commons:commons-io:1.3.2'
+    implementation 'net.lingala.zip4j:zip4j:2.11.5'
+}

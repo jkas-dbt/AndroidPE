@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:gravity="center"
+     android:padding="8dp"
+     android:orientation="horizontal">
+
+    <com.google.android.material.textfield.TextInputLayout
+         android:layout_height="wrap_content"
+         android:layout_width="match_parent"
+         android:hint="@string/package_name_prefix"
+         android:layout_weight="1.0"
+         android:id="@+id/TIL">
+
+        <com.google.android.material.textfield.TextInputEditText
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             android:textSize="12sp"
+             android:text="@string/package_name_prefix_model"
+             android:id="@+id/textInput" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+         android:layout_height="35dp"
+         android:layout_width="35dp"
+         android:adjustViewBounds="true"
+         android:src="@drawable/ic_delete"
+         android:padding="6dp"
+         android:layout_marginLeft="4dp"
+         android:id="@+id/icDelete"
+         android:text="Text" />
+
+</LinearLayout>

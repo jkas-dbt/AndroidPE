@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:gravity="center"
+		android:padding="8dp"
+		android:orientation="horizontal">
+
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:layout_margin="4dp"
+			android:padding="4dp"
+			android:orientation="vertical"
+			android:layout_weight="1.0">
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:textSize="16dp"
+				android:textStyle="bold"
+				android:text="ConstraintLayout"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:text="view name"
+				android:id="@+id/tvViewName"/>
+
+		</LinearLayout>
+
+		<ImageView
+			android:layout_height="35dp"
+			android:layout_width="35dp"
+			android:src="@android:drawable/ic_info"
+			android:layout_margin="8dp"
+			android:padding="8dp"
+			android:id="@+id/icMoreInfo"/>
+
+	</LinearLayout>
+
+	<androidx.core.widget.NestedScrollView
+		android:layout_height="match_parent"
+		android:layout_width="match_parent">
+
+		<LinearLayout
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:padding="8dp"
+			android:orientation="vertical">
+
+			<RelativeLayout
+				android:layout_height="276dp"
+				android:layout_width="match_parent"
+				android:layout_margin="8dp"
+				android:layout_gravity="center_horizontal">
+
+				<RelativeLayout
+					android:layout_height="140dp"
+					android:layout_width="140dp"
+					android:layout_centerInParent="true"
+					android:padding="4dp"
+					android:id="@+id/linConstraintParent">
+
+					<RelativeLayout
+						android:layout_height="100dp"
+						android:layout_width="100dp"
+						android:layout_centerInParent="true"
+						android:alpha="0.89"
+						android:id="@+id/relAddConstraints">
+
+						<ImageView
+							android:layout_height="18dp"
+							android:layout_width="30dp"
+							android:src="@drawable/layout_width_match"
+							android:rotation="90"
+							android:layout_margin="21dp"
+							android:layout_centerHorizontal="true"
+							android:layout_alignParentTop="true"
+							android:id="@+id/icConstraintTop"
+							android:alpha="0.43"/>
+
+						<ImageView
+							android:layout_height="18dp"
+							android:layout_width="30dp"
+							android:src="@drawable/layout_width_match"
+							android:layout_centerVertical="true"
+							android:layout_margin="14dp"
+							android:layout_alignParentRight="true"
+							android:id="@+id/icConstraintRight"
+							android:alpha="0.43"/>
+
+						<ImageView
+							android:layout_height="18dp"
+							android:layout_width="30dp"
+							android:src="@drawable/layout_width_match"
+							android:rotation="-90"
+							android:layout_margin="21dp"
+							android:layout_centerHorizontal="true"
+							android:layout_alignParentBottom="true"
+							android:id="@+id/icConstraintBottom"
+							android:alpha="0.43"/>
+
+						<ImageView
+							android:layout_height="18dp"
+							android:layout_width="30dp"
+							android:src="@drawable/layout_width_match"
+							android:layout_centerVertical="true"
+							android:layout_margin="14dp"
+							android:layout_alignParentLeft="true"
+							android:id="@+id/icConstraintLeft"
+							android:alpha="0.43"/>
+
+						<View
+							android:layout_height="5dp"
+							android:layout_width="5dp"
+							android:background="?colorOnSurface"
+							android:alpha="0.87"
+							android:padding="8dp"/>
+
+					</RelativeLayout>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:padding="5dp"
+						android:textSize="8dp"
+						android:layout_marginLeft="16dp"
+						android:text="1"
+						android:textStyle="bold"
+						android:id="@+id/tvRatioWidth"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:padding="5dp"
+						android:textSize="8dp"
+						android:layout_marginTop="16dp"
+						android:text="1"
+						android:textStyle="bold"
+						android:id="@+id/tvRatioHeight"/>
+
+					<TextView
+						android:layout_height="20dp"
+						android:layout_width="20dp"
+						android:gravity="center"
+						android:background="?colorOnTertiary"
+						android:layout_margin="8dp"
+						android:layout_centerHorizontal="true"
+						android:textSize="12dp"
+						android:layout_alignParentTop="true"
+						android:text="+"
+						android:id="@+id/tvAddConstraintTop"/>
+
+					<TextView
+						android:layout_height="20dp"
+						android:layout_width="20dp"
+						android:gravity="center"
+						android:background="?colorOnTertiary"
+						android:layout_centerVertical="true"
+						android:layout_margin="8dp"
+						android:textSize="12dp"
+						android:layout_alignParentLeft="true"
+						android:text="+"
+						android:id="@+id/tvAddConstraintLeft"/>
+
+					<TextView
+						android:layout_height="20dp"
+						android:layout_width="20dp"
+						android:gravity="center"
+						android:background="?colorOnTertiary"
+						android:layout_margin="8dp"
+						android:layout_centerHorizontal="true"
+						android:textSize="12dp"
+						android:layout_alignParentBottom="true"
+						android:text="+"
+						android:id="@+id/tvAddConstraintBottom"/>
+
+					<TextView
+						android:layout_height="20dp"
+						android:layout_width="20dp"
+						android:gravity="center"
+						android:background="?colorOnTertiary"
+						android:layout_centerVertical="true"
+						android:layout_margin="8dp"
+						android:textSize="12dp"
+						android:layout_alignParentRight="true"
+						android:text="+"
+						android:id="@+id/tvAddConstraintRight"/>
+
+				</RelativeLayout>
+
+				<com.google.android.material.button.MaterialButton
+					android:layout_height="35dp"
+					android:layout_width="60dp"
+					android:visibility="invisible"
+					app:strokeColor="#72777E"
+					android:padding="4dp"
+					android:layout_above="@id/linConstraintParent"
+					android:textSize="10sp"
+					android:layout_centerHorizontal="true"
+					style="?attr/materialButtonOutlinedStyle"
+					android:id="@+id/btnTop"
+					android:text="0"/>
+
+				<com.google.android.material.button.MaterialButton
+					android:layout_height="35dp"
+					android:layout_width="60dp"
+					android:visibility="invisible"
+					app:strokeColor="#72777E"
+					android:layout_centerVertical="true"
+					android:padding="4dp"
+					android:layout_toLeftOf="@id/linConstraintParent"
+					android:textSize="10sp"
+					style="?attr/materialButtonOutlinedStyle"
+					android:id="@+id/btnLeft"
+					android:text="0"/>
+
+				<com.google.android.material.button.MaterialButton
+					android:layout_height="35dp"
+					android:layout_width="60dp"
+					android:visibility="invisible"
+					android:layout_below="@id/linConstraintParent"
+					app:strokeColor="#72777E"
+					android:padding="4dp"
+					android:textSize="10sp"
+					android:layout_centerHorizontal="true"
+					style="?attr/materialButtonOutlinedStyle"
+					android:id="@+id/btnBottom"
+					android:text="0"/>
+
+				<com.google.android.material.button.MaterialButton
+					android:layout_height="35dp"
+					android:layout_width="60dp"
+					android:visibility="invisible"
+					app:strokeColor="#72777E"
+					android:layout_centerVertical="true"
+					android:padding="4dp"
+					android:textSize="10sp"
+					android:layout_toRightOf="@id/linConstraintParent"
+					style="?attr/materialButtonOutlinedStyle"
+					android:id="@+id/btnRight"
+					android:text="0"/>
+
+				<com.google.android.material.textfield.TextInputLayout
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:layout_below="@id/linConstraintParent"
+					android:hint="ratio"
+					android:padding="6dp"
+					android:layout_margin="3dp"
+					android:layout_toRightOf="@id/btnBottom"
+					android:id="@+id/tilRatio">
+
+					<com.google.android.material.textfield.TextInputEditText
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:padding="8dp"
+						android:textSize="12sp"
+						android:text="1:1"
+						android:id="@+id/tieRatio"/>
+
+				</com.google.android.material.textfield.TextInputLayout>
+
+			</RelativeLayout>
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:layout_marginLeft="8dp"
+				android:layout_marginRight="8dp">
+
+				<LinearLayout
+					android:layout_height="35dp"
+					android:layout_width="match_parent"
+					android:gravity="center">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:layout_marginLeft="8dp"
+						android:typeface="monospace"
+						android:text="Bias V :"
+						android:textStyle="bold"/>
+
+					<com.google.android.material.slider.RangeSlider
+						android:layout_height="35dp"
+						android:layout_width="match_parent"
+						android:alpha="0.87"
+						android:valueTo="100.0"
+						android:layout_marginLeft="8dp"
+						android:layout_marginRight="8dp"
+						android:valueFrom="1.0"
+						android:stepSize="1.0"
+						android:id="@+id/rsBiasV"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_height="35dp"
+					android:layout_width="match_parent"
+					android:gravity="center">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:layout_marginLeft="8dp"
+						android:typeface="monospace"
+						android:text="Bias H :"
+						android:textStyle="bold"/>
+
+					<com.google.android.material.slider.RangeSlider
+						android:layout_height="35dp"
+						android:layout_width="match_parent"
+						android:alpha="0.87"
+						android:valueTo="100.0"
+						android:layout_marginLeft="8dp"
+						android:layout_marginRight="8dp"
+						android:valueFrom="1.0"
+						android:stepSize="1.0"
+						android:id="@+id/rsBiasH"/>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+			<com.google.android.material.divider.MaterialDivider
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:layout_margin="20dp"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:padding="8dp"
+				android:layout_marginLeft="8dp"
+				android:text="Constraints"/>
+
+			<com.google.android.material.card.MaterialCardView
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:padding="8dp"
+				android:layout_margin="8dp">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:layout_margin="8dp"
+					android:id="@+id/linCurrentConstraints"
+					android:orientation="vertical"/>
+
+			</com.google.android.material.card.MaterialCardView>
+
+			<com.google.android.material.divider.MaterialDivider
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:layout_margin="20dp"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:padding="8dp"
+				android:layout_marginLeft="8dp"
+				android:text="@string/all_attributes"/>
+
+			<com.google.android.material.card.MaterialCardView
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:layout_margin="8dp">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="vertical">
+
+					<HorizontalScrollView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:layout_marginTop="16dp">
+
+						<LinearLayout
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:paddingRight="16dp"
+							android:paddingLeft="16dp">
+
+							<com.google.android.material.button.MaterialButtonToggleGroup
+								android:layout_height="35dp"
+								android:layout_width="wrap_content"
+								app:singleSelection="true"
+								app:selectionRequired="true"
+								app:checkedButton="@id/btnHideAttr"
+								android:id="@+id/toggleType">
+
+								<com.google.android.material.button.MaterialButton
+									android:layout_height="wrap_content"
+									android:layout_width="50dp"
+									app:strokeColor="#72777E"
+									android:padding="4dp"
+									android:textSize="10sp"
+									style="?attr/materialButtonOutlinedStyle"
+									android:text="Hide attr"
+									android:id="@+id/btnHideAttr"/>
+
+								<com.google.android.material.button.MaterialButton
+									android:layout_height="wrap_content"
+									android:layout_width="wrap_content"
+									app:strokeColor="#72777E"
+									android:padding="4dp"
+									android:textSize="10sp"
+									style="?attr/materialButtonOutlinedStyle"
+									android:id="@+id/btnRelatvePositioning"
+									android:text="Relative positioning"/>
+
+								<com.google.android.material.button.MaterialButton
+									android:layout_height="wrap_content"
+									android:layout_width="wrap_content"
+									app:strokeColor="#72777E"
+									android:padding="4dp"
+									android:textSize="10sp"
+									style="?attr/materialButtonOutlinedStyle"
+									android:id="@+id/btnMargins"
+									android:text="Margins"/>
+
+								<com.google.android.material.button.MaterialButton
+									android:layout_height="wrap_content"
+									android:layout_width="wrap_content"
+									app:strokeColor="#72777E"
+									android:padding="4dp"
+									android:textSize="10sp"
+									style="?attr/materialButtonOutlinedStyle"
+									android:id="@+id/btnBiasCircular"
+									android:text="Circular"/>
+
+								<com.google.android.material.button.MaterialButton
+									android:layout_height="wrap_content"
+									android:layout_width="wrap_content"
+									app:strokeColor="#72777E"
+									android:padding="4dp"
+									android:textSize="10sp"
+									style="?attr/materialButtonOutlinedStyle"
+									android:id="@+id/btnDimensionsMinMax"
+									android:text="Dimensions - (Min and Max)"/>
+
+								<com.google.android.material.button.MaterialButton
+									android:layout_height="wrap_content"
+									android:layout_width="wrap_content"
+									app:strokeColor="#72777E"
+									android:padding="4dp"
+									android:textSize="10sp"
+									style="?attr/materialButtonOutlinedStyle"
+									android:id="@+id/btnWeighted"
+									android:text="Weighted"/>
+
+							</com.google.android.material.button.MaterialButtonToggleGroup>
+
+						</LinearLayout>
+
+					</HorizontalScrollView>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:padding="8dp"
+						android:id="@+id/linAttrs"
+						android:orientation="vertical"/>
+
+				</LinearLayout>
+
+			</com.google.android.material.card.MaterialCardView>
+
+			<CheckBox
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:padding="8dp"
+				android:layout_margin="8dp"
+				android:enabled="false"
+				android:checked="true"
+				android:id="@+id/checkBoxAutoDeleteAttr"
+				android:text="@string/delete_attr_if_empty"/>
+
+		</LinearLayout>
+
+	</androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

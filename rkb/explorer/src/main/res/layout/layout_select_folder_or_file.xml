@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    tools:context=".SelectFF">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:padding="4dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_height="50dp"
+                android:layout_width="50dp"
+                android:scaleType="fitCenter"
+                app:lottie_loop="true"
+                app:lottie_autoPlay="true"
+                android:id="@+id/lottieAnim" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_margin="4dp"
+            android:orientation="vertical"
+            android:layout_weight="1.0">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:visibility="gone"
+                android:padding="8dp"
+                android:textSize="12sp"
+                android:id="@+id/tvCount"
+                android:text="0:selected"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_margin="4dp"
+            style="?attr/materialCardViewElevatedStyle"
+            android:id="@+id/cardGoBack">
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="90dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_height="30dp"
+                    android:layout_width="30dp"
+                    android:src="@drawable/ic_undo" />
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="?colorPrimary"
+                    android:text="@string/go_back"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_margin="4dp"
+            style="?attr/materialCardViewElevatedStyle"
+            android:id="@+id/cardSave">
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="90dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_height="30dp"
+                    android:layout_width="30dp"
+                    android:src="@drawable/ic_save" />
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="?colorPrimary"
+                    android:text="@string/save"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_height="1dp"
+        android:layout_width="match_parent" />
+
+    <HorizontalScrollView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="4dp"
+            android:textSize="10sp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:text="loading ..."
+            android:id="@+id/tvInfo" />
+
+    </HorizontalScrollView>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_height="1dp"
+        android:layout_width="match_parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:padding="4dp"
+        android:id="@+id/recyclerView" />
+
+</LinearLayout>

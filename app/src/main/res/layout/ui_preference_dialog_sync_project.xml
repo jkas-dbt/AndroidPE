@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:orientation="vertical"
+     android:paddingBottom="43dp">
+
+    <LinearLayout
+         android:layout_height="wrap_content"
+         android:layout_width="match_parent"
+         android:gravity="center"
+         android:paddingRight="12dp"
+         android:layout_margin="4dp"
+         android:orientation="horizontal"
+         android:paddingBottom="4dp"
+         android:paddingLeft="12dp"
+         android:paddingTop="4dp">
+
+        <ImageView
+             android:layout_height="35dp"
+             android:layout_width="35dp"
+             android:adjustViewBounds="true"
+             android:src="@drawable/ic_folder_sync"
+             android:padding="4dp" />
+
+        <View
+             android:layout_height="30dp"
+             android:layout_width="0dp"
+             android:layout_margin="8dp" />
+
+        <LinearLayout
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             android:padding="8dp"
+             android:orientation="vertical"
+             android:layout_weight="1.0">
+
+            <TextView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:textSize="16sp"
+                 android:text="@string/folders"
+                 android:textStyle="bold" />
+
+            <TextView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:textSize="12sp"
+                 android:typeface="monospace"
+                 android:id="@+id/tvInfo"
+                 android:text="..." />
+
+        </LinearLayout>
+
+        <Button
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             style="?attr/materialButtonOutlinedStyle"
+             android:text="@string/add"
+             android:id="@+id/btnAddPath" />
+
+    </LinearLayout>
+
+    <ScrollView
+         android:layout_height="wrap_content"
+         android:layout_width="match_parent">
+
+        <LinearLayout
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             android:padding="8dp"
+             android:orientation="vertical"
+             android:id="@+id/linPath">
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/linView"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ViewFlipper
+            android:layout_height="20dp"
+            android:layout_width="20dp"
+            android:layout_marginEnd="4dp"
+            android:id="@+id/vf_chevron">
+
+            <ImageView
+                android:layout_height="20dp"
+                android:layout_width="20dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_chevron_right"
+                android:id="@+id/ic_chevron" />
+
+            <ProgressBar
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:indeterminate="true"
+                android:progressTint="?colorPrimary"
+                android:id="@+id/loading_progress" />
+
+        </ViewFlipper>
+
+        <ImageView
+            android:layout_height="30dp"
+            android:layout_width="30dp"
+            android:src="@drawable/ic_folder"
+            android:adjustViewBounds="true"
+            android:padding="4dp"
+            android:id="@+id/ic_icon" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="4dp"
+            android:textSize="13sp"
+            android:id="@+id/tv_desc" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/linChild"
+        android:orientation="vertical"
+        android:paddingLeft="25dp" />
+
+</LinearLayout>

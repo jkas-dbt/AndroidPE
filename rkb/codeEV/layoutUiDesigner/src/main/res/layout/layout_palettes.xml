@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:gravity="center"
+		android:padding="16dp"
+		android:orientation="vertical">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:padding="8dp"
+			android:textSize="20sp"
+			android:typeface="monospace"
+			android:text="Android-PE"
+			android:textStyle="bold"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:textSize="10sp"
+			android:typeface="monospace"
+			android:text="The Layout Editor can also support other views that are not in the palettes (experimental)."
+			android:gravity="center"
+			android:paddingLeft="12dp"
+			android:paddingRight="12dp"/>
+
+	</LinearLayout>
+
+	<com.google.android.material.divider.MaterialDivider
+		android:layout_height="1dp"
+		android:layout_width="match_parent"/>
+
+	<LinearLayout
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:orientation="horizontal">
+
+		<com.google.android.material.navigationrail.NavigationRailView
+			android:layout_height="match_parent"
+			android:layout_width="wrap_content"
+			app:menu="@menu/all_view_rail"
+			app:elevation="1dp"
+			android:id="@+id/navRail"/>
+
+		<ListView
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:padding="8dp"
+			android:id="@+id/listView"
+			android:dividerHeight="0dp"/>
+
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:padding="8dp"
+			android:orientation="vertical"/>
+
+	</LinearLayout>
+
+</LinearLayout>

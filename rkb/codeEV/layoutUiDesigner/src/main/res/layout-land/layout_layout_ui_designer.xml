@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent">
+
+	<LinearLayout
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:orientation="horizontal">
+
+		<ScrollView
+			android:layout_height="match_parent"
+			android:layout_width="wrap_content">
+
+			<LinearLayout
+				android:layout_height="match_parent"
+				android:layout_width="wrap_content"
+				android:gravity="center"
+				android:padding="8dp"
+				android:orientation="vertical">
+
+				<ImageView
+					android:layout_height="30dp"
+					android:layout_width="35dp"
+					android:adjustViewBounds="true"
+					android:src="@drawable/ic_developer_board"
+					android:padding="4dp"
+					android:layout_margin="4dp"
+					android:id="@+id/imgAllViews"/>
+
+				<ImageView
+					android:layout_height="30dp"
+					android:layout_width="35dp"
+					android:adjustViewBounds="true"
+					android:src="@drawable/ic_file_tree"
+					android:padding="4dp"
+					android:layout_margin="4dp"
+					android:id="@+id/imgFileTree"/>
+
+				<ImageView
+					android:layout_width="35dp"
+					android:layout_height="30dp"
+					android:adjustViewBounds="true"
+					android:src="@drawable/ic_information_outline"
+					android:padding="4dp"
+					android:layout_margin="4dp"
+					android:id="@+id/imgInfo"/>
+
+				<ImageView
+					android:layout_height="30dp"
+					android:layout_width="35dp"
+					android:adjustViewBounds="true"
+					android:src="@drawable/ic_layers"
+					android:padding="4dp"
+					android:layout_margin="4dp"
+					android:id="@+id/imgLayers"/>
+
+				<ImageView
+					android:layout_width="35dp"
+					android:layout_height="30dp"
+					android:adjustViewBounds="true"
+					android:src="@drawable/ic_fullscreen"
+					android:padding="4dp"
+					android:layout_margin="4dp"
+					android:id="@+id/imgFull"/>
+
+				<ImageView
+					android:layout_height="30dp"
+					android:layout_width="35dp"
+					android:adjustViewBounds="true"
+					android:src="@drawable/ic_sync"
+					android:padding="4dp"
+					android:layout_margin="4dp"
+					android:id="@+id/imgRefresh"/>
+
+			</LinearLayout>
+
+		</ScrollView>
+
+		<androidx.drawerlayout.widget.DrawerLayout
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:animateLayoutChanges="true"
+			tools:openDrawer="start"
+			tools:ignore="DuplicateIncludedIds"
+			android:id="@+id/drawerLayout">
+
+			<LinearLayout
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:orientation="vertical">
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:gravity="center"
+					android:textSize="8dp"
+					android:paddingLeft="8dp"
+					android:textColor="@color/warning"
+					android:typeface="monospace"
+					android:text="..."
+					android:paddingTop="2dp"
+					android:id="@+id/tvInfo"/>
+
+				<jkas.androidpe.layoutUiDesigner.palette.MainView
+					android:layout_height="match_parent"
+					android:layout_width="match_parent"
+					android:layout_margin="10dp"
+					android:padding="10dp"
+					android:orientation="vertical"
+					android:id="@+id/linContainer"/>
+
+			</LinearLayout>
+
+			<com.google.android.material.navigation.NavigationView
+				android:layout_height="match_parent"
+				android:layout_width="wrap_content"
+				android:layout_gravity="left"
+				android:id="@+id/left_drawer"/>
+
+			<com.google.android.material.navigation.NavigationView
+				android:layout_height="match_parent"
+				android:layout_width="wrap_content"
+				android:layout_gravity="right"
+				android:id="@+id/right_drawer"/>
+
+		</androidx.drawerlayout.widget.DrawerLayout>
+
+	</LinearLayout>
+
+	<ImageView
+		android:layout_height="50dp"
+		android:layout_width="60dp"
+		android:visibility="gone"
+		android:src="@drawable/ic_cancel"
+		android:adjustViewBounds="true"
+		android:padding="12dp"
+		android:layout_marginRight="24dp"
+		android:layout_marginTop="8dp"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentTop="true"
+		android:id="@+id/imgDelete"/>
+
+</RelativeLayout>

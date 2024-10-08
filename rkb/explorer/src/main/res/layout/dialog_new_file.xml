@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_height="wrap_content"
+	android:layout_width="match_parent"
+	android:id="@+id/coordinator">
+
+	<androidx.core.widget.NestedScrollView
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+		android:id="@+id/nested_scroll_view">
+
+		<LinearLayout
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:padding="12dp"
+			android:orientation="vertical">
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:gravity="center"
+				android:padding="8dp"
+				android:textSize="10dp"
+				android:textColor="?colorTertiary"
+				android:textStyle="bold"
+				android:id="@+id/tvInfo"
+				android:text="..."/>
+
+			<HorizontalScrollView
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:padding="4dp">
+
+				<com.google.android.material.button.MaterialButtonToggleGroup
+					android:layout_height="40dp"
+					android:layout_width="wrap_content"
+					app:singleSelection="true"
+					android:layout_marginRight="8dp"
+					app:selectionRequired="true"
+					android:id="@+id/toggleBtnTypeData">
+
+					<com.google.android.material.button.MaterialButton
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						app:icon="@drawable/ic_package"
+						app:strokeColor="#72777E"
+						android:padding="4dp"
+						android:textSize="12sp"
+						style="?attr/materialButtonOutlinedStyle"
+						android:id="@+id/btnClass"
+						android:text="Class"/>
+
+					<com.google.android.material.button.MaterialButton
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						app:icon="@drawable/ic_link_variant"
+						app:strokeColor="#72777E"
+						android:padding="4dp"
+						android:textSize="12sp"
+						style="?attr/materialButtonOutlinedStyle"
+						android:id="@+id/btnInterface"
+						android:text="Interface"/>
+
+					<com.google.android.material.button.MaterialButton
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						app:icon="@drawable/ic_code_array"
+						app:strokeColor="#72777E"
+						android:padding="4dp"
+						android:textSize="12sp"
+						style="?attr/materialButtonOutlinedStyle"
+						android:id="@+id/btnEnum"
+						android:text="Enum"/>
+
+					<com.google.android.material.button.MaterialButton
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						app:icon="@drawable/ic_folder"
+						app:strokeColor="#72777E"
+						android:padding="4dp"
+						android:textSize="12sp"
+						style="?attr/materialButtonOutlinedStyle"
+						android:id="@+id/btnRes"
+						android:text="Res"/>
+
+					<com.google.android.material.button.MaterialButton
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						app:icon="@drawable/ic_file_txt"
+						app:strokeColor="#72777E"
+						android:padding="4dp"
+						android:textSize="12sp"
+						style="?attr/materialButtonOutlinedStyle"
+						android:id="@+id/btnOther"
+						android:text="@string/other"/>
+
+				</com.google.android.material.button.MaterialButtonToggleGroup>
+
+			</HorizontalScrollView>
+
+			<HorizontalScrollView
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:padding="4dp">
+
+				<com.google.android.material.button.MaterialButtonToggleGroup
+					android:layout_height="40dp"
+					android:layout_width="wrap_content"
+					app:singleSelection="true"
+					android:layout_marginRight="8dp"
+					app:selectionRequired="true"
+					android:id="@+id/toggleBtnFileType">
+
+					<com.google.android.material.button.MaterialButton
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						app:icon="@drawable/ic_language_java"
+						app:strokeColor="#72777E"
+						android:padding="4dp"
+						android:textSize="12sp"
+						style="?attr/materialButtonOutlinedStyle"
+						android:id="@+id/btnJava"
+						android:text="Java"/>
+
+					<com.google.android.material.button.MaterialButton
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						app:icon="@drawable/ic_language_kotlin"
+						app:strokeColor="#72777E"
+						android:padding="4dp"
+						android:textSize="12sp"
+						style="?attr/materialButtonOutlinedStyle"
+						android:id="@+id/btnKotlin"
+						android:text="Kotlin"/>
+
+					<com.google.android.material.button.MaterialButton
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						app:icon="@drawable/ic_insert_photo"
+						app:strokeColor="#72777E"
+						android:padding="4dp"
+						android:textSize="12sp"
+						style="?attr/materialButtonOutlinedStyle"
+						android:id="@+id/btnDrawable"
+						android:text="Drawable"/>
+
+					<com.google.android.material.button.MaterialButton
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						app:icon="@drawable/ic_insert_photo"
+						app:strokeColor="#72777E"
+						android:padding="4dp"
+						android:textSize="12sp"
+						style="?attr/materialButtonOutlinedStyle"
+						android:id="@+id/btnValues"
+						android:text="Values"/>
+
+					<com.google.android.material.button.MaterialButton
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						app:icon="@drawable/ic_grid_outline"
+						app:strokeColor="#72777E"
+						android:padding="4dp"
+						android:textSize="12sp"
+						style="?attr/materialButtonOutlinedStyle"
+						android:id="@+id/btnLayout"
+						android:text="Layout"/>
+
+					<com.google.android.material.button.MaterialButton
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						app:icon="@drawable/ic_more_settings"
+						app:strokeColor="#72777E"
+						android:padding="4dp"
+						android:textSize="12sp"
+						style="?attr/materialButtonOutlinedStyle"
+						android:id="@+id/btnMenu"
+						android:text="Menu"/>
+
+				</com.google.android.material.button.MaterialButtonToggleGroup>
+
+			</HorizontalScrollView>
+
+			<com.google.android.material.textfield.TextInputLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				app:endIconMode="clear_text"
+				android:hint="@string/name"
+				android:layout_margin="8dp"
+				app:errorEnabled="true"
+				android:id="@+id/TILName">
+
+				<com.google.android.material.textfield.TextInputEditText
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:textSize="12sp"
+					android:text=""
+					android:id="@+id/textInputName"/>
+
+			</com.google.android.material.textfield.TextInputLayout>
+
+		</LinearLayout>
+
+	</androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
