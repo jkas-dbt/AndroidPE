@@ -1,0 +1,39 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdk 34
+    buildToolsVersion "34.0.4"
+    
+    namespace 'jkas.androidpe.resourcesUtils'
+    
+    defaultConfig {
+        minSdk 26
+        targetSdk 34
+    }
+    
+    compileOptions {
+		sourceCompatibility JavaVersion.VERSION_17
+		targetCompatibility JavaVersion.VERSION_17
+	}
+    
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation libs.androidx.appcompat
+    implementation libs.google.material
+    implementation libs.color.picker
+    implementation libs.androidsvg
+    implementation libs.picasso
+    implementation libs.group.box.layout
+    implementation libs.androidsvg
+    
+    implementation project(':rkb:project')
+    implementation project(':rkb:codeUtil')
+    implementation project(':rkb:resources')
+    implementation project(':rkb:logger')
+}

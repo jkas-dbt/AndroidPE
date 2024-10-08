@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:padding="8dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:elevation="10dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                style="?attr/materialCardViewElevatedStyle"
+                app:cardCornerRadius="360dp"
+                android:layout_weight="1.0">
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_height="40dp"
+                        android:layout_width="40dp"
+                        android:adjustViewBounds="true"
+                        android:src="@mipmap/androidpe_app_icon_dark"
+                        android:layout_margin="4dp"
+                        android:padding="4dp" />
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_marginRight="12dp"
+                        android:layout_weight="1.0">
+
+                        <TextView
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="?colorPrimary"
+                            android:text="@string/app_name_description"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:textSize="10sp"
+                            android:typeface="monospace"
+                            android:text="@string/complementary_application" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <ImageView
+                android:layout_height="35dp"
+                android:layout_width="35dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_folder_open"
+                android:padding="4dp"
+                android:layout_margin="4dp"
+                android:backgroundTint="?colorOnSurface"
+                android:id="@+id/ic_open_project" />
+
+            <ImageView
+                android:layout_height="35dp"
+                android:layout_width="35dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_information_outline"
+                android:padding="4dp"
+                android:layout_margin="4dp"
+                android:id="@+id/ic_settings" />
+
+        </LinearLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:id="@+id/swipeRefreshLayout">
+
+            <ViewSwitcher
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:id="@+id/viewSwitcher">
+
+                <LinearLayout
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_height="wrap_content"
+                            android:layout_width="250dp"
+                            android:gravity="center"
+                            android:alpha="0.43"
+                            android:textSize="10dp"
+                            android:typeface="serif"
+                            android:text="@string/swipe_refresh_data_or_create_new_project" />
+
+                        <LinearLayout
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:textSize="10dp"
+                                android:textColor="?colorTertiary"
+                                android:typeface="serif"
+                                android:text="Storage Access Status : " />
+
+                            <TextView
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:textSize="10dp"
+                                android:textColor="?colorPrimary"
+                                android:typeface="serif"
+                                android:textStyle="bold"
+                                android:id="@+id/tvStatusPermission"
+                                android:text="Loading ..." />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:gravity="center_horizontal"
+                    android:padding="4dp">
+
+                    <androidx.core.widget.NestedScrollView
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent">
+
+                        <GridLayout
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:scrollbars="vertical"
+                            android:layout_marginBottom="143dp"
+                            android:horizontalSpacing="8dp"
+                            android:layout_marginTop="15dp"
+                            android:columnCount="1"
+                            android:verticalSpacing="8dp"
+                            android:id="@+id/gridLayoutListProjects">
+
+                        </GridLayout>
+
+                    </androidx.core.widget.NestedScrollView>
+
+                    <View
+                        android:layout_height="20dp"
+                        android:layout_width="match_parent"
+                        android:id="@+id/viewGradientTop" />
+
+                    <View
+                        android:layout_height="76dp"
+                        android:layout_width="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:id="@+id/viewGradientBottom" />
+
+                </RelativeLayout>
+
+            </ViewSwitcher>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="26sp"
+        android:layout_marginRight="43sp"
+        app:srcCompat="@drawable/ic_add"
+        android:layout_gravity="bottom|right"
+        android:id="@+id/fab" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

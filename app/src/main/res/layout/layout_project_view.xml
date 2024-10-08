@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:adjustViewBounds="true"
+            android:layout_margin="8dp"
+            android:id="@+id/ic_icon_project" />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="4dp"
+            android:orientation="vertical"
+            android:layout_weight="1.0">
+
+            <HorizontalScrollView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="?colorOnSurface"
+                    android:text="Your Project Name"
+                    android:textStyle="bold"
+                    android:id="@+id/tv_folder_name" />
+
+            </HorizontalScrollView>
+
+            <HorizontalScrollView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="10dp"
+                    android:text="your.package.will.be.display.here"
+                    android:id="@+id/tv_package_name" />
+
+            </HorizontalScrollView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                style="?attr/materialCardViewFilledStyle"
+                android:layout_marginTop="4dp">
+
+                <HorizontalScrollView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:padding="4dp">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:textSize="8sp"
+                        android:typeface="serif"
+                        android:text="Path do your Project"
+                        android:textStyle="bold"
+                        android:id="@+id/tv_path_to_project" />
+
+                </HorizontalScrollView>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_height="40dp"
+            android:layout_width="40dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_more_settings"
+            android:layout_margin="8dp"
+            android:padding="8dp"
+            android:id="@+id/ic_more_settings" />
+
+    </LinearLayout>
+
+</LinearLayout>

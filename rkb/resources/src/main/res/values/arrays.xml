@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string-array name="list_code_language">
+        <item>Java</item>
+        <item>Kotlin</item>
+    </string-array>
+
+    <string-array name="cpp_standard">
+        <item>Toolchain Default</item>
+        <item>C++11</item>
+        <item>C++14</item>
+        <item>C++17</item>
+    </string-array>
+
+    <string-array name="sdk_version">
+        <item>Android 5.0 (Lollipop) : API level 21</item>
+        <item>Android 5.1 (Lillipop) : API level 22</item>
+        <item>Android 6.0 (Marshmallow) : API level 23</item>
+        <item>Android 7.0 (Nougat) : API level 24</item>
+        <item>Android 7.1 (Nougat) : API level 25</item>
+        <item>Android 8.0 (Oreo) : API level 26</item>
+        <item>Android 8.1 (Oreo) : API level 27</item>
+        <item>Android 9.0 (Pie) : API level 28</item>
+        <item>Android 10.0 (Q) : API level 29</item>
+        <item>Android 11.0 (R) : API level 30</item>
+        <item>Android 12.0 (S) : API level 31</item>
+        <item>Android 12.1 (S) : API level 32</item>
+        <item>Android 13.0 (T) : API level 33</item>
+        <item>Android 14.0 (U) : API level 34</item>
+        <!-- <item>Android 15.0 (V) : API level 35</item> -->
+    </string-array>
+
+</resources>

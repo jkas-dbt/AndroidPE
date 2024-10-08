@@ -1,0 +1,35 @@
+plugins {
+    alias libs.plugins.android.library
+}
+
+android {
+    namespace 'jkas.androidpe.menuItemDesigner'
+    compileSdkVersion 34
+    buildToolsVersion "34.0.4"
+    
+    defaultConfig {
+        minSdk 26
+        targetSdk 33
+    }
+    
+    compileOptions {
+		sourceCompatibility JavaVersion.VERSION_11
+		targetCompatibility JavaVersion.VERSION_11
+	}
+    
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation project(':rkb:project')
+    implementation project(':rkb:projectUtils')
+    implementation project(':rkb:codeUtil')
+    implementation project(':rkb:resources')
+    implementation project(':rkb:resourcesUtils')
+    implementation project(':rkb:logger')
+    
+    implementation libs.androidx.appcompat
+    implementation libs.google.material
+}

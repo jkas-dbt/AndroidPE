@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_height="wrap_content"
+	android:layout_width="match_parent"
+	android:padding="8dp"
+	android:orientation="vertical">
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:padding="8dp"
+		android:textSize="12sp"
+		android:layout_marginLeft="8dp"
+		android:layout_marginRight="8dp"
+		android:layout_marginTop="8dp"
+		android:text="@string/attr_will_be_delete_if_field_is_empty"/>
+
+	<androidx.core.widget.NestedScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<LinearLayout
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:orientation="vertical">
+
+			<com.google.android.material.card.MaterialCardView
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:layout_margin="8dp"
+				app:cardElevation="5dp"
+				style="?attr/materialCardViewElevatedStyle">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:padding="8dp"
+					android:orientation="horizontal">
+
+					<LinearLayout
+						android:layout_height="match_parent"
+						android:layout_width="wrap_content"
+						android:gravity="center"
+						android:orientation="vertical">
+
+						<com.google.android.material.card.MaterialCardView
+							android:layout_height="wrap_content"
+							android:layout_width="wrap_content"
+							android:padding="8dp">
+
+							<GridLayout
+								android:layout_height="wrap_content"
+								android:layout_width="wrap_content"
+								android:padding="4dp"
+								android:columnCount="3">
+
+								<ImageView
+									android:layout_height="40dp"
+									android:layout_width="40dp"
+									android:adjustViewBounds="true"
+									android:src="@drawable/ic_arrow_back"
+									android:rotation="45"
+									android:layout_margin="4dp"
+									android:padding="8dp"
+									android:id="@+id/linGravity_img1"/>
+
+								<ImageView
+									android:layout_height="40dp"
+									android:layout_width="40dp"
+									android:adjustViewBounds="true"
+									android:src="@drawable/ic_arrow_back"
+									android:rotation="90"
+									android:layout_margin="4dp"
+									android:padding="8dp"
+									android:id="@+id/linGravity_img2"/>
+
+								<ImageView
+									android:layout_height="40dp"
+									android:layout_width="40dp"
+									android:adjustViewBounds="true"
+									android:src="@drawable/ic_arrow_back"
+									android:rotation="135"
+									android:layout_margin="4dp"
+									android:padding="8dp"
+									android:id="@+id/linGravity_img3"/>
+
+								<ImageView
+									android:layout_height="40dp"
+									android:layout_width="40dp"
+									android:adjustViewBounds="true"
+									android:src="@drawable/ic_arrow_back"
+									android:layout_margin="4dp"
+									android:padding="8dp"
+									android:id="@+id/linGravity_img4"/>
+
+								<ImageView
+									android:layout_height="40dp"
+									android:layout_width="40dp"
+									android:adjustViewBounds="true"
+									android:src="@drawable/ic_add"
+									android:layout_margin="4dp"
+									android:padding="8dp"
+									android:id="@+id/linGravity_img5"/>
+
+								<ImageView
+									android:layout_height="40dp"
+									android:layout_width="40dp"
+									android:adjustViewBounds="true"
+									android:src="@drawable/ic_arrow_back"
+									android:rotation="180"
+									android:layout_margin="4dp"
+									android:padding="8dp"
+									android:id="@+id/linGravity_img6"/>
+
+								<ImageView
+									android:layout_height="40dp"
+									android:layout_width="40dp"
+									android:adjustViewBounds="true"
+									android:src="@drawable/ic_arrow_back"
+									android:rotation="315"
+									android:layout_margin="4dp"
+									android:padding="8dp"
+									android:id="@+id/linGravity_img7"/>
+
+								<ImageView
+									android:layout_height="40dp"
+									android:layout_width="40dp"
+									android:adjustViewBounds="true"
+									android:src="@drawable/ic_arrow_back"
+									android:rotation="270"
+									android:layout_margin="4dp"
+									android:padding="8dp"
+									android:id="@+id/linGravity_img8"/>
+
+								<ImageView
+									android:layout_height="40dp"
+									android:layout_width="40dp"
+									android:adjustViewBounds="true"
+									android:src="@drawable/ic_arrow_back"
+									android:rotation="225"
+									android:layout_margin="4dp"
+									android:padding="8dp"
+									android:id="@+id/linGravity_img9"/>
+
+							</GridLayout>
+
+						</com.google.android.material.card.MaterialCardView>
+
+						<CheckBox
+							android:layout_height="35dp"
+							android:layout_width="match_parent"
+							android:gravity="center"
+							android:layout_marginTop="8dp"
+							android:id="@+id/cbStart"
+							android:text="start"/>
+
+						<CheckBox
+							android:layout_height="35dp"
+							android:layout_width="match_parent"
+							android:gravity="center"
+							android:id="@+id/cbEnd"
+							android:text="end"/>
+
+					</LinearLayout>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:gravity="center"
+						android:padding="8dp"
+						android:orientation="vertical">
+
+						<CheckBox
+							android:layout_height="35dp"
+							android:layout_width="match_parent"
+							android:gravity="center"
+							android:padding="8dp"
+							android:id="@+id/cbCenterVertical"
+							android:text="center_vertical"/>
+
+						<CheckBox
+							android:layout_height="35dp"
+							android:layout_width="match_parent"
+							android:gravity="center"
+							android:padding="8dp"
+							android:id="@+id/cbCenterHorizontal"
+							android:text="center_horizontal"/>
+
+						<CheckBox
+							android:layout_height="35dp"
+							android:layout_width="match_parent"
+							android:gravity="center"
+							android:padding="8dp"
+							android:id="@+id/cbFill"
+							android:text="fill"/>
+
+						<CheckBox
+							android:layout_height="35dp"
+							android:layout_width="match_parent"
+							android:gravity="center"
+							android:padding="8dp"
+							android:id="@+id/cbFill_Vertical"
+							android:text="fill_vertical"/>
+
+						<CheckBox
+							android:layout_height="35dp"
+							android:layout_width="match_parent"
+							android:gravity="center"
+							android:padding="8dp"
+							android:id="@+id/cbFill_Horizontal"
+							android:text="fill_horizontal"/>
+
+						<CheckBox
+							android:layout_height="35dp"
+							android:layout_width="match_parent"
+							android:gravity="center"
+							android:padding="8dp"
+							android:id="@+id/cbClip_vertical"
+							android:text="clip_vertical"/>
+
+						<CheckBox
+							android:layout_height="35dp"
+							android:layout_width="match_parent"
+							android:gravity="center"
+							android:padding="8dp"
+							android:id="@+id/cbClipHorizontal"
+							android:text="clip_horizontal"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+			</com.google.android.material.card.MaterialCardView>
+
+			<com.google.android.material.textfield.TextInputLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:hint="android:attr"
+				android:layout_margin="8dp"
+				android:id="@+id/til">
+
+				<MultiAutoCompleteTextView
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:padding="12dp"
+					android:id="@+id/autoComp"/>
+
+			</com.google.android.material.textfield.TextInputLayout>
+
+		</LinearLayout>
+
+	</androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

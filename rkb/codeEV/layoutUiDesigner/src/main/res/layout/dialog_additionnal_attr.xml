@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_height="wrap_content"
+	android:layout_width="match_parent"
+	android:padding="8dp"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:gravity="center"
+		android:padding="8dp"
+		android:orientation="horizontal">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:padding="8dp"
+			android:textSize="10dp"
+			android:layout_weight="1.0"
+			android:id="@+id/tv"
+			android:text="..."/>
+
+		<com.google.android.material.button.MaterialButtonToggleGroup
+			android:layout_height="35dp"
+			android:layout_width="wrap_content"
+			app:singleSelection="true"
+			android:layout_marginRight="4dp"
+			app:selectionRequired="true"
+			android:id="@+id/toggleType">
+
+			<com.google.android.material.button.MaterialButton
+				android:layout_height="wrap_content"
+				android:layout_width="60dp"
+				app:strokeColor="#72777E"
+				android:padding="4dp"
+				android:textSize="10sp"
+				style="?attr/materialButtonOutlinedStyle"
+				android:id="@+id/btnCommon"
+				android:text="Common"/>
+
+			<com.google.android.material.button.MaterialButton
+				android:layout_height="wrap_content"
+				android:layout_width="60dp"
+				app:strokeColor="#72777E"
+				android:padding="4dp"
+				android:textSize="10sp"
+				style="?attr/materialButtonOutlinedStyle"
+				android:id="@+id/btnAdditional"
+				android:text="Additionnal"/>
+
+			<com.google.android.material.button.MaterialButton
+				android:layout_height="wrap_content"
+				android:layout_width="40dp"
+				app:strokeColor="#72777E"
+				android:padding="4dp"
+				android:textSize="10sp"
+				style="?attr/materialButtonOutlinedStyle"
+				android:id="@+id/btnAdd"
+				android:text="@string/add"/>
+
+		</com.google.android.material.button.MaterialButtonToggleGroup>
+
+	</LinearLayout>
+
+	<ViewFlipper
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:id="@+id/vf">
+
+		<ScrollView
+			android:layout_height="match_parent"
+			android:layout_width="match_parent">
+
+			<LinearLayout
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/lin"/>
+
+		</ScrollView>
+
+		<LinearLayout
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:orientation="vertical">
+
+			<com.google.android.material.textfield.TextInputLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:hint="@string/attribute"
+				android:layout_margin="8dp"
+				android:id="@+id/tilAttr">
+
+				<MultiAutoCompleteTextView
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:padding="12dp"
+					android:textSize="12sp"
+					android:id="@+id/autoCompAttr"/>
+
+			</com.google.android.material.textfield.TextInputLayout>
+
+			<com.google.android.material.textfield.TextInputLayout
+				android:layout_height="100dp"
+				android:layout_width="match_parent"
+				android:hint="@string/value"
+				android:layout_margin="8dp"
+				android:id="@+id/tilValue">
+
+				<MultiAutoCompleteTextView
+					android:layout_height="match_parent"
+					android:layout_width="match_parent"
+					android:gravity="left|top"
+					android:padding="12dp"
+					android:textSize="12sp"
+					android:id="@+id/autoCompValue"/>
+
+			</com.google.android.material.textfield.TextInputLayout>
+
+		</LinearLayout>
+
+	</ViewFlipper>
+
+</LinearLayout>

@@ -1,0 +1,36 @@
+plugins {
+    alias libs.plugins.android.library
+}
+
+android {
+    namespace 'jkas.androidpe.resources'
+    compileSdkVersion 34
+    buildToolsVersion "34.0.4"
+    
+    defaultConfig {
+        minSdk 26
+        targetSdk 33
+        
+        testInstrumentationRunner "androidx.text.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+    
+    lintOptions { 
+        checkReleaseBuilds false
+    }
+    
+    compileOptions {
+		sourceCompatibility JavaVersion.VERSION_17
+		targetCompatibility JavaVersion.VERSION_17
+	}
+    
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    // androidx
+    implementation libs.androidx.appcompat
+    implementation libs.google.material
+}

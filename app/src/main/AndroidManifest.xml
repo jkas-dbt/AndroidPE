@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+
+    <application
+        android:name=".app.AndroidPEApplication"
+        android:allowBackup="true"
+        android:allowNativeHeapPointerTagging="true"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/androidpe_app_icon_dark"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/androidpe_app_icon_dark"
+        android:supportsRtl="true"
+        android:largeHeap="true"
+        android:preserveLegacyExternalStorage="true"
+        android:requestLegacyExternalStorage="true"
+        android:resizeableActivity="true"
+        android:screenOrientation="portrait"
+        android:theme="@style/Theme.Application">
+
+        <activity
+            android:name=".app.CrashHandler$CrashActivity"
+            android:theme="@style/Theme.Material3.DayNight" />
+        
+        <activity
+            android:name=".activities.MainActivity"
+            android:hardwareAccelerated="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name=".activities.ProjectEditorActivity"
+            android:hardwareAccelerated="true" />
+        
+        <activity
+            android:name=".activities.CodeEditorActivity"
+            android:configChanges="keyboardHidden|screenSize"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize" />
+        
+        <activity
+            android:name=".activities.PreferencesActivity"
+            android:hardwareAccelerated="true" />
+        <activity android:name=".activities.AboutAppActivity" />
+    </application>
+
+</manifest>

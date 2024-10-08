@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:layout_marginBottom="43dp"
+		android:orientation="vertical"
+		android:paddingBottom="76dp"
+		android:paddingTop="4dp"
+		android:paddingLeft="4dp"
+		android:paddingRight="4dp">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:padding="8dp"
+			android:textSize="14sp"
+			android:textColor="?colorTertiary"
+			android:typeface="monospace"
+			android:layout_weight="1.0"
+			android:text="@string/current_module"
+			android:textStyle="bold"/>
+
+		<com.google.android.material.card.MaterialCardView
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:padding="4dp"
+			android:layout_margin="8dp"
+			style="?attr/materialCardViewElevatedStyle">
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical">
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:padding="8dp"
+					android:textSize="10dp"
+					android:textColor="?colorOnSurface"
+					android:textStyle="bold"
+					android:text="@string/reference"/>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:gravity="center"
+					android:paddingRight="8dp"
+					android:orientation="horizontal"
+					android:paddingLeft="8dp">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:textSize="8dp"
+						android:textColor="?colorOnSurface"
+						android:layout_weight="1.0"
+						android:id="@+id/tvCurrentModules"
+						android:text="@string/the_current_module_depend_others"/>
+
+					<Button
+						android:layout_height="30dp"
+						android:layout_width="wrap_content"
+						android:padding="4dp"
+						android:textSize="10dp"
+						android:textStyle="bold"
+						android:id="@+id/btnShowAllRefModules"
+						android:text="Modules : 0"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:gravity="center"
+					android:paddingRight="16dp"
+					android:orientation="horizontal"
+					android:paddingLeft="16dp">
+
+					<Button
+						android:layout_height="30dp"
+						android:layout_width="match_parent"
+						android:layout_margin="6dp"
+						android:textSize="8dp"
+						style="?attr/materialButtonOutlinedStyle"
+						android:layout_weight="1.0"
+						android:text="@string/add_projects_dependencies"
+						android:id="@+id/btnAddProjectsDependencies"/>
+
+					<Button
+						android:layout_height="30dp"
+						android:layout_width="match_parent"
+						android:layout_margin="6dp"
+						android:padding="4dp"
+						android:textSize="8dp"
+						style="?attr/materialButtonOutlinedStyle"
+						android:layout_weight="1.0"
+						android:text="@string/dependencies"
+						android:id="@+id/btnDependencies"/>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+		</com.google.android.material.card.MaterialCardView>
+
+		<GridLayout
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:columnCount="3">
+
+			<com.google.android.material.card.MaterialCardView
+				android:layout_height="98dp"
+				android:layout_width="98dp"
+				android:padding="4dp"
+				android:layout_margin="4dp"
+				style="?attr/materialCardViewElevatedStyle"
+				android:id="@+id/cardActivities">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:gravity="center"
+					android:padding="4dp"
+					android:orientation="vertical">
+
+					<ImageView
+						android:layout_height="43dp"
+						android:layout_width="43dp"
+						android:src="@drawable/ic_smartphone"
+						android:adjustViewBounds="true"
+						android:padding="8dp"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:textSize="12dp"
+						android:textColor="?colorOnSurface"
+						android:text="Activities"/>
+
+					<Button
+						android:layout_height="30dp"
+						android:layout_width="match_parent"
+						android:padding="4dp"
+						android:textSize="8dp"
+						style="@style/Widget.Material3.Button.TonalButton"
+						android:textStyle="bold"
+						android:id="@+id/btnActivitiesAdded"
+						android:text="0"/>
+
+				</LinearLayout>
+
+			</com.google.android.material.card.MaterialCardView>
+
+			<com.google.android.material.card.MaterialCardView
+				android:layout_height="98dp"
+				android:layout_width="98dp"
+				android:padding="4dp"
+				android:layout_margin="4dp"
+				style="?attr/materialCardViewElevatedStyle"
+				android:id="@+id/cardPermissions">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:gravity="center"
+					android:padding="4dp"
+					android:orientation="vertical">
+
+					<ImageView
+						android:layout_height="43dp"
+						android:layout_width="43dp"
+						android:src="@drawable/ic_shield_key"
+						android:adjustViewBounds="true"
+						android:padding="8dp"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:textSize="12dp"
+						android:textColor="?colorOnSurface"
+						android:text="Permissions"/>
+
+					<Button
+						android:layout_height="30dp"
+						android:layout_width="match_parent"
+						android:padding="4dp"
+						android:textSize="8dp"
+						style="@style/Widget.Material3.Button.TonalButton"
+						android:textStyle="bold"
+						android:id="@+id/btnPermissionsAdded"
+						android:text="0"/>
+
+				</LinearLayout>
+
+			</com.google.android.material.card.MaterialCardView>
+
+			<com.google.android.material.card.MaterialCardView
+				android:layout_height="98dp"
+				android:layout_width="98dp"
+				android:padding="4dp"
+				android:layout_margin="4dp"
+				style="?attr/materialCardViewElevatedStyle"
+				android:id="@+id/cardServices">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:gravity="center"
+					android:padding="4dp"
+					android:orientation="vertical">
+
+					<ImageView
+						android:layout_height="43dp"
+						android:layout_width="43dp"
+						android:src="@drawable/ic_powershell"
+						android:adjustViewBounds="true"
+						android:padding="8dp"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:textSize="12dp"
+						android:textColor="?colorOnSurface"
+						android:text="Services"/>
+
+					<Button
+						android:layout_height="30dp"
+						android:layout_width="match_parent"
+						android:padding="4dp"
+						android:textSize="8dp"
+						style="@style/Widget.Material3.Button.TonalButton"
+						android:textStyle="bold"
+						android:id="@+id/btnServicesAdded"
+						android:text="0"/>
+
+				</LinearLayout>
+
+			</com.google.android.material.card.MaterialCardView>
+
+			<com.google.android.material.card.MaterialCardView
+				android:layout_height="98dp"
+				android:layout_width="98dp"
+				android:padding="4dp"
+				android:layout_margin="4dp"
+				style="?attr/materialCardViewElevatedStyle"
+				android:id="@+id/cardReceivers">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:gravity="center"
+					android:padding="4dp"
+					android:orientation="vertical">
+
+					<ImageView
+						android:layout_height="43dp"
+						android:layout_width="43dp"
+						android:src="@drawable/ic_wireless"
+						android:adjustViewBounds="true"
+						android:padding="8dp"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:textSize="12dp"
+						android:textColor="?colorOnSurface"
+						android:text="Receivers"/>
+
+					<Button
+						android:layout_height="30dp"
+						android:layout_width="match_parent"
+						android:padding="4dp"
+						android:textSize="8dp"
+						style="@style/Widget.Material3.Button.TonalButton"
+						android:textStyle="bold"
+						android:id="@+id/btnReceiversAdded"
+						android:text="0"/>
+
+				</LinearLayout>
+
+			</com.google.android.material.card.MaterialCardView>
+
+			<com.google.android.material.card.MaterialCardView
+				android:layout_height="98dp"
+				android:layout_width="98dp"
+				android:padding="4dp"
+				android:layout_margin="4dp"
+				style="?attr/materialCardViewElevatedStyle"
+				android:id="@+id/cardProviders">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:gravity="center"
+					android:padding="4dp"
+					android:orientation="vertical">
+
+					<ImageView
+						android:layout_height="43dp"
+						android:layout_width="43dp"
+						android:src="@drawable/ic_database_cog"
+						android:adjustViewBounds="true"
+						android:padding="8dp"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:textSize="12dp"
+						android:textColor="?colorOnSurface"
+						android:text="Providers"/>
+
+					<Button
+						android:layout_height="30dp"
+						android:layout_width="match_parent"
+						android:padding="4dp"
+						android:textSize="8dp"
+						style="@style/Widget.Material3.Button.TonalButton"
+						android:textStyle="bold"
+						android:id="@+id/btnProvidersAdded"
+						android:text="0"/>
+
+				</LinearLayout>
+
+			</com.google.android.material.card.MaterialCardView>
+
+			<com.google.android.material.card.MaterialCardView
+				android:layout_height="98dp"
+				android:layout_width="98dp"
+				android:padding="4dp"
+				android:layout_margin="4dp"
+				style="?attr/materialCardViewElevatedStyle"
+				android:id="@+id/cardIcones">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:gravity="center"
+					android:padding="4dp"
+					android:orientation="vertical">
+
+					<ImageView
+						android:layout_height="43dp"
+						android:layout_width="43dp"
+						android:src="@drawable/ic_insert_photo"
+						android:adjustViewBounds="true"
+						android:padding="8dp"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:textSize="12dp"
+						android:textColor="?colorOnSurface"
+						android:text="Images"/>
+
+					<Button
+						android:layout_height="30dp"
+						android:layout_width="match_parent"
+						android:padding="4dp"
+						android:textSize="8dp"
+						style="@style/Widget.Material3.Button.TonalButton"
+						android:textStyle="bold"
+						android:id="@+id/btnIconesAdded"
+						android:text="0"/>
+
+				</LinearLayout>
+
+			</com.google.android.material.card.MaterialCardView>
+
+			<com.google.android.material.card.MaterialCardView
+				android:layout_height="98dp"
+				android:layout_width="98dp"
+				android:padding="4dp"
+				android:layout_margin="4dp"
+				style="?attr/materialCardViewElevatedStyle"
+				android:id="@+id/cardStrings">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:gravity="center"
+					android:padding="4dp"
+					android:orientation="vertical">
+
+					<ImageView
+						android:layout_height="43dp"
+						android:layout_width="43dp"
+						android:src="@drawable/ic_language"
+						android:adjustViewBounds="true"
+						android:padding="8dp"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:textSize="12dp"
+						android:textColor="?colorOnSurface"
+						android:text="Strings"/>
+
+					<Button
+						android:layout_height="30dp"
+						android:layout_width="match_parent"
+						android:padding="4dp"
+						android:textSize="8dp"
+						style="@style/Widget.Material3.Button.TonalButton"
+						android:textStyle="bold"
+						android:id="@+id/btnStrings"
+						android:text="65"/>
+
+				</LinearLayout>
+
+			</com.google.android.material.card.MaterialCardView>
+
+		</GridLayout>
+
+	</LinearLayout>
+
+</ScrollView>

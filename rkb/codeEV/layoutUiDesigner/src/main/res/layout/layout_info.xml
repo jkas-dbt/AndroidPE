@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:gravity="center"
+		android:padding="8dp"
+		android:orientation="horizontal">
+
+		<ImageView
+			android:layout_height="25dp"
+			android:layout_width="30dp"
+			android:adjustViewBounds="true"
+			android:src="@drawable/app_icon"
+			android:layout_marginRight="4dp"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:typeface="monospace"
+			android:layout_weight="1.0"
+			android:text="Android PE"
+			android:textStyle="bold"/>
+
+		<com.google.android.material.button.MaterialButtonToggleGroup
+			android:layout_height="30dp"
+			android:layout_width="wrap_content"
+			app:singleSelection="true"
+			app:enabled="false"
+			android:id="@+id/toggleButton">
+
+			<com.google.android.material.button.MaterialButton
+				android:layout_height="wrap_content"
+				android:layout_width="60dp"
+				app:icon="@drawable/ic_file_tree"
+				android:padding="4dp"
+				android:textSize="8dp"
+				style="@style/Widget.Material3.Button.OutlinedButton"
+				android:text="@string/tree_component"
+				android:id="@+id/btnTreeView"/>
+
+			<com.google.android.material.button.MaterialButton
+				android:layout_height="wrap_content"
+				android:layout_width="60dp"
+				app:icon="@drawable/ic_information_outline"
+				android:padding="4dp"
+				android:textSize="8dp"
+				style="@style/Widget.Material3.Button.OutlinedButton"
+				android:text="Info"
+				android:id="@+id/btnInfo"/>
+
+		</com.google.android.material.button.MaterialButtonToggleGroup>
+
+	</LinearLayout>
+
+	<ViewFlipper
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:id="@+id/viewFlipper">
+
+		<ScrollView
+			android:layout_height="match_parent"
+			android:layout_width="match_parent">
+
+			<HorizontalScrollView
+				android:layout_height="match_parent"
+				android:layout_width="match_parent">
+
+				<LinearLayout
+					android:layout_height="match_parent"
+					android:layout_width="match_parent"
+					android:padding="8dp"
+					android:orientation="vertical"
+					android:id="@+id/linTree"/>
+
+			</HorizontalScrollView>
+
+		</ScrollView>
+
+		<ScrollView
+			android:layout_height="match_parent"
+			android:layout_width="match_parent">
+
+			<LinearLayout
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:padding="8dp"
+				android:orientation="vertical"
+				android:id="@+id/linInfo"/>
+
+		</ScrollView>
+
+	</ViewFlipper>
+
+</LinearLayout>

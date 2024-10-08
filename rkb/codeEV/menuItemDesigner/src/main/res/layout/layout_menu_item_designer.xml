@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:paddingRight="8dp"
+        android:orientation="horizontal"
+        android:paddingLeft="8dp">
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            app:singleSelection="true"
+            android:id="@+id/toggleBtn">
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                app:icon="@drawable/ic_edit"
+                app:strokeColor="#72777E"
+                android:padding="4dp"
+                android:textSize="10sp"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:id="@+id/btnEditor"
+                android:text="@string/editor" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                app:icon="@drawable/ic_smartphone"
+                app:strokeColor="#72777E"
+                android:padding="4dp"
+                android:textSize="10sp"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:id="@+id/btnTemplate"
+                android:text="@string/template" />
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textSize="12sp"
+            android:textColor="@color/warning"
+            android:textStyle="bold"
+            android:text="(BETA)\nUnstable" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="8dp"
+            android:textSize="10sp"
+            android:layout_weight="1.0"
+            android:text="@string/you_can_see_the_preview_template" />
+
+    </LinearLayout>
+
+    <ViewFlipper
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/viewFlipper">
+
+        <ScrollView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+
+            <HorizontalScrollView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent">
+
+                <LinearLayout
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:padding="8dp"
+                    android:orientation="vertical"
+                    android:id="@+id/linTreeView">
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+        </ScrollView>
+
+        <ScrollView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:padding="8dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:visibility="gone"
+                        android:padding="8dp"
+                        android:textSize="12sp"
+                        android:text="@string/what_would_it_look_on_a_click_event" />
+
+                    <Button
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:padding="8dp"
+                        android:textSize="10sp"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:id="@+id/btnTest"
+                        android:text="Click here to test" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:orientation="vertical"
+                    android:layout_marginTop="16dp">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:visibility="gone"
+                        android:padding="8dp"
+                        android:textSize="12sp"
+                        android:text="@string/how_it_would_look_on_a_toolbar" />
+
+                    <com.google.android.material.appbar.MaterialToolbar
+                        android:layout_height="?attr/actionBarSize"
+                        android:layout_width="match_parent"
+                        app:navigationIconTint="?colorOnSurface"
+                        app:menu="@menu/template_empty"
+                        app:navigationIcon="@drawable/ic_arrow_back"
+                        android:id="@+id/toolbar" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:orientation="vertical"
+                    android:layout_marginTop="16dp">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:visibility="gone"
+                        android:padding="8dp"
+                        android:textSize="12sp"
+                        android:text="@string/how_it_would_look_on_a_bottomnavigation" />
+
+                    <com.google.android.material.bottomnavigation.BottomNavigationView
+                        android:layout_height="70dp"
+                        android:layout_width="wrap_content"
+                        app:navigationIconTint="?colorPrimary"
+                        app:fabAnchorMode="cradle"
+                        app:hideOnScroll="true"
+                        app:fabAnimationMode="slide"
+                        android:layout_gravity="bottom"
+                        app:fabCradleMargin="6dp"
+                        app:menu="@menu/template_empty"
+                        app:fabCradleRoundedCornerRadius="6dp"
+                        app:fabAlignmentMode="end"
+                        style="@style/Widget.Material3.BottomAppBar"
+                        android:id="@+id/bottomNav" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_height="60dp"
+                android:layout_width="60dp"
+                android:src="@drawable/ic_robot_confused_outline"
+                android:adjustViewBounds="true"
+                android:layout_margin="4dp"
+                android:tint="?colorPrimary" />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textColor="?colorTertiary"
+                android:text="@string/warning_initialization_falure"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:padding="8dp"
+                android:textSize="12sp"
+                android:text="@string/info_check_your_xml_code" />
+
+            <ScrollView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+
+                <HorizontalScrollView
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:padding="8dp"
+                        android:textSize="12sp"
+                        android:text="..."
+                        android:id="@+id/tvMoreInfo" />
+
+                </HorizontalScrollView>
+
+            </ScrollView>
+
+        </LinearLayout>
+
+    </ViewFlipper>
+
+</LinearLayout>

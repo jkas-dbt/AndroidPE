@@ -1,0 +1,62 @@
+plugins {
+    alias libs.plugins.android.application
+}
+
+android {
+    compileSdk 34
+    buildToolsVersion "34.0.4"
+    
+    namespace 'jkas.androidpe'
+    
+    defaultConfig {
+        applicationId "jkas.androidpe"
+        vectorDrawables.useSupportLibrary = true
+    }
+    
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+        }
+    }
+    
+    compileOptions {
+		sourceCompatibility JavaVersion.VERSION_17
+		targetCompatibility JavaVersion.VERSION_17
+	}
+    
+	buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    // project
+    implementation project(':rkb:codeEV:codeEditor')
+    implementation project(':rkb:resourcesUtils')
+    implementation project(':rkb:codeEV:layoutUiDesigner')
+    implementation project(':rkb:codeEV:mainEditorView')
+    implementation project(':rkb:rkbDataSaver')
+    implementation project(':rkb:codeUtil')
+    implementation project(':rkb:project')
+    implementation project(':rkb:logger')
+    implementation project(':rkb:projectUtils')
+    implementation project(':rkb:explorer')
+    implementation project(':rkb:resources')
+    
+    // androidx
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.coordinatorlayout
+    implementation libs.androidx.swiperefreshlayout
+    implementation libs.androidx.splashscreen
+    implementation libs.androidx.preference
+    
+    // google
+    implementation libs.google.material
+    
+    // others 
+    implementation libs.zip4j
+    implementation libs.lottie
+    implementation libs.androidsvg
+}

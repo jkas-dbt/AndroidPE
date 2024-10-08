@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/undo"
+        android:name="@string/undo"
+        android:title="@string/undo"
+        android:icon="@drawable/ic_undo"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/redo"
+        android:name="@string/redo"
+        android:title="@string/redo"
+        android:icon="@drawable/ic_redo"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/save"
+        android:name="@string/save"
+        android:title="@string/save"
+        android:icon="@drawable/ic_save"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/design"
+        android:name="@string/design"
+        android:title="@string/design"
+        android:icon="@drawable/ic_insert_photo"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/more"
+        android:name="@string/more"
+        android:title="@string/more"
+        android:icon="@drawable/ic_more_settings"
+        app:showAsAction="always">
+        <menu>
+            <!-- <item android:id="@+id/code" android:icon="@drawable/ic_code_braces" android:title="@string/code" /> <item android:id="@+id/find" android:icon="@drawable/ic_search" android:title="@string/find"> <menu> <item android:id="@+id/find_in_file" android:icon="@drawable/ic_file_search_outline" android:title="@string/find_in_file" /> <item android:id="@+id/find_in_folder" android:icon="@drawable/ic_folder_search_outline" android:title="@string/find_in_folder" /> </menu> </item> -->
+
+            <item
+                android:id="@+id/show_explorer"
+                android:icon="@drawable/ic_folder"
+                android:title="@string/show_explorer" />
+
+            <item
+                android:id="@+id/show_in_explorer"
+                android:icon="@drawable/ic_folder_open"
+                android:title="@string/show_in_explorer" />
+
+            <!-- <item android:id="@+id/close_code_editor" android:title="@string/close_code_editor" android:icon="@drawable/ic_cancel" /> -->
+        </menu>
+    </item>
+
+</menu>

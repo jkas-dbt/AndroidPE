@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:alpha="0.5"
+        android:layout_marginTop="8dp" />
+
+    <HorizontalScrollView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="2dp"
+            android:textSize="10sp"
+            android:id="@+id/tvPath"
+            android:text="TextView" />
+
+    </HorizontalScrollView>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="4dp"
+        android:alpha="0.5" />
+
+    <HorizontalScrollView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:paddingRight="4dp"
+            android:orientation="horizontal"
+            android:paddingLeft="4dp">
+
+            <Button
+                android:layout_height="30dp"
+                android:layout_width="65dp"
+                android:padding="4dp"
+                android:textSize="10sp"
+                app:iconTint="?colorOnSurface"
+                android:layout_marginLeft="4dp"
+                android:textColor="?colorOnSurface"
+                style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+                android:text="Root"
+                android:id="@+id/btnRootModule" />
+
+            <Button
+                android:layout_height="30dp"
+                android:layout_width="90dp"
+                app:icon="@drawable/ic_code_tags"
+                android:padding="4dp"
+                android:textSize="10sp"
+                app:iconTint="?colorOnSurface"
+                android:layout_marginLeft="4dp"
+                android:textColor="?colorOnSurface"
+                style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+                android:text="Java/Kotlin"
+                android:id="@+id/btnJavaKotlin" />
+
+            <Button
+                android:layout_height="30dp"
+                android:layout_width="60dp"
+                app:icon="@drawable/ic_folder"
+                android:padding="4dp"
+                android:textSize="10sp"
+                app:iconTint="?colorOnSurface"
+                android:layout_marginLeft="4dp"
+                android:textColor="?colorOnSurface"
+                style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+                android:text="res"
+                android:id="@+id/btnRes" />
+
+            <Button
+                android:layout_height="30dp"
+                android:layout_width="75dp"
+                app:icon="@drawable/ic_developer_board"
+                android:padding="4dp"
+                android:textSize="10sp"
+                app:iconTint="?colorOnSurface"
+                android:layout_marginLeft="4dp"
+                android:textColor="?colorOnSurface"
+                style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+                android:text="layout"
+                android:id="@+id/btnLayout" />
+
+            <Button
+                android:layout_height="30dp"
+                android:layout_width="70dp"
+                app:icon="@drawable/ic_numeric"
+                android:padding="4dp"
+                android:textSize="10sp"
+                app:iconTint="?colorOnSurface"
+                android:layout_marginLeft="4dp"
+                android:textColor="?colorOnSurface"
+                style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+                android:text="values"
+                android:id="@+id/btnValues" />
+
+            <Button
+                android:layout_height="30dp"
+                android:layout_width="70dp"
+                app:icon="@drawable/ic_folder_open"
+                android:padding="4dp"
+                android:textSize="10sp"
+                app:iconTint="?colorOnSurface"
+                android:layout_marginLeft="4dp"
+                android:textColor="?colorOnSurface"
+                style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+                android:text="Assets"
+                android:id="@+id/btnAssets" />
+
+            <Button
+                android:layout_height="30dp"
+                android:layout_width="65dp"
+                app:icon="@drawable/ic_package"
+                android:padding="4dp"
+                android:textSize="10sp"
+                app:iconTint="?colorOnSurface"
+                android:layout_marginLeft="4dp"
+                android:textColor="?colorOnSurface"
+                style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+                android:text="libs"
+                android:id="@+id/btnLibs" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="50dp"
+        android:orientation="vertical"
+        android:id="@+id/linExplorer">
+
+    </LinearLayout>
+
+</LinearLayout>

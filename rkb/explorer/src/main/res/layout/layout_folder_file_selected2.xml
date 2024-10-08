@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_margin="4dp"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_height="45dp"
+        android:layout_width="45dp"
+        android:adjustViewBounds="true"
+        android:layout_margin="4dp"
+        android:padding="4dp"
+        android:id="@+id/icon" />
+
+    <com.caverock.androidsvg.SVGImageView
+        android:layout_height="45dp"
+        android:layout_width="45dp"
+        android:visibility="gone"
+        android:layout_margin="4dp"
+        android:padding="4dp"
+        android:id="@+id/iconSVG" />
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:padding="2dp"
+        android:orientation="vertical"
+        android:layout_weight="1.0">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:padding="2dp"
+            android:textSize="12sp"
+            android:text="..."
+            android:id="@+id/tv1"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="2dp"
+            android:textSize="10sp"
+            android:id="@+id/tv2"
+            android:text="..." />
+
+    </LinearLayout>
+
+    <CheckBox
+        android:layout_height="40dp"
+        android:layout_width="40dp"
+        android:visibility="gone"
+        android:layout_margin="4dp"
+        android:id="@+id/cb" />
+
+    <ImageView
+        android:layout_height="40dp"
+        android:layout_width="40dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_more_settings"
+        android:layout_margin="4dp"
+        android:padding="8dp"
+        android:id="@+id/ic_more" />
+
+</LinearLayout>

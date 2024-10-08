@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	android:orientation="horizontal">
+
+	<LinearLayout
+		android:layout_height="match_parent"
+		android:layout_width="200dp"
+		android:gravity="center"
+		android:id="@+id/linLeftBar"
+		android:orientation="vertical">
+
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:orientation="vertical"
+			android:paddingTop="8dp"
+			android:layout_marginTop="8dp">
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="horizontal">
+
+				<ImageView
+					android:layout_height="40dp"
+					android:layout_width="40dp"
+					android:src="@drawable/app_icon"
+					android:adjustViewBounds="true"
+					android:layout_marginLeft="8dp"
+					android:id="@+id/icIcon"/>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:orientation="vertical"
+					android:layout_weight="1.0">
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:paddingRight="8dp"
+						android:orientation="vertical"
+						android:paddingLeft="8dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="wrap_content"
+							android:textSize="14sp"
+							android:textColor="?colorPrimary"
+							android:text="AndroidPE"
+							android:id="@+id/tvFolderName"
+							android:textStyle="bold"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="wrap_content"
+							android:textSize="10sp"
+							android:id="@+id/tvPackageName"
+							android:text="the package name of Project"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+			<HorizontalScrollView
+				android:layout_height="match_parent"
+				android:layout_width="match_parent">
+
+				<LinearLayout
+					android:layout_height="match_parent"
+					android:layout_width="match_parent"
+					android:orientation="horizontal"
+					android:paddingLeft="8dp">
+
+					<com.google.android.material.button.MaterialButton
+						android:layout_height="30dp"
+						android:layout_width="wrap_content"
+						app:icon="@drawable/ic_sync"
+						android:padding="4dp"
+						android:textSize="10sp"
+						android:layout_marginLeft="2dp"
+						android:layout_marginRight="4dp"
+						style="?attr/materialButtonOutlinedStyle"
+						android:text="@string/refresh"
+						android:id="@+id/btnSync"/>
+
+					<com.google.android.material.button.MaterialButton
+						android:layout_height="30dp"
+						android:layout_width="wrap_content"
+						app:icon="@drawable/ic_package"
+						android:padding="4dp"
+						android:textSize="10sp"
+						android:layout_marginLeft="2dp"
+						android:layout_marginRight="4dp"
+						style="?attr/materialButtonOutlinedStyle"
+						android:text="@string/new_module"
+						android:id="@+id/btnNewModule"/>
+
+				</LinearLayout>
+
+			</HorizontalScrollView>
+
+		</LinearLayout>
+
+		<View
+			android:layout_width="1dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"/>
+
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:gravity="right"
+			android:orientation="vertical"
+			android:layout_margin="8dp"
+			android:padding="8dp">
+
+			<com.google.android.material.tabs.TabLayout
+				android:layout_height="35dp"
+				android:layout_width="match_parent"
+				app:tabMode="fixed"
+				android:padding="0dp"
+				app:tabIndicator="@drawable/tab_indicator"
+				app:tabTextColor="?colorOnSurface"
+				app:tabSelectedTextColor="?colorPrimary"
+				android:background="@drawable/tab_layout_bg"
+				app:tabPadding="0dp"
+				app:tabTextAppearance="@style/AppTheme.Tabs.TextAppearance"
+				app:tabIndicatorFullWidth="false"
+				android:id="@+id/tab_layout"
+				app:tabRippleColor="?colorPrimaryVariant"
+				android:layout_marginLeft="8dp"
+				android:layout_marginRight="8dp"/>
+
+			<com.google.android.material.button.MaterialButton
+				android:layout_height="35dp"
+				android:layout_width="match_parent"
+				android:padding="4dp"
+				android:textSize="10sp"
+				app:iconTint="?colorOnSurface"
+				android:textColor="?colorOnSurface"
+				android:typeface="monospace"
+				app:icon="@drawable/ic_package"
+				android:layout_margin="4dp"
+				style="?attr/materialButtonOutlinedStyle"
+				android:textStyle="bold"
+				android:text="No Module"
+				android:id="@+id/btnAllModule"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+	<androidx.coordinatorlayout.widget.CoordinatorLayout
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:orientation="vertical"
+		android:id="@+id/coordinator">
+
+		<LinearLayout
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:orientation="vertical">
+
+			<RelativeLayout
+				android:layout_height="match_parent"
+				android:layout_width="match_parent">
+
+				<androidx.viewpager2.widget.ViewPager2
+					android:layout_height="match_parent"
+					android:layout_width="match_parent"
+					android:layout_weight="1"
+					android:id="@+id/view_pager"/>
+
+			</RelativeLayout>
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+			android:background="?attr/colorSurface"
+			android:elevation="@dimen/mtrl_btn_elevation"
+			app:behavior_peekHeight="50dp"
+			android:orientation="vertical"
+			android:id="@+id/bottomSheet"
+			android:layout_gravity="bottom"
+			app:behavior_hideable="false">
+
+			<com.google.android.material.divider.MaterialDivider
+				android:layout_height="1dp"
+				android:layout_width="match_parent"
+				android:background="?colorOnSurface"/>
+
+			<LinearLayout
+				android:layout_height="50dp"
+				android:layout_width="match_parent"
+				android:gravity="center"
+				android:orientation="vertical"
+				android:id="@+id/linBottomMain">
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:gravity="center"
+					android:padding="2dp"
+					android:textSize="14sp"
+					android:textColor="?colorOnSurface"
+					android:typeface="monospace"
+					android:textStyle="bold"
+					android:id="@+id/tvInfoBottomSheet"
+					android:text="@string/project_initialization"/>
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:gravity="center"
+					android:padding="2dp"
+					android:textSize="8sp"
+					android:textStyle="bold"
+					android:text="@string/swipe_up_down"/>
+
+			</LinearLayout>
+
+			<androidx.core.widget.NestedScrollView
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:id="@+id/nestedScrollView">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:padding="8dp"
+					android:orientation="vertical"
+					android:id="@+id/linBottomSheet"/>
+
+			</androidx.core.widget.NestedScrollView>
+
+		</LinearLayout>
+
+	</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</LinearLayout>

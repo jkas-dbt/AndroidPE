@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:padding="4dp"
+            android:id="@+id/recyclerView" />
+
+        <TextView
+            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text=""
+            android:id="@+id/tvTop" />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/linBottomTools">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_grid_outline"
+                style="?attr/floatingActionButtonSmallSecondaryStyle"
+                app:fabSize="mini"
+                tools:ignore="SpeakableTextPresentCheck"
+                android:id="@+id/btnSelectMode" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_copy_content"
+                style="?attr/floatingActionButtonSmallSecondaryStyle"
+                app:fabSize="mini"
+                tools:ignore="SpeakableTextPresentCheck"
+                android:id="@+id/btnCopy" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_cut_content"
+                style="?attr/floatingActionButtonSmallSecondaryStyle"
+                app:fabSize="mini"
+                tools:ignore="SpeakableTextPresentCheck"
+                android:id="@+id/btnCut" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_paperclip_horizontal"
+                style="?attr/floatingActionButtonSmallSecondaryStyle"
+                app:fabSize="mini"
+                tools:ignore="SpeakableTextPresentCheck"
+                android:id="@+id/btnDownload" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_add"
+                android:layout_margin="16dp"
+                style="?attr/floatingActionButtonLargeSurfaceStyle"
+                tools:ignore="SpeakableTextPresentCheck"
+                android:id="@+id/btnAdd" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

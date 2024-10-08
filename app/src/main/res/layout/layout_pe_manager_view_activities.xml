@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:background="?colorSurface"
+    android:padding="4dp">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:padding="4dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="4dp"
+                android:orientation="vertical"
+                android:layout_weight="1.0">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="12sp"
+                    android:text="ActivityName"
+                    android:textStyle="bold"
+                    android:id="@+id/tvActivityName" />
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="10sp"
+                    android:text="current properties : 0"
+                    android:id="@+id/tvCurrent" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_height="35dp"
+                android:layout_width="35dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_delete"
+                android:padding="8dp"
+                android:layout_marginLeft="4dp"
+                android:id="@+id/icDelete"
+                android:text="Text" />
+
+        </LinearLayout>
+
+        <Button
+            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:padding="2dp"
+            android:gravity="center"
+            android:textSize="10sp"
+            android:layout_marginLeft="8dp"
+            android:id="@+id/btnShowAttributes"
+            android:text="@string/show_attributes" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

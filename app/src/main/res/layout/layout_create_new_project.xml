@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_height="match_parent" android:layout_width="match_parent">
+
+    <LinearLayout android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
+
+        <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:gravity="center" android:padding="4dp" android:orientation="horizontal" android:layout_marginLeft="8dp" android:layout_marginRight="8dp">
+
+            <LinearLayout android:layout_height="wrap_content" android:layout_width="wrap_content" android:gravity="center" android:orientation="vertical" android:layout_marginRight="8dp">
+
+                <com.airbnb.lottie.LottieAnimationView android:layout_height="50dp" android:layout_width="50dp" android:scaleType="fitCenter" app:lottie_loop="true" app:lottie_autoPlay="true" android:id="@+id/lottieAnim"/>
+
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_margin="4dp" style="?attr/materialCardViewElevatedStyle">
+
+                <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:gravity="center" android:padding="8dp" android:orientation="vertical" android:layout_marginRight="58dp">
+
+                    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="14dp" android:textColor="?colorPrimary" android:textStyle="bold" android:text="@string/new_project"/>
+
+                    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="10dp" android:text=". . ."/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <ScrollView android:layout_height="match_parent" android:layout_width="match_parent">
+
+            <LinearLayout android:layout_height="match_parent" android:layout_width="match_parent" android:gravity="center_horizontal" android:padding="8dp" android:orientation="vertical">
+
+                <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="14sp" android:text="@string/template" android:textStyle="bold"/>
+
+                <HorizontalScrollView android:layout_height="wrap_content" android:layout_width="wrap_content">
+
+                    <GridLayout android:layout_height="wrap_content" android:layout_width="wrap_content" android:columnCount="8">
+
+                        <LinearLayout android:layout_height="wrap_content" android:layout_width="100dp" android:gravity="center" android:padding="8dp" android:layout_margin="4dp" android:orientation="vertical" android:id="@+id/lin1">
+
+                            <ImageView android:layout_height="wrap_content" android:layout_width="match_parent" android:adjustViewBounds="true" android:src="@drawable/ic_empty_activity"/>
+
+                            <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:gravity="center" android:textSize="10sp" android:text="Compose"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout android:layout_height="wrap_content" android:layout_width="100dp" android:gravity="center" android:padding="8dp" android:layout_margin="4dp" android:orientation="vertical" android:id="@+id/lin2">
+
+                            <ImageView android:layout_height="wrap_content" android:layout_width="match_parent" android:adjustViewBounds="true" android:src="@drawable/ic_empty_views_activity"/>
+
+                            <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:gravity="center" android:textSize="10sp" android:text="AndroidX"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout android:layout_height="wrap_content" android:layout_width="100dp" android:visibility="gone" android:gravity="center" android:padding="8dp" android:orientation="vertical" android:id="@+id/lin3">
+
+                            <ImageView android:layout_height="wrap_content" android:layout_width="match_parent" android:adjustViewBounds="true" android:src="@drawable/ic_native_cpp"/>
+
+                            <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:gravity="center" android:textSize="10sp" android:text="@string/native_cpp"/>
+
+                        </LinearLayout>
+
+                    </GridLayout>
+
+                </HorizontalScrollView>
+
+                <com.google.android.material.divider.MaterialDivider android:layout_height="1dp" android:layout_width="match_parent" android:layout_marginBottom="16dp" android:layout_marginTop="16dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout android:layout_height="wrap_content" android:layout_width="match_parent" app:endIconMode="clear_text" android:hint="@string/project_name" android:layout_margin="4dp" android:id="@+id/TILname">
+
+                    <com.google.android.material.textfield.TextInputEditText android:layout_height="wrap_content" android:layout_width="match_parent" android:textSize="12sp" android:id="@+id/textInputName"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:hint="@string/package_name" android:layout_margin="4dp" android:id="@+id/TILpackage_name">
+
+                    <com.google.android.material.textfield.TextInputEditText android:layout_height="wrap_content" android:layout_width="match_parent" android:textSize="12sp" android:id="@+id/textInputPackageName"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.divider.MaterialDivider android:layout_height="1dp" android:layout_width="match_parent" android:layout_marginBottom="8dp" app:dividerInsetEnd="43dp" app:dividerInsetStart="43dp" android:layout_marginTop="8dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:hint="@string/save_location" android:layout_margin="4dp" style="?attr/textInputFilledExposedDropdownMenuStyle">
+
+                    <AutoCompleteTextView android:layout_height="wrap_content" android:layout_width="match_parent" android:textSize="12sp" android:inputType="none" android:id="@+id/autoCompTVSaveLocation"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:hint="@string/project_language" android:layout_margin="4dp" android:id="@+id/TILProjectLanguage" style="?attr/textInputFilledExposedDropdownMenuStyle">
+
+                    <AutoCompleteTextView android:layout_height="wrap_content" android:layout_width="match_parent" android:textSize="12sp" android:inputType="none" app:simpleItems="@array/list_code_language" android:id="@+id/autoCompTVLanguage"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:visibility="gone" android:hint="C++ Standard" android:layout_margin="4dp" style="?attr/textInputFilledExposedDropdownMenuStyle" android:id="@+id/TILCpp">
+
+                    <AutoCompleteTextView android:layout_height="wrap_content" android:layout_width="match_parent" android:textSize="12sp" android:inputType="none" app:simpleItems="@array/cpp_standard" android:id="@+id/autoCompTVCppStandard"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:hint="@string/sdk_minimum" android:layout_margin="4dp" app:startIconTint="?colorOnSurface" style="?attr/textInputFilledExposedDropdownMenuStyle" app:startIconDrawable="@drawable/ic_greater_than_or_equal">
+
+                    <AutoCompleteTextView android:layout_height="wrap_content" android:layout_width="match_parent" android:textSize="12sp" android:dropDownHeight="300dp" android:inputType="none" app:simpleItems="@array/sdk_version" android:id="@+id/autoCompTVSdkMin"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:hint="@string/sdk_target" android:layout_margin="4dp" app:startIconTint="?colorOnSurface" style="?attr/textInputFilledExposedDropdownMenuStyle" app:startIconDrawable="@drawable/ic_target">
+
+                    <AutoCompleteTextView android:layout_height="wrap_content" android:layout_width="match_parent" android:textSize="12sp" android:dropDownHeight="300dp" android:inputType="none" app:simpleItems="@array/sdk_version" android:id="@+id/autoCompTVSdkTarget"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.checkbox.MaterialCheckBox android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="12sp" android:id="@+id/cbKotlinScript" android:text="@string/kotlin_script_for_gradle_config"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_margin="12dp" android:padding="12dp" android:textSize="12sp" android:layout_gravity="bottom|right" android:text="@string/create" android:id="@+id/btnCreate"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
