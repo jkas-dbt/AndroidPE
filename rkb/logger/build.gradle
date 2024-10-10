@@ -3,26 +3,14 @@ plugins {
 }
 
 android {
-    namespace 'jkas.androidpe.logger'
-    
-    compileSdkVersion 34
-    buildToolsVersion "34.0.4"
-    
-    defaultConfig {
-        minSdk 26
-        targetSdk 33
-        
-        testInstrumentationRunner "androidx.text.runner.AndroidJUnitRunner"
-    }
+    compileSdk rootProject.ext.compileSdk
+    buildToolsVersion rootProject.ext.buildTools
+    namespace rootProject.ext.packageName + ".logger"
     
     compileOptions {
 		sourceCompatibility JavaVersion.VERSION_17
 		targetCompatibility JavaVersion.VERSION_17
 	}
-    
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {

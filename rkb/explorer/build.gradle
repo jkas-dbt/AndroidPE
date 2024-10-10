@@ -3,28 +3,22 @@ plugins {
 }
 
 android {
-    namespace 'jkas.androidpe.explorer'
-    compileSdkVersion 34
-    buildToolsVersion "34.0.4"
-
+    compileSdk rootProject.ext.compileSdk
+    buildToolsVersion rootProject.ext.buildTools
+    namespace rootProject.ext.packageName + ".explorer"
+    
     defaultConfig {
-        minSdk 26
-        targetSdk 33
-        
-        testInstrumentationRunner "androidx.text.runner.AndroidJUnitRunner"
+        minSdkVersion rootProject.ext.minSdk
+        targetSdkVersion rootProject.ext.targetSdk
     }
     
     compileOptions {
-		sourceCompatibility JavaVersion.VERSION_11
-		targetCompatibility JavaVersion.VERSION_11
+		sourceCompatibility JavaVersion.VERSION_17
+		targetCompatibility JavaVersion.VERSION_17
 	}
     
     buildFeatures {
         viewBinding true
-    }
-    
-    dataBinding {
-        enabled = true
     }
 }
 
@@ -35,7 +29,6 @@ dependencies {
     implementation project(':rkb:projectUtils')
     implementation project(':rkb:codeUtil')
     implementation project(':rkb:logger')
-    
     implementation libs.androidx.appcompat
     implementation libs.androidx.coordinatorlayout
     implementation libs.google.material

@@ -3,15 +3,13 @@ plugins {
 }
 
 android {
-    namespace 'jkas.androidpe.codeEditor'
-    compileSdkVersion 34
-    buildToolsVersion "34.0.4"
+    compileSdk rootProject.ext.compileSdk
+    buildToolsVersion rootProject.ext.buildTools
+    namespace rootProject.ext.packageName + ".codeEditor"
     
     defaultConfig {
-        minSdk 26
-        targetSdk 33
-        
-        testInstrumentationRunner "androidx.text.runner.AndroidJUnitRunner"
+        minSdkVersion rootProject.ext.minSdk
+        targetSdkVersion rootProject.ext.targetSdk
     }
     
     compileOptions {

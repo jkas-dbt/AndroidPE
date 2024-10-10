@@ -3,38 +3,22 @@ plugins {
 }
 
 android {
-    namespace 'jkas.androidpe.project'
-    compileSdkVersion 34
-    buildToolsVersion "34.0.4"
+    compileSdk rootProject.ext.compileSdk
+    buildToolsVersion rootProject.ext.buildTools
+    namespace rootProject.ext.packageName + ".project"
     
     defaultConfig {
-        minSdk 26
-        targetSdk 33
-        
-        testInstrumentationRunner "androidx.text.runner.AndroidJUnitRunner"
+        minSdkVersion rootProject.ext.minSdk
+        targetSdkVersion rootProject.ext.targetSdk
     }
     
     compileOptions {
 		sourceCompatibility JavaVersion.VERSION_17
 		targetCompatibility JavaVersion.VERSION_17
 	}
-    
-    packagingOptions {
-        exclude 'META-INF/AL2.0'
-        exclude 'META-INF/LGPL2.1'
-        exclude 'xsd/catalog.xml'
-        exclude 'META-INF/DEPENDENCIES'
-        exclude 'META-INF/LICENSE.md'
-        exclude 'META-INF/NOTICE.md'
-        exclude 'META-INF/io.netty.versions.properties'
-        exclude 'META-INF/INDEX.LIST'
-    }
 }
 
 dependencies {
-    // local projects
     implementation project(':rkb:codeUtil')
-    
-    // androidx
     implementation libs.androidx.appcompat
 }

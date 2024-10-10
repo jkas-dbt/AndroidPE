@@ -3,25 +3,19 @@ plugins {
 }
 
 android {
-    namespace 'jkas.androidpe.projectUtils'
-    compileSdkVersion 34
-    buildToolsVersion "34.0.4"
+    compileSdk rootProject.ext.compileSdk
+    buildToolsVersion rootProject.ext.buildTools
+    namespace rootProject.ext.packageName + ".projectUtils"
     
     defaultConfig {
-        minSdk 26
-        targetSdk 33
-        
-        testInstrumentationRunner "androidx.text.runner.AndroidJUnitRunner"
+        minSdkVersion rootProject.ext.minSdk
+        targetSdkVersion rootProject.ext.targetSdk
     }
     
     compileOptions {
 		sourceCompatibility JavaVersion.VERSION_17
 		targetCompatibility JavaVersion.VERSION_17
 	}
-    
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {
@@ -31,8 +25,6 @@ dependencies {
     implementation project(':rkb:resourcesUtils')
     implementation project(':rkb:codeUtil')
     implementation project(':rkb:logger')
-    
-    // libs
     implementation libs.google.material
     implementation libs.color.picker
     implementation libs.androidsvg

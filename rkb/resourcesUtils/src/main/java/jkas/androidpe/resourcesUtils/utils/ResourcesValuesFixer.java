@@ -458,4 +458,11 @@ public class ResourcesValuesFixer {
         }
 
         public static Class getStringClass() {
-            return MaterialClassesRequested.getInstance().listener.onMaterialStringClassNee
+            return MaterialClassesRequested.getInstance().listener.onMaterialStringClassNeeded();
+        }
+
+        public static Class getStyleClass() {
+            return MaterialClassesRequested.getInstance().listener.onMaterialStyleClassNeeded();
+        }
+    }
+}
