@@ -91,7 +91,17 @@ public class ResourcesValuesFixer {
 
     public static int getColor(Context C, String reference) {
         if (reference == null) return Color.TRANSPARENT;
-        if (CodeUtil.isColor(reference)) return Color.parseColor(reference);
+        if (CodeUtil.isColor(reference)) {
+            if (reference.trim().length() > 5) return Color.parseColor(reference);
+            if (reference.trim().length() == 4 && reference.contains("#")) {
+                try {
+                    String color = reference.replace("#", "");
+                    return Color.parseColor("#" + color + color);
+                } catch (Exception err) {
+                    return Color.TRANSPARENT;
+                }
+            }
+        }
         String name = parseReferName(reference);
         if (reference.startsWith("@android:color/")) {
             int id = CodeUtil.getSystemResourceId(android.R.color.class, name);
@@ -448,11 +458,4 @@ public class ResourcesValuesFixer {
         }
 
         public static Class getStringClass() {
-            return MaterialClassesRequested.getInstance().listener.onMaterialStringClassNeeded();
-        }
-
-        public static Class getStyleClass() {
-            return MaterialClassesRequested.getInstance().listener.onMaterialStyleClassNeeded();
-        }
-    }
-}
+            return MaterialClassesRequested.getInstance().listener.onMaterialStringClassNee
