@@ -28,6 +28,7 @@ import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import jkas.androidpe.resourcesUtils.utils.ResourcesValuesFixer;
+import jkas.codeUtil.Files;
 
 public final class CrashHandler {
 
@@ -97,12 +98,8 @@ public final class CrashHandler {
         sb.append("************* Crash End ****************\n");
 
         String errorLog = sb.toString();
-
-        try {
-            writeFile(crashFile, errorLog);
-        } catch (IOException ignored) {
-        }
-
+        Files.writeFile(crashFile.getAbsolutePath(), errorLog);
+        
         Intent intent = new Intent(app, CrashActivity.class);
         intent.addFlags(
                 Intent.FLAG_ACTIVITY_NEW_TASK
@@ -117,17 +114,6 @@ public final class CrashHandler {
             e.printStackTrace();
             if (DEFAULT_UNCAUGHT_EXCEPTION_HANDLER != null)
                 DEFAULT_UNCAUGHT_EXCEPTION_HANDLER.uncaughtException(thread, throwable);
-        }
-    }
-
-    private static void writeFile(File file, String content) throws IOException {
-        File parentFile = file.getParentFile();
-        if (parentFile != null && !parentFile.exists()) {
-            parentFile.mkdirs();
-        }
-        file.createNewFile();
-        try (FileOutputStream fos = new FileOutputStream(file)) {
-            fos.write(content.getBytes());
         }
     }
 

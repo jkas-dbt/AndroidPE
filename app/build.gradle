@@ -3,22 +3,17 @@ plugins {
 }
 
 android {
-    compileSdk 34
-    buildToolsVersion "34.0.4"
+    compileSdk rootProject.ext.compileSdk
+    buildToolsVersion rootProject.ext.buildTools
     
-    namespace 'jkas.androidpe'
-    
+    namespace rootProject.ext.packageName
     defaultConfig {
-        applicationId "jkas.androidpe"
+        applicationId rootProject.ext.packageName
+        minSdkVersion rootProject.ext.minSdk
+        targetSdkVersion rootProject.ext.targetSdk
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
         vectorDrawables.useSupportLibrary = true
-    }
-    
-    buildTypes {
-        release {
-            minifyEnabled true
-            shrinkResources true
-            zipAlignEnabled true
-        }
     }
     
     compileOptions {
@@ -28,6 +23,10 @@ android {
     
 	buildFeatures {
         viewBinding true
+    }
+    
+    lintOptions { 
+        checkReleaseBuilds false
     }
 }
 
