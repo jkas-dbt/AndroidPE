@@ -8,3 +8,13 @@ plugins {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    compileSdk = 34
+    buildTools = "34.0.4"
+    targetSdk = 28
+    minSdk= 26
+    packageName = "jkas.androidpe"
+    versionCode = 181102
+    versionName = "1.3"
+}
