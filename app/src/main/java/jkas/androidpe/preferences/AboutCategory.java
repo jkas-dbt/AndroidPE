@@ -50,7 +50,7 @@ public class AboutCategory {
                             new Intent(
                                     Intent.ACTION_VIEW,
                                     Uri.parse(
-                                            "https://github.com/jkas-dbt/AndroidPE/releases/tag/v1.3-alpha")));
+                                            "https://github.com/jkas-dbt/AndroidPE/releases/tag/v1.3")));
                     return true;
                 });
         aboutCategory.addPreference(changelog);

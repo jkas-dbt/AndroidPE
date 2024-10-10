@@ -3,25 +3,19 @@ plugins {
 }
 
 android {
-    namespace 'rkb.datasaver'
-    compileSdkVersion 34
-    buildToolsVersion "34.0.4"
+    compileSdk rootProject.ext.compileSdk
+    buildToolsVersion rootProject.ext.buildTools
+    namespace rootProject.ext.packageName + ".datasaver"
     
     defaultConfig {
-        minSdk 26
-        targetSdk 28
-        
-        testInstrumentationRunner "androidx.text.runner.AndroidJUnitRunner"
+        minSdkVersion rootProject.ext.minSdk
+        targetSdkVersion rootProject.ext.targetSdk
     }
     
     compileOptions {
 		sourceCompatibility JavaVersion.VERSION_17
 		targetCompatibility JavaVersion.VERSION_17
 	}
-    
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {

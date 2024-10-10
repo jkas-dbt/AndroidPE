@@ -3,14 +3,13 @@ plugins {
 }
 
 android {
-    compileSdk 34
-    buildToolsVersion "34.0.4"
-    
-    namespace 'jkas.androidpe.layoutUiDesigner'
+    compileSdk rootProject.ext.compileSdk
+    buildToolsVersion rootProject.ext.buildTools
+    namespace rootProject.ext.packageName + ".layoutUiDesigner"
     
     defaultConfig {
-        minSdk 26
-        targetSdk 34
+        minSdkVersion rootProject.ext.minSdk
+        targetSdkVersion rootProject.ext.targetSdk
     }
     
     compileOptions {
