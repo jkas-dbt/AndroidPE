@@ -204,7 +204,7 @@ public class DialogAttrValueParserAssist {
                             .setPositiveButton(
                                     "OK",
                                     (dialog, which) ->
-                                            binding.editValue.setText(
+                                            binding.editRef.setText(
                                                     "#" + Integer.toHexString(picker.getColor())))
                             .show();
                 });
