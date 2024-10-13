@@ -53,32 +53,46 @@ public class LogicsAnalyzer {
 
     private void checkIfAllModulesExists() {
         ProjectsModules.getInstance().listOfAllAndroidModule.clear();
-        if (includes != null)
-            for (final String s : includes) {
-                String pathModule = P.getAbsolutePath() + s.replace(":", "/");
-                String pathBuildGradle = pathModule + "/build.gradle";
+        for (final String s : includes) {
+            String pathModule = P.getAbsolutePath() + s.replace(":", "/");
+            String pathBuildGradle = pathModule + "/build.gradle";
 
-                if (!Files.isDirectory(pathModule)) continue;
-                if (!Files.isFile(pathBuildGradle))
-                    if (!Files.isFile(pathBuildGradle + ".kts")) continue;
-                    else pathBuildGradle += ".kts";
-                if (!Files.isFile(pathBuildGradle)) continue;
-                final AndroidModule am =
-                        new AndroidModule(Files.getNameFromAbsolutePath(pathModule), s, pathModule);
-
-                final ArrayList<String> modules = new ArrayList<>();
-                String code = Files.readFile(pathBuildGradle).replace(".", ":").trim();
-                code = ResCodeUtils.removeJavaComment(code);
-
-                for (String r : includes)
-                    if (code.contains(r) && !r.equals(am.getPath()))
-                        if (code.contains(r + "')")
-                                || code.contains(r + "\")")
-                                || code.contains(r + ")")) modules.add(r);
-                am.setRefToOthersModules(modules);
-
-                ProjectsModules.getInstance().listOfAllAndroidModule.add(am);
+            boolean found = false;
+            if (Files.isDirectory(pathModule)) {
+                found = Files.isFile(pathBuildGradle);
+                if (!found) {
+                    pathBuildGradle += ".kts";
+                    found = Files.isFile(pathBuildGradle);
+                }
             }
+
+            if (!found) {
+                Logger.error(
+                        "Modules Manager",
+                        C.getString(R.string.module)
+                                + " (\""
+                                + s
+                                + "\") "
+                                + C.getString(R.string.not_found));
+                continue;
+            }
+
+            final AndroidModule am =
+                    new AndroidModule(Files.getNameFromAbsolutePath(pathModule), s, pathModule);
+
+            final ArrayList<String> modules = new ArrayList<>();
+            String code = Files.readFile(pathBuildGradle).replace(".", ":").trim();
+            code = ResCodeUtils.removeJavaComment(code);
+
+            for (String r : includes)
+                if (code.contains(r) && !r.equals(am.getPath()))
+                    if (code.contains(r + "')")
+                            || code.contains(r + "\")")
+                            || code.contains(r + ")")) modules.add(r);
+            am.setRefToOthersModules(modules);
+
+            ProjectsModules.getInstance().listOfAllAndroidModule.add(am);
+        }
     }
 
     private void searchDataInfoFromSettingsGradleFile() {
@@ -89,7 +103,7 @@ public class LogicsAnalyzer {
         } else if (Files.isFile(path + ".kts")) path = path + ".kts";
 
         includes = ProjectsUtils.Gradle.getModulesIncluded(path);
-        if (includes != null) Logger.info(SRC, C.getString(R.string.modules_found));
+        if (includes.size() > 0) Logger.info(SRC, C.getString(R.string.modules_found));
         else Logger.info(SRC, C.getString(R.string.no_modules_found));
 
         if (includes.size() == 0) {
@@ -100,7 +114,7 @@ public class LogicsAnalyzer {
                         ":app" + C.getString(R.string.added),
                         "But a problem was detected. "
                                 + "your Gradle file is not properly configured or contains errors."
-                                + " lease check your configuration file at the project root.");
+                                + " please check your configuration file at the project root.");
             }
         }
     }
