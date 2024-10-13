@@ -3,8 +3,8 @@ plugins {
 }
 
 android {
-    compileSdk 33
-    buildToolsVersion "33.0.4"
+    compileSdk 34
+    buildToolsVersion "34.0.4"
     namespace '$PACKAGE_NAME$'
     
     defaultConfig {
@@ -38,5 +38,5 @@ dependencies {
     
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'com.google.android.material:material:1.12.0'
 }
