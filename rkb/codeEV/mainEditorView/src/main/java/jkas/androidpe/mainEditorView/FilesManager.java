@@ -157,9 +157,6 @@ public class FilesManager {
         }
         DataRefManager.getInstance().setCurrentModuleRes(androidPath);
         listenerRequest.onSwitchEditor(currentOpenedFile.isDesignEnabled());
-
-        boolean isNull = DataRefManager.getInstance().currentModuleRes == null;
-        Toast.makeText(C, "currentMR " + isNull, Toast.LENGTH_SHORT).show();
     }
 
     private void undoRedoManager() {
