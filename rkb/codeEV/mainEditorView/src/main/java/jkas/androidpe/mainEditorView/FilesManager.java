@@ -15,7 +15,6 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import jkas.androidpe.codeEditor.viewModels.ContentViewModel;
 import jkas.androidpe.logger.LoggerRes;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
 import jkas.androidpe.projectUtils.utils.ValuesTools;
 import jkas.androidpe.resources.R;
 import jkas.androidpe.resourcesUtils.utils.ProjectsPathUtils;
@@ -141,19 +140,26 @@ public class FilesManager {
 
     private void updatePath() {
         String path = currentOpenedFile.getPath();
-        int index = ProjectsModules.getInstance().P.getAbsolutePath().length();
+        int index = DataRefManager.getInstance().P.getAbsolutePath().length();
         tvInfo.setText(path.substring(index).replace("/", " ⟩ "));
         listenerRequest.onSwitchEditorEnabled(
                 ValuesTools.PathController.isResFile(currentOpenedFile.getPath()));
         undoRedoManager();
         if (!path.matches(
-                ProjectsModules.getInstance().P.getAbsolutePath()
+                DataRefManager.getInstance().P.getAbsolutePath()
                         + "/.*"
                         + ProjectsPathUtils.RES_PATH
                         + "/.*")) return;
 
-        DataRefManager.getInstance().setCurrentModuleRes(path);
+        String androidPath = "";
+        for (var module : DataRefManager.getInstance().listModuleProject) {
+            if (path.startsWith(module.getAbsolutePath())) androidPath = module.getPath();
+        }
+        DataRefManager.getInstance().setCurrentModuleRes(androidPath);
         listenerRequest.onSwitchEditor(currentOpenedFile.isDesignEnabled());
+
+        boolean isNull = DataRefManager.getInstance().currentModuleRes == null;
+        Toast.makeText(C, "currentMR " + isNull, Toast.LENGTH_SHORT).show();
     }
 
     private void undoRedoManager() {

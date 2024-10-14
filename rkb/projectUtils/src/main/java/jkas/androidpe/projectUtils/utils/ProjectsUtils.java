@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import jkas.androidpe.project.Project;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.utils.ProjectsPathUtils;
 import jkas.androidpe.resourcesUtils.utils.ResCodeUtils;
 import jkas.codeUtil.Files;
@@ -23,7 +23,7 @@ public class ProjectsUtils {
     public static final int TYPE_COMPOSE = 2;
 
     public static int getModuleType() {
-        String path = ProjectsModules.getInstance().currentAndroidModule.getProjectAbsolutePath();
+        String path = DataRefManager.getInstance().currentAndroidModule.getProjectAbsolutePath();
         path += ProjectsPathUtils.gradlePath;
         if (Files.isFile(path + ".kts"))
             if (Files.readFile(path + ".kts").contains("compose")) return TYPE_COMPOSE;

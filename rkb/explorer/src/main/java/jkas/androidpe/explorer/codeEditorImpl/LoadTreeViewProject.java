@@ -10,7 +10,7 @@ import jkas.androidpe.explorer.views.TreeViewFile;
 import jkas.androidpe.explorer.views.TreeViewFolder;
 import androidx.appcompat.widget.PopupMenu;
 import jkas.androidpe.project.AndroidModule;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.utils.ResCodeUtils;
 import jkas.codeUtil.Files;
 
@@ -160,7 +160,7 @@ public class LoadTreeViewProject {
 
     public String getText(String path) {
         String txt = Files.getNameFromAbsolutePath(path);
-        for (AndroidModule am : ProjectsModules.getInstance().listOfAllAndroidModule)
+        for (AndroidModule am : DataRefManager.getInstance().listAndroidModule)
             if (am.getProjectAbsolutePath().equals(path))
                 return "<b>" + txt + "</b> <i>(module)</i>";
         if (txt.endsWith(".gradle") || txt.endsWith(".gradle.kts"))

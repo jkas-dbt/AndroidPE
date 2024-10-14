@@ -7,7 +7,7 @@ import androidx.appcompat.app.AlertDialog;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import java.util.ArrayList;
 import jkas.androidpe.project.AndroidModule;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.dialog.DialogBuilder;
 import jkas.androidpe.resources.R;
 import jkas.androidpe.resourcesUtils.dialog.DialogProgressIndeterminate;
@@ -44,7 +44,7 @@ public class DialogDeletePaths {
                         + Files.getNameFromAbsolutePath(path)
                         + "]");
 
-        if (path2File.equals(ProjectsModules.getInstance().P.getAbsolutePath())) {
+        if (path2File.equals(DataRefManager.getInstance().P.getAbsolutePath())) {
             alert.setMessage(
                     C.getString(R.string.warning_projects_deleting)
                             + "\n"
@@ -56,11 +56,11 @@ public class DialogDeletePaths {
         }
 
         boolean verifIfError = false;
-        for (AndroidModule am : ProjectsModules.getInstance().listOfAllAndroidModule)
+        for (AndroidModule am : DataRefManager.getInstance().listAndroidModule)
             if (!am.getProjectAbsolutePath().equals(path2File))
                 for (String s : am.getRefToOthersModules()) {
                     String p =
-                            ProjectsModules.getInstance().P.getAbsolutePath() + s.replace(":", "/");
+                            DataRefManager.getInstance().P.getAbsolutePath() + s.replace(":", "/");
                     if (p.equals(path2File))
                         alert.setMessage(
                                 C.getString(R.string.bad_idea)
@@ -97,18 +97,18 @@ public class DialogDeletePaths {
         String sensitivePaths = "";
         boolean verifIfError = false;
         for (String path2File : listPath2Files) {
-            for (AndroidModule am : ProjectsModules.getInstance().listOfAllAndroidModule)
+            for (AndroidModule am : DataRefManager.getInstance().listAndroidModule)
                 if (!am.getProjectAbsolutePath().equals(path2File))
                     for (String s : am.getRefToOthersModules()) {
                         String p =
-                                ProjectsModules.getInstance().P.getAbsolutePath()
+                                DataRefManager.getInstance().P.getAbsolutePath()
                                         + s.replace(":", "/");
                         if (p.equals(path2File)) verifIfError = true;
                         sensitivePaths += "\n" + p;
                     }
                 else if (am.getProjectAbsolutePath().equals(path2File)) verifIfError = true;
 
-            if (path2File.equals(ProjectsModules.getInstance().P.getAbsolutePath())) {
+            if (path2File.equals(DataRefManager.getInstance().P.getAbsolutePath())) {
                 DialogBuilder.getDialogBuilder(
                                 C,
                                 C.getString(R.string.warning),
@@ -138,16 +138,16 @@ public class DialogDeletePaths {
 
     private void delete(String path2File) {
         boolean verifIfError = false;
-        for (AndroidModule am : ProjectsModules.getInstance().listOfAllAndroidModule)
+        for (AndroidModule am : DataRefManager.getInstance().listAndroidModule)
             if (!am.getProjectAbsolutePath().equals(path2File))
                 for (String s : am.getRefToOthersModules()) {
                     String p =
-                            ProjectsModules.getInstance().P.getAbsolutePath() + s.replace(":", "/");
+                            DataRefManager.getInstance().P.getAbsolutePath() + s.replace(":", "/");
                     if (p.equals(path2File)) verifIfError = true;
                 }
             else if (am.getProjectAbsolutePath().equals(path2File)) verifIfError = true;
 
-        if (path2File.equals(ProjectsModules.getInstance().P.getAbsolutePath())) {
+        if (path2File.equals(DataRefManager.getInstance().P.getAbsolutePath())) {
             DialogBuilder.getDialogBuilder(
                             C,
                             C.getString(R.string.warning),

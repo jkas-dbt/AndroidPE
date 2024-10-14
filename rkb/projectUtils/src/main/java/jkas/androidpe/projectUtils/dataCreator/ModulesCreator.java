@@ -4,8 +4,8 @@ import android.content.Context;
 import java.util.HashMap;
 import java.util.Map;
 import jkas.androidpe.projectUtils.current.Environment;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
 import jkas.androidpe.resources.R;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.dialog.DialogBuilder;
 import jkas.androidpe.resourcesUtils.utils.ProjectsPathUtils;
 import jkas.codeUtil.Files;
@@ -62,13 +62,13 @@ public class ModulesCreator {
 
     private void addModuleToSettingsFile() {
         String moduleName = folderName;
-        int lastIndex = ProjectsModules.getInstance().P.getAbsolutePath().length();
+        int lastIndex = DataRefManager.getInstance().P.getAbsolutePath().length();
         if (rootProjectPath.length() > lastIndex)
             moduleName = "/" + rootProjectPath.substring(lastIndex) + "/" + folderName;
         moduleName = ("/" + moduleName).replace("//", "/").replace("/", ":").replace("::", ":");
 
         String pathSettingsGradle =
-                ProjectsModules.getInstance().P.getAbsolutePath() + "/settings.gradle";
+                DataRefManager.getInstance().P.getAbsolutePath() + "/settings.gradle";
         if (!Files.isFile(pathSettingsGradle)) pathSettingsGradle += ".kts";
         if (!Files.isFile(pathSettingsGradle)) {
             DialogBuilder.getDialogBuilder(
