@@ -12,6 +12,7 @@ public class DataRefManager {
     private static DataRefManager INSTANCE;
 
     public ModuleRes currentModuleRes;
+    public ModuleProject currentModuleProject;
     public ArrayList<ModuleRes> listModuleRes = new ArrayList<>();
     public ArrayList<ModuleProject> listModuleProject = new ArrayList<>();
 
@@ -35,6 +36,7 @@ public class DataRefManager {
                 for (ModuleRes mr : listModuleRes)
                     if (mp.getPath().equals(mr.getPath())) {
                         currentModuleRes = mr;
+                        currentModuleProject = mp;
                         return;
                     }
     }
