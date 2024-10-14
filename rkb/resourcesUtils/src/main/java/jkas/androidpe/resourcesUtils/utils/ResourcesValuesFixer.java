@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import com.caverock.androidsvg.SVGImageView;
 import com.google.android.material.card.MaterialCardView;
 import java.lang.reflect.Field;
+import jkas.androidpe.resourcesUtils.bases.AttrValuesRefBase;
 import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.modules.ModuleRes;
 import jkas.androidpe.resourcesUtils.requests.AndroidxClassesRequested;
@@ -29,6 +30,27 @@ import org.w3c.dom.Element;
  * @author JKas
  */
 public class ResourcesValuesFixer {
+
+    public static boolean exists(String reference) {
+        boolean found = false;
+
+        if (DataRefManager.getInstance().currentModuleRes.exists(reference)) return true;
+
+        for (var path : DataRefManager.getInstance().currentModuleProject.getRefToOtherModule()) {
+            for (var module : DataRefManager.getInstance().listModuleRes) {
+                if (module.getPath().equals(path)) {
+                    if (DataRefManager.getInstance().currentModuleRes.exists(reference))
+                        found = true;
+                }
+            }
+        }
+
+        if (found) return true;
+        else if (AttrValuesRefBase.listRefAndroid.contains(reference)) return true;
+        else if (AttrValuesRefBase.listRefAndroidX.contains(reference)) return true;
+        else if (AttrValuesRefBase.listRefMaterial3.contains(reference)) return true;
+        return false;
+    }
 
     public static String getValuesAsString(Context C, String reference) {
         String name = parseReferName(reference);
@@ -331,6 +353,11 @@ public class ResourcesValuesFixer {
 
     public static String parseReferName(final String reference, String sep) {
         return reference.substring(reference.indexOf(sep) + 1);
+    }
+
+    public static boolean matchToDefaultRefRes(String ref) {
+        String pattern = "\\@a-z\\/[a-zA-Z][a-zA-Z0-9_]";
+        return ref.matches(pattern);
     }
 
     public static class ImageXmlUtil {
