@@ -23,7 +23,6 @@ import jkas.androidpe.explorer.dialog.DialogSelectModule;
 import jkas.androidpe.logger.LogMsg;
 import jkas.androidpe.logger.Logger;
 import jkas.androidpe.logger.LoggerLayoutUI;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
 import jkas.androidpe.fragments.projectEditor.ExplorerFragment;
 import jkas.androidpe.fragments.projectEditor.MainFragment;
 import jkas.androidpe.fragments.projectEditor.ManagerFragment;
@@ -31,6 +30,7 @@ import jkas.androidpe.project.Project;
 import jkas.androidpe.projectUtils.utils.ProjectsUtils;
 import jkas.androidpe.resources.R;
 import jkas.androidpe.databinding.ActivityProjectEditorBinding;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.dialog.DialogBuilder;
 import jkas.codeUtil.CodeUtil;
 import jkas.codeUtil.Files;
@@ -69,10 +69,10 @@ public class ProjectEditorActivity extends AppCompatActivity {
     @CallSuper
     protected void onSaveInstanceState(Bundle savedIS) {
         super.onSaveInstanceState(savedIS);
-        savedIS.putString("projectDir", ProjectsModules.getInstance().P.getProjectDir());
-        savedIS.putString("folderName", ProjectsModules.getInstance().P.getFolderName());
-        savedIS.putString("packageName", ProjectsModules.getInstance().P.getPackageName());
-        savedIS.putString("iconPath", ProjectsModules.getInstance().P.getIconPath());
+        savedIS.putString("projectDir", DataRefManager.getInstance().P.getProjectDir());
+        savedIS.putString("folderName", DataRefManager.getInstance().P.getFolderName());
+        savedIS.putString("packageName", DataRefManager.getInstance().P.getPackageName());
+        savedIS.putString("iconPath", DataRefManager.getInstance().P.getIconPath());
     }
 
     @Override
@@ -114,9 +114,9 @@ public class ProjectEditorActivity extends AppCompatActivity {
     }
 
     private void cleanAll() {
-        ProjectsModules.getInstance().P = null;
-        ProjectsModules.getInstance().currentAndroidModule = null;
-        ProjectsModules.getInstance().listOfAllAndroidModule.clear();
+        DataRefManager.getInstance().P = null;
+        DataRefManager.getInstance().currentAndroidModule = null;
+        DataRefManager.getInstance().listAndroidModule.clear();
     }
 
     private void events() {
@@ -134,31 +134,32 @@ public class ProjectEditorActivity extends AppCompatActivity {
                             .setOnModuleSelected(
                                     (modulePosition) -> {
                                         binding.btnAllModule.setText("('~') : Modules");
-                                        ProjectsModules.getInstance().currentAndroidModule =
-                                                ProjectsModules.getInstance()
-                                                        .listOfAllAndroidModule
+                                        DataRefManager.getInstance().currentAndroidModule =
+                                                DataRefManager.getInstance()
+                                                        .listAndroidModule
                                                         .get(modulePosition);
-                                        iniDataModules();
+                                        initDataModules();
                                         refreshFrag();
                                     });
                 });
         binding.btnSync.setOnClickListener((v) -> refreshAllModules());
         binding.btnNewModule.setOnClickListener(
                 (v) -> {
-                    new DialogNewModuleCreator(C, ProjectsModules.getInstance().P.getAbsolutePath())
+                    new DialogNewModuleCreator(C, DataRefManager.getInstance().P.getAbsolutePath())
                             .setOnSaveListener(() -> refreshAllModules());
                 });
     }
 
-    private void iniDataModules() {
-        if (ProjectsModules.getInstance().currentAndroidModule == null)
-            if (ProjectsModules.getInstance().listOfAllAndroidModule.size() > 0)
-                ProjectsModules.getInstance().currentAndroidModule =
-                        ProjectsModules.getInstance().listOfAllAndroidModule.get(0);
+    private void initDataModules() {
+        if (DataRefManager.getInstance().currentAndroidModule == null)
+            if (DataRefManager.getInstance().listAndroidModule.size() > 0)
+                DataRefManager.getInstance().currentAndroidModule =
+                        DataRefManager.getInstance().listAndroidModule.get(0);
             else return;
 
-        String path = ProjectsModules.getInstance().currentAndroidModule.getPath();
+        String path = DataRefManager.getInstance().currentAndroidModule.getPath();
         binding.btnAllModule.setText(path);
+        DataRefManager.getInstance().setCurrentModuleRes(path);
     }
 
     private void refreshFrag() {
@@ -170,12 +171,12 @@ public class ProjectEditorActivity extends AppCompatActivity {
     private void refreshAllModules() {
         Logger.addLogListener(logListener);
         loadModulesFirst();
-        iniDataModules();
+        initDataModules();
         refreshFrag();
     }
 
     private boolean checkIfProjectValide() {
-        if (ProjectsUtils.getProjectStatus(ProjectsModules.getInstance().P) == ProjectsUtils.NAP) {
+        if (ProjectsUtils.getProjectStatus(DataRefManager.getInstance().P) == ProjectsUtils.NAP) {
             new MaterialAlertDialogBuilder(C)
                     .setCancelable(false)
                     .setTitle(getString(R.string.warning))
@@ -188,8 +189,8 @@ public class ProjectEditorActivity extends AppCompatActivity {
                     .show();
             return false;
         }
-        binding.tvFolderName.setText(ProjectsModules.getInstance().P.getFolderName());
-        binding.tvPackageName.setText(ProjectsModules.getInstance().P.getPackageName());
+        binding.tvFolderName.setText(DataRefManager.getInstance().P.getFolderName());
+        binding.tvPackageName.setText(DataRefManager.getInstance().P.getPackageName());
         return true;
     }
 
@@ -198,9 +199,9 @@ public class ProjectEditorActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-        binding.tvFolderName.setText(ProjectsModules.getInstance().P.getFolderName());
-        binding.tvPackageName.setText(ProjectsModules.getInstance().P.getPackageName());
-        Images.setImageFromDir(ProjectsModules.getInstance().P.getIconPath(), binding.icIcon);
+        binding.tvFolderName.setText(DataRefManager.getInstance().P.getFolderName());
+        binding.tvPackageName.setText(DataRefManager.getInstance().P.getPackageName());
+        Images.setImageFromDir(DataRefManager.getInstance().P.getIconPath(), binding.icIcon);
 
         MF = new MainFragment();
         EF = new ExplorerFragment();
@@ -208,7 +209,7 @@ public class ProjectEditorActivity extends AppCompatActivity {
 
         loadModulesFirst();
         loadListener();
-        iniDataModules();
+        initDataModules();
 
         final ViewPagersAdapter adapter =
                 new ViewPagersAdapter(getSupportFragmentManager(), getLifecycle());
@@ -227,7 +228,7 @@ public class ProjectEditorActivity extends AppCompatActivity {
 
                     @Override
                     public void onRefresh() {
-                        if (!Files.isDirectory(ProjectsModules.getInstance().P.getAbsolutePath())) {
+                        if (!Files.isDirectory(DataRefManager.getInstance().P.getAbsolutePath())) {
                             DialogBuilder.getDialogBuilder(
                                             C,
                                             C.getString(R.string.warning),
@@ -246,9 +247,9 @@ public class ProjectEditorActivity extends AppCompatActivity {
 
                     @Override
                     public void onPathChanged(String path) {
-                        for (var module : ProjectsModules.getInstance().listOfAllAndroidModule) {
+                        for (var module : DataRefManager.getInstance().listAndroidModule) {
                             if (module.getProjectAbsolutePath().equals(path)) {
-                                ProjectsModules.getInstance().currentAndroidModule = module;
+                                DataRefManager.getInstance().currentAndroidModule = module;
                                 binding.btnAllModule.setText(module.getPath());
                                 return;
                             }
@@ -288,10 +289,10 @@ public class ProjectEditorActivity extends AppCompatActivity {
     private void iniProject(Bundle savedIS) {
         if (savedIS != null) {
             binding.linBottomSheet.removeAllViews();
-            ProjectsModules.getInstance().P =
+            DataRefManager.getInstance().P =
                     new Project(savedIS.getString("projectDir"), savedIS.getString("folderName"));
-            ProjectsModules.getInstance().P.setPackageName(savedIS.getString("packageName"));
-            ProjectsModules.getInstance().P.setIconPath(savedIS.getString("iconPath"));
+            DataRefManager.getInstance().P.setPackageName(savedIS.getString("packageName"));
+            DataRefManager.getInstance().P.setIconPath(savedIS.getString("iconPath"));
         }
         Logger.info = 0;
         Logger.warn = 0;

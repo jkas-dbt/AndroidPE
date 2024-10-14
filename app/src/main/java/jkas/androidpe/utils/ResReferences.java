@@ -5,7 +5,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import jkas.androidpe.project.AndroidModule;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
 import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.dataInitializer.DataResInitializer;
 import jkas.androidpe.resourcesUtils.modules.ModuleProject;
@@ -37,7 +36,7 @@ public class ResReferences {
     /** Load module first */
     private static void loadModules() {
         DataRefManager.getInstance().listModuleProject.clear();
-        for (AndroidModule am : ProjectsModules.getInstance().listOfAllAndroidModule) {
+        for (AndroidModule am : DataRefManager.getInstance().listAndroidModule) {
             ModuleProject mp = new ModuleProject();
             mp.setPath(am.getPath());
             mp.setAbsolutePath(am.getProjectAbsolutePath());

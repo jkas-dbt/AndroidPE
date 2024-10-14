@@ -14,7 +14,7 @@ import jkas.androidpe.databinding.LayoutPeManagerViewPropertiesActivityBinding;
 import jkas.androidpe.logger.Logger;
 import jkas.androidpe.resources.R;
 import jkas.androidpe.explorer.dialog.DialogSelector;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.utils.ProjectsPathUtils;
 import jkas.androidpe.resourcesUtils.attrs.androidManifestTag.UsesPermissions;
 import jkas.androidpe.resourcesUtils.dialog.DialogBuilder;
@@ -81,7 +81,7 @@ public class PermissionsPerformer {
 
     private void defaultValues() {
         String pathToManifest =
-                ProjectsModules.getInstance().currentAndroidModule.getProjectAbsolutePath();
+                DataRefManager.getInstance().currentAndroidModule.getProjectAbsolutePath();
         pathToManifest += ProjectsPathUtils.ANDROID_MANIFEST_PATH;
 
         if (manifest.initializeFromPath(pathToManifest) == false) {

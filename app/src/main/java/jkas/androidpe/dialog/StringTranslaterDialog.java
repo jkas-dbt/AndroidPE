@@ -1,46 +1,28 @@
 package jkas.androidpe.dialog;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.GridLayout;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.text.HtmlCompat;
-import androidx.core.util.Pair;
-import com.google.android.material.chip.ChipGroup;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 import jkas.androidpe.layoutUiDesigner.utils.Utils;
-import jkas.androidpe.projectUtils.utils.ProjectsUtils;
-import jkas.androidpe.projectUtils.utils.ValuesTools;
 import jkas.androidpe.resources.R;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.chip.Chip;
-import com.google.android.material.elevation.SurfaceColors;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import jkas.androidpe.constants.LanguageTranslate;
 import jkas.androidpe.databinding.DialogStringTranslaterBinding;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.dialog.DialogBuilder;
 import jkas.androidpe.resourcesUtils.utils.ProjectsPathUtils;
-import jkas.androidpe.resourcesUtils.utils.ResCodeUtils;
-import jkas.androidpe.resourcesUtils.utils.ResourcesValuesFixer;
-import jkas.androidpe.resourcesUtils.utils.ViewUtils;
 import jkas.androidpe.translater.TranslateAPI;
 import jkas.codeUtil.CodeUtil;
 import jkas.codeUtil.Files;
@@ -73,12 +55,12 @@ public class StringTranslaterDialog {
             BSD.show();
             return;
         }
-        if (ProjectsModules.getInstance().currentAndroidModule == null) {
+        if (DataRefManager.getInstance().currentAndroidModule == null) {
             Toast.makeText(C, R.string.no_module_is_selected, Toast.LENGTH_SHORT).show();
             return;
         }
         absolutePathToResValuesFolder =
-                ProjectsModules.getInstance().currentAndroidModule.getProjectAbsolutePath()
+                DataRefManager.getInstance().currentAndroidModule.getProjectAbsolutePath()
                         + ProjectsPathUtils.VALUES_PATH;
         if (!Files.isDirectory(absolutePathToResValuesFolder)) {
             Toast.makeText(
@@ -88,12 +70,12 @@ public class StringTranslaterDialog {
                     .show();
             return;
         }
-        binding.tvModule.setText(ProjectsModules.getInstance().currentAndroidModule.getPath());
+        binding.tvModule.setText(DataRefManager.getInstance().currentAndroidModule.getPath());
         loadData();
         BSD.show();
         ArrayList<String> list =
                 Files.listDir(
-                        ProjectsModules.getInstance().currentAndroidModule.getProjectAbsolutePath()
+                        DataRefManager.getInstance().currentAndroidModule.getProjectAbsolutePath()
                                 + ProjectsPathUtils.RES_PATH);
         for (var chip : listChip) {
             String path =

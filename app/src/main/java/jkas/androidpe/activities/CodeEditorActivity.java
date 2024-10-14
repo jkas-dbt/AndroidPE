@@ -21,8 +21,7 @@ import jkas.androidpe.resources.R;
 import jkas.androidpe.mainEditorView.FilesManager;
 import jkas.androidpe.databinding.ActivityCodeEditorBinding;
 import jkas.androidpe.explorer.CodeEditorExplorer;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
-import jkas.androidpe.resourcesUtils.dataInitializer.DataResInitializer;
+import jkas.androidpe.resourcesUtils.dataInitializer.*;
 import jkas.androidpe.resourcesUtils.dialog.DialogBottomSheetAttrModifier;
 import jkas.androidpe.resourcesUtils.dialog.DialogBuilder;
 import jkas.androidpe.resourcesUtils.dialog.DialogProgressIndeterminate;
@@ -168,8 +167,8 @@ public class CodeEditorActivity extends AppCompatActivity {
 
     private void loadData() {
         final ArrayList<String> listPath = new ArrayList<>();
-        AMLProjectsData.addProjectIfNotAvialable(ProjectsModules.getInstance().P.getAbsolutePath());
-        AMLProjectsData.appendNewOpenedFile(ProjectsModules.getInstance().filePathSelected);
+        AMLProjectsData.addProjectIfNotAvialable(DataRefManager.getInstance().P.getAbsolutePath());
+        AMLProjectsData.appendNewOpenedFile(DataRefManager.getInstance().filePathSelected);
         listPath.addAll(AMLProjectsData.getOpenedFiles());
 
         boolean verif = false;
@@ -179,25 +178,25 @@ public class CodeEditorActivity extends AppCompatActivity {
                 AMLProjectsData.fileClosed(path);
                 continue;
             }
-            if (path.equals(ProjectsModules.getInstance().filePathSelected)) {
+            if (path.equals(DataRefManager.getInstance().filePathSelected)) {
                 verif = true;
                 break;
             }
             position++;
         }
         if (verif) listPath.remove(position);
-        if (ProjectsModules.getInstance().filePathSelected != null) {
-            listPath.add(0, ProjectsModules.getInstance().filePathSelected);
+        if (DataRefManager.getInstance().filePathSelected != null) {
+            listPath.add(0, DataRefManager.getInstance().filePathSelected);
         }
 
-        ProjectsModules.getInstance().filePathSelected = null;
+        DataRefManager.getInstance().filePathSelected = null;
         filesManager.parseListOpenFile(listPath);
         alert.dismiss();
     }
 
     private void loadDefaultValues() {
         binding.leftDrawer.addView(CEE.getView());
-        binding.toolBar.setSubtitle(ProjectsModules.getInstance().P.getFolderName());
+        binding.toolBar.setSubtitle(DataRefManager.getInstance().P.getFolderName());
 
         binding.toolBar.getMenu().findItem(jkas.androidpe.R.id.undo).setVisible(false);
         binding.toolBar.getMenu().findItem(jkas.androidpe.R.id.redo).setVisible(false);

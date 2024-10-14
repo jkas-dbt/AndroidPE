@@ -9,11 +9,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import jkas.androidpe.activities.CodeEditorActivity;
 import jkas.androidpe.logger.Logger;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.utils.ResCodeUtils;
 import jkas.androidpe.resources.R;
 import jkas.androidpe.databinding.LayoutPeMainSclPkgBinding;
 import jkas.androidpe.databinding.LayoutPeMainSclPkgViewDataBinding;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
 import jkas.androidpe.projectUtils.utils.PathPackager;
 import jkas.codeUtil.CodeUtil;
 import jkas.codeUtil.Files;
@@ -118,7 +118,7 @@ public class PathPackagerView {
             bind.getRoot()
                     .setOnClickListener(
                             (v) -> {
-                                ProjectsModules.getInstance().filePathSelected = fullPathOfFile;
+                                DataRefManager.getInstance().filePathSelected = fullPathOfFile;
                                 CodeUtil.startActivity(C, CodeEditorActivity.class);
                             });
         }

@@ -6,9 +6,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import jkas.androidpe.logger.Logger;
 import jkas.androidpe.projectUtils.current.Environment;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
 import jkas.androidpe.projectUtils.dataCreator.FilesRef;
 import jkas.androidpe.resources.R;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.codeUtil.Files;
 
 /**
@@ -61,7 +61,7 @@ public class ProjectInitializer {
     private void gradleWrapper() {
         try {
             if (!Files.isDirectory(
-                    ProjectsModules.getInstance().P.getAbsolutePath() + "/gradle/wrapper")) {
+                    DataRefManager.getInstance().P.getAbsolutePath() + "/gradle/wrapper")) {
                 Logger.warn(
                         SRC,
                         C.getString(R.string.missing_file)
@@ -76,10 +76,10 @@ public class ProjectInitializer {
                 Files.copyFileFromAssetsToDir(
                         C,
                         FilesRef.ProjectRoot.PATHgradleWrapperGradleWrapperJar,
-                        ProjectsModules.getInstance().P.getAbsolutePath()
+                        DataRefManager.getInstance().P.getAbsolutePath()
                                 + "/gradle/wrapper/gradle-wrapper.jar");
                 Files.writeFile(
-                        ProjectsModules.getInstance().P.getAbsolutePath()
+                        DataRefManager.getInstance().P.getAbsolutePath()
                                 + "/gradle/wrapper/gradle-wrapper.properties",
                         FilesRef.ProjectRoot.CODEgradleWrapperGradleWrapperProperties);
 
@@ -95,7 +95,7 @@ public class ProjectInitializer {
 
         try {
             if (!Files.isFile(
-                    ProjectsModules.getInstance().P.getAbsolutePath()
+                    DataRefManager.getInstance().P.getAbsolutePath()
                             + "/gradle/wrapper/gradle-wrapper.jar")) {
                 Logger.warn(
                         SRC,
@@ -109,7 +109,7 @@ public class ProjectInitializer {
                 Files.copyFileFromAssetsToDir(
                         C,
                         FilesRef.ProjectRoot.PATHgradleWrapperGradleWrapperJar,
-                        ProjectsModules.getInstance().P.getAbsolutePath()
+                        DataRefManager.getInstance().P.getAbsolutePath()
                                 + "/gradle/wrapper/gradle-wrapper.jar");
                 Logger.success(
                         SRC,
@@ -122,7 +122,7 @@ public class ProjectInitializer {
 
         try {
             if (!Files.isFile(
-                    ProjectsModules.getInstance().P.getAbsolutePath()
+                    DataRefManager.getInstance().P.getAbsolutePath()
                             + "/gradle/wrapper/gradle-wrapper.properties")) {
                 Logger.warn(
                         SRC,
@@ -134,7 +134,7 @@ public class ProjectInitializer {
                         "...\"/gradle/wrapper/gradle-wrapper.properties\"");
 
                 Files.writeFile(
-                        ProjectsModules.getInstance().P.getAbsolutePath()
+                        DataRefManager.getInstance().P.getAbsolutePath()
                                 + "/gradle/wrapper/gradle-wrapper.properties",
                         FilesRef.ProjectRoot.CODEgradleWrapperGradleWrapperProperties);
 
@@ -151,9 +151,9 @@ public class ProjectInitializer {
     private void settingsGradle() {
         try {
             if (!Files.isFile(
-                    ProjectsModules.getInstance().P.getAbsolutePath() + "/settings.gradle"))
+                    DataRefManager.getInstance().P.getAbsolutePath() + "/settings.gradle"))
                 if (!Files.isFile(
-                        ProjectsModules.getInstance().P.getAbsolutePath()
+                        DataRefManager.getInstance().P.getAbsolutePath()
                                 + "/settings.gradle.kts")) {
                     Logger.error(
                             SRC,
@@ -165,9 +165,9 @@ public class ProjectInitializer {
                     code =
                             code.replace(
                                     "$PROJECT_NAME$",
-                                    ProjectsModules.getInstance().P.getFolderName().trim());
+                                    DataRefManager.getInstance().P.getFolderName().trim());
                     Files.writeFile(
-                            ProjectsModules.getInstance().P.getAbsolutePath() + "/settings.gradle",
+                            DataRefManager.getInstance().P.getAbsolutePath() + "/settings.gradle",
                             code);
 
                     Logger.success(SRC, C.getString(R.string.added), "ROOT/settings.gradle");
@@ -181,26 +181,26 @@ public class ProjectInitializer {
         try {
             String missing;
             missing = "";
-            if (!Files.isFile(ProjectsModules.getInstance().P.getAbsolutePath() + "/gradlew")) {
+            if (!Files.isFile(DataRefManager.getInstance().P.getAbsolutePath() + "/gradlew")) {
                 Files.writeFile(
-                        ProjectsModules.getInstance().P.getAbsolutePath() + "/gradlew",
+                        DataRefManager.getInstance().P.getAbsolutePath() + "/gradlew",
                         FilesRef.ProjectRoot.CODEgradlew);
-                missing += ProjectsModules.getInstance().P.getAbsolutePath() + "/gradlew\n";
+                missing += DataRefManager.getInstance().P.getAbsolutePath() + "/gradlew\n";
             }
 
-            if (!Files.isFile(ProjectsModules.getInstance().P.getAbsolutePath() + "/gradlew.bat")) {
+            if (!Files.isFile(DataRefManager.getInstance().P.getAbsolutePath() + "/gradlew.bat")) {
                 Files.writeFile(
-                        ProjectsModules.getInstance().P.getAbsolutePath() + "/gradlew.bat",
+                        DataRefManager.getInstance().P.getAbsolutePath() + "/gradlew.bat",
                         FilesRef.ProjectRoot.CODEgradlewBat);
-                missing += ProjectsModules.getInstance().P.getAbsolutePath() + "/gradlew.bat\n";
+                missing += DataRefManager.getInstance().P.getAbsolutePath() + "/gradlew.bat\n";
             }
 
             if (!Files.isFile(
-                    ProjectsModules.getInstance().P.getAbsolutePath() + "/gradle.properties")) {
+                    DataRefManager.getInstance().P.getAbsolutePath() + "/gradle.properties")) {
                 Files.writeFile(
-                        ProjectsModules.getInstance().P.getAbsolutePath() + "/gradle.properties",
+                        DataRefManager.getInstance().P.getAbsolutePath() + "/gradle.properties",
                         FilesRef.ProjectRoot.CODEgradleProperties);
-                missing += ProjectsModules.getInstance().P.getAbsolutePath() + "/gradle.properties";
+                missing += DataRefManager.getInstance().P.getAbsolutePath() + "/gradle.properties";
             }
 
             if (!missing.isEmpty()) Logger.info(SRC, C.getString(R.string.added), missing);

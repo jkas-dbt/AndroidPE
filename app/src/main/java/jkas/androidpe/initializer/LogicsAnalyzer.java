@@ -3,11 +3,11 @@ package jkas.androidpe.initializer;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import jkas.androidpe.logger.Logger;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
 import jkas.androidpe.project.AndroidModule;
 import jkas.androidpe.projectUtils.utils.ProjectsUtils;
 import jkas.androidpe.resources.R;
 import jkas.androidpe.project.Project;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.utils.ResCodeUtils;
 import jkas.codeUtil.Files;
 
@@ -22,7 +22,7 @@ public class LogicsAnalyzer {
 
     public LogicsAnalyzer(AppCompatActivity c) {
         C = c;
-        P = ProjectsModules.getInstance().P;
+        P = DataRefManager.getInstance().P;
     }
 
     public void iniData() {
@@ -34,25 +34,22 @@ public class LogicsAnalyzer {
 
     private void setDefaultCurrentAndroidModule() {
         boolean verif = false;
-        for (AndroidModule am : ProjectsModules.getInstance().listOfAllAndroidModule) {
+        for (AndroidModule am : DataRefManager.getInstance().listAndroidModule) {
             verif = true;
             if (am.getPath().equals(":app")) {
-                ProjectsModules.getInstance().currentAndroidModule = am;
-                break;
+                DataRefManager.getInstance().currentAndroidModule = am;
+                DataRefManager.getInstance().setCurrentModuleRes(":app");
+                return;
             }
         }
-        if (verif && ProjectsModules.getInstance().currentAndroidModule == null)
-            ProjectsModules.getInstance().currentAndroidModule =
-                    ProjectsModules.getInstance().listOfAllAndroidModule.get(0);
-
-        if (ProjectsModules.getInstance().currentAndroidModule == null)
-            if (ProjectsModules.getInstance().listOfAllAndroidModule.size() > 0)
-                ProjectsModules.getInstance().currentAndroidModule =
-                        ProjectsModules.getInstance().listOfAllAndroidModule.get(0);
+        if (DataRefManager.getInstance().listAndroidModule.size() > 0) {
+            DataRefManager.getInstance().currentAndroidModule =
+                    DataRefManager.getInstance().listAndroidModule.get(0);
+        }
     }
 
     private void checkIfAllModulesExists() {
-        ProjectsModules.getInstance().listOfAllAndroidModule.clear();
+        DataRefManager.getInstance().listAndroidModule.clear();
         for (final String s : includes) {
             String pathModule = P.getAbsolutePath() + s.replace(":", "/");
             String pathBuildGradle = pathModule + "/build.gradle";
@@ -91,7 +88,7 @@ public class LogicsAnalyzer {
                             || code.contains(r + ")")) modules.add(r);
             am.setRefToOthersModules(modules);
 
-            ProjectsModules.getInstance().listOfAllAndroidModule.add(am);
+            DataRefManager.getInstance().listAndroidModule.add(am);
         }
     }
 

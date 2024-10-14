@@ -26,7 +26,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import jkas.androidpe.logger.Logger;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
 import jkas.androidpe.databinding.ActivityMainBinding;
 import jkas.androidpe.projectAnalyzer.NewProject;
 import jkas.androidpe.projectAnalyzer.ProjectView;
@@ -34,6 +33,7 @@ import jkas.androidpe.resources.R;
 import jkas.androidpe.explorer.SelectFF;
 import jkas.androidpe.project.Project;
 import jkas.androidpe.projectAnalyzer.SearchingProjects;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.utils.ResourcesValuesFixer;
 import jkas.codeUtil.CodeUtil;
 import jkas.codeUtil.Files;
@@ -229,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
         p.setPackageName("...");
         p.setPackageName(SearchingProjects.tryFindPkg(p));
         new ProjectView(C, p);
-        ProjectsModules.getInstance().P = p;
+        DataRefManager.getInstance().P = p;
         CodeUtil.startActivity(C, ProjectEditorActivity.class);
     }
 

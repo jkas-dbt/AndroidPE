@@ -23,7 +23,6 @@ import jkas.androidpe.databinding.LayoutPeManagerViewActivitiesBinding;
 import jkas.androidpe.databinding.LayoutPeManagerViewPropertiesActivityBinding;
 import jkas.androidpe.explorer.dialog.DialogSelector;
 import jkas.androidpe.logger.Logger;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
 import jkas.androidpe.projectUtils.dataCreator.ActivitiesCreator;
 import jkas.androidpe.projectUtils.dataCreator.FilesRef;
 import jkas.androidpe.projectUtils.utils.ProjectsUtils;
@@ -32,6 +31,7 @@ import jkas.androidpe.databinding.LayoutPeManagerViewDialogPerfBinding;
 import jkas.androidpe.resourcesUtils.attrs.androidManifestTag.AttrReceivers;
 import jkas.androidpe.resourcesUtils.attrs.androidManifestTag.AttrProviders;
 import jkas.androidpe.resourcesUtils.attrs.androidManifestTag.AttrServices;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.utils.ProjectsPathUtils;
 import jkas.androidpe.resourcesUtils.dialog.DialogBuilder;
 import jkas.androidpe.resourcesUtils.utils.ResCodeUtils;
@@ -144,7 +144,7 @@ public class ServicesReceiversProvidersPerformer {
 
     private void defaultValues() {
         String path =
-                ProjectsModules.getInstance().currentAndroidModule.getProjectAbsolutePath()
+                DataRefManager.getInstance().currentAndroidModule.getProjectAbsolutePath()
                         + ProjectsPathUtils.ANDROID_MANIFEST_PATH;
         if (!Files.isFile(path)) {
             String codeManifest = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<manifest/>";
@@ -565,7 +565,7 @@ public class ServicesReceiversProvidersPerformer {
 
         private void ini() {
             prefixPathToElementType =
-                    ProjectsModules.getInstance().currentAndroidModule.getProjectAbsolutePath();
+                    DataRefManager.getInstance().currentAndroidModule.getProjectAbsolutePath();
             if (Files.isDirectory(prefixPathToElementType + ProjectsPathUtils.KOTLIN_PATH))
                 prefixPathToElementType += ProjectsPathUtils.KOTLIN_PATH;
             else prefixPathToElementType += ProjectsPathUtils.JAVA_PATH;
@@ -580,7 +580,7 @@ public class ServicesReceiversProvidersPerformer {
         private void searchForPrefixPkg() {
             boolean found = false;
             String name = null;
-            String pkg = ProjectsModules.getInstance().currentAndroidModule.getPackageName();
+            String pkg = DataRefManager.getInstance().currentAndroidModule.getPackageName();
             prefixRecommanded = "my.modulename";
             if (pkg != null && ResCodeUtils.isAValidePackageName(pkg)) prefixRecommanded = pkg;
             if (!prefixRecommanded.endsWith("." + getTagType() + "s"))
@@ -600,7 +600,7 @@ public class ServicesReceiversProvidersPerformer {
                     if (!found) return;
 
                     String path =
-                            ProjectsModules.getInstance()
+                            DataRefManager.getInstance()
                                     .currentAndroidModule
                                     .getProjectAbsolutePath();
                     if (Files.isDirectory(path + ProjectsPathUtils.JAVA_PATH))
@@ -714,7 +714,7 @@ public class ServicesReceiversProvidersPerformer {
                     getTagName() + " Manager",
                     C.getString(R.string.module)
                             + " : "
-                            + ProjectsModules.getInstance().currentAndroidModule.getPath(),
+                            + DataRefManager.getInstance().currentAndroidModule.getPath(),
                     getTagName()
                             + " : "
                             + txt1.textInput.getText().toString()
@@ -810,7 +810,7 @@ public class ServicesReceiversProvidersPerformer {
                             C,
                             getTagName(),
                             "module : "
-                                    + ProjectsModules.getInstance().currentAndroidModule.getName());
+                                    + DataRefManager.getInstance().currentAndroidModule.getName());
 
             txt1 = LayoutPeManagerViewPropertiesActivityBinding.inflate(LayoutInflater.from(C));
             txt2 = LayoutPeManagerViewPropertiesActivityBinding.inflate(LayoutInflater.from(C));
