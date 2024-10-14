@@ -356,7 +356,7 @@ public class ResourcesValuesFixer {
     }
 
     public static boolean matchToDefaultRefRes(String ref) {
-        String pattern = "\\@a-z\\/[a-zA-Z][a-zA-Z0-9_]";
+        String pattern = "\\@[a-z]\\/[a-zA-Z][a-zA-Z0-9_]";
         return ref.matches(pattern);
     }
 
