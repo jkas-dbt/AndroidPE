@@ -4,8 +4,8 @@ plugins {
 
 android {
     namespace = "$PACKAGE_NAME$"
-    compileSdk = 33
-    buildToolsVersion = "33.0.4"
+    compileSdk = 34
+    buildToolsVersion = "34.0.4"
 
     defaultConfig {
         applicationId = "$PACKAGE_NAME$"
@@ -40,5 +40,5 @@ android {
 dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.12.0")
 }

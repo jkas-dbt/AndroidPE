@@ -7,7 +7,7 @@ import android.view.View;
 import jkas.androidpe.explorer.codeEditorImpl.LoadTreeViewAndroid;
 import jkas.androidpe.explorer.codeEditorImpl.LoadTreeViewProject;
 import jkas.androidpe.explorer.databinding.CodeEditorExplorerBinding;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 
 /**
  * @author JKas
@@ -66,8 +66,8 @@ public class CodeEditorExplorer {
 
     private void init() {
         binding = CodeEditorExplorerBinding.inflate(LayoutInflater.from(C));
-        LEA = new LoadTreeViewAndroid(C, ProjectsModules.getInstance().P.getAbsolutePath());
-        LEP = new LoadTreeViewProject(C, ProjectsModules.getInstance().P.getAbsolutePath());
+        LEA = new LoadTreeViewAndroid(C, DataRefManager.getInstance().P.getAbsolutePath());
+        LEP = new LoadTreeViewProject(C, DataRefManager.getInstance().P.getAbsolutePath());
     }
 
     public View getView() {

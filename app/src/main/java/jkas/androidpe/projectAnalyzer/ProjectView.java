@@ -13,8 +13,8 @@ import androidx.appcompat.widget.PopupMenu;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.elevation.SurfaceColors;
 import jkas.androidpe.activities.ProjectEditorActivity;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
 import jkas.androidpe.resources.R;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.dialog.DialogBuilder;
 import jkas.androidpe.databinding.LayoutProjectViewBinding;
 import jkas.androidpe.dialog.ArchiveDialog;
@@ -91,7 +91,7 @@ public class ProjectView {
                 .setOnClickListener(
                         (v4) -> {
                             if (Files.isDirectory(P.getAbsolutePath())) {
-                                ProjectsModules.getInstance().P = P;
+                                DataRefManager.getInstance().P = P;
                                 CodeUtil.startActivity(C, ProjectEditorActivity.class);
                             } else {
                                 bindingPV.getRoot().setVisibility(View.GONE);

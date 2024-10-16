@@ -4,8 +4,8 @@ plugins {
 
 android {
     namespace = "$PACKAGE_NAME$"
-    compileSdk = 33
-    buildToolsVersion = "33.0.4"
+    compileSdk = 34
+    buildToolsVersion = "34.0.4"
 
     defaultConfig {
         minSdk = 21

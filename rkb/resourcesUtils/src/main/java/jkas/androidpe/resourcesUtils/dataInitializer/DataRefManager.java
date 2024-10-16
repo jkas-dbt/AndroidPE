@@ -1,6 +1,9 @@
 package jkas.androidpe.resourcesUtils.dataInitializer;
 
+import android.widget.Toast;
 import java.util.ArrayList;
+import jkas.androidpe.project.AndroidModule;
+import jkas.androidpe.project.Project;
 import jkas.androidpe.resourcesUtils.modules.ModuleProject;
 import jkas.androidpe.resourcesUtils.modules.ModuleRes;
 import jkas.androidpe.resourcesUtils.requests.ProjectDataRequested;
@@ -11,9 +14,14 @@ import jkas.androidpe.resourcesUtils.requests.ProjectDataRequested;
 public class DataRefManager {
     private static DataRefManager INSTANCE;
 
+    public String filePathSelected;
+    public Project P;
     public ModuleRes currentModuleRes;
+    public ModuleProject currentModuleProject;
+    public AndroidModule currentAndroidModule;
     public ArrayList<ModuleRes> listModuleRes = new ArrayList<>();
     public ArrayList<ModuleProject> listModuleProject = new ArrayList<>();
+    public ArrayList<AndroidModule> listAndroidModule = new ArrayList<>();
 
     private DataRefManager() {
         listModuleProject.clear();
@@ -29,14 +37,19 @@ public class DataRefManager {
         initData();
     }
 
-    public void setCurrentModuleRes(String currentFilePath) {
-        for (ModuleProject mp : listModuleProject)
-            if (currentFilePath.startsWith(mp.getAbsolutePath()))
-                for (ModuleRes mr : listModuleRes)
-                    if (mp.getPath().equals(mr.getPath())) {
-                        currentModuleRes = mr;
-                        return;
-                    }
+    public void setCurrentModuleRes(String path) {
+        for (ModuleProject mp : listModuleProject) {
+            if (path.equals(mp.getPath())) {
+                currentModuleProject = mp;
+                break;
+            }
+        }
+        for (ModuleRes mr : listModuleRes) {
+            if (path.equals(mr.getPath())) {
+                currentModuleRes = mr;
+                break;
+            }
+        }
     }
 
     public void initData() {

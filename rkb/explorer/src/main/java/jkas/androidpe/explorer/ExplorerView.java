@@ -1,23 +1,18 @@
 package jkas.androidpe.explorer;
 
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.elevation.SurfaceColors;
-
 import jkas.androidpe.explorer.adapter.ExplorerViewAdapter;
 import jkas.androidpe.explorer.adapter.ExplorerViewAdapter;
 import jkas.androidpe.explorer.databinding.ExplorerViewBinding;
@@ -25,12 +20,11 @@ import jkas.androidpe.explorer.dialog.DialogDeletePaths;
 import jkas.androidpe.explorer.dialog.DialogNewFile;
 import jkas.androidpe.explorer.dialog.DialogNewFolder;
 import jkas.androidpe.logger.Logger;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
 import jkas.androidpe.resources.R;
 import jkas.androidpe.resourcesUtils.adapters.BottomMarginItemDecorationAdapter;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.utils.ProjectsPathUtils;
 import jkas.codeUtil.Files;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
@@ -70,7 +64,7 @@ public class ExplorerView {
         events();
         setDefault();
 
-        rootLookedAt = ProjectsModules.getInstance().P.getAbsolutePath();
+        rootLookedAt = DataRefManager.getInstance().P.getAbsolutePath();
     }
 
     private void events() {

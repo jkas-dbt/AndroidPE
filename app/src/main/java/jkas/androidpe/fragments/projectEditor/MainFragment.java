@@ -15,9 +15,9 @@ import java.util.concurrent.Executors;
 import jkas.androidpe.databinding.FragmentPeMainBinding;
 import jkas.androidpe.logger.Logger;
 import jkas.androidpe.resources.R;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
 import jkas.androidpe.projectUtils.utils.PathPackager;
 import jkas.androidpe.projectUtils.utils.PathPackagerBuilder;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.utils.ProjectsPathUtils;
 import jkas.androidpe.resourcesUtils.utils.ResourcesValuesFixer;
 import jkas.androidpe.views.projectEditor.PathPackagerView;
@@ -60,7 +60,7 @@ public class MainFragment extends Fragment {
 
     private void loadData() {
         setAllDataEmpty();
-        if (ProjectsModules.getInstance().currentAndroidModule == null) {
+        if (DataRefManager.getInstance().currentAndroidModule == null) {
             Logger.error(SRC, "Data cannot be loaded. No modules are selected.");
             return;
         }
@@ -84,7 +84,7 @@ public class MainFragment extends Fragment {
     private void loadDataLayout() {
         try {
             String path =
-                    ProjectsModules.getInstance().currentAndroidModule.getProjectAbsolutePath()
+                    DataRefManager.getInstance().currentAndroidModule.getProjectAbsolutePath()
                             + ProjectsPathUtils.RES_PATH;
             PathPackagerBuilder PPB = new PathPackagerBuilder();
             PPB.setRootResDir(path);
@@ -115,7 +115,7 @@ public class MainFragment extends Fragment {
         final ArrayList<String> listPkg = new ArrayList<>();
         try {
             String prefixPath =
-                    ProjectsModules.getInstance().currentAndroidModule.getProjectAbsolutePath();
+                    DataRefManager.getInstance().currentAndroidModule.getProjectAbsolutePath();
             if (Files.isDirectory(prefixPath + ProjectsPathUtils.JAVA_PATH))
                 listPkg.add(prefixPath + ProjectsPathUtils.JAVA_PATH);
             if (Files.isDirectory(prefixPath + ProjectsPathUtils.KOTLIN_PATH))

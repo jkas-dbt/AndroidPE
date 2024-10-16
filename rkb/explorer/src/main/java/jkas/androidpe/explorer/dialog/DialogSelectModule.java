@@ -5,7 +5,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import java.util.ArrayList;
 import jkas.androidpe.project.AndroidModule;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.dialog.DialogBuilder;
 import jkas.androidpe.resources.R;
 
@@ -41,10 +41,10 @@ public class DialogSelectModule {
         try {
             final ArrayList<String> listAvailable = new ArrayList<>();
 
-            for (AndroidModule am : ProjectsModules.getInstance().listOfAllAndroidModule) {
-                if (am.getPath().equals(ProjectsModules.getInstance().currentAndroidModule.getPath())) continue;
+            for (AndroidModule am : DataRefManager.getInstance().listAndroidModule) {
+                if (am.getPath().equals(DataRefManager.getInstance().currentAndroidModule.getPath())) continue;
                 boolean verif = false;
-                for (String s : ProjectsModules.getInstance().currentAndroidModule.getRefToOthersModules()) {
+                for (String s : DataRefManager.getInstance().currentAndroidModule.getRefToOthersModules()) {
                     if (s.equals(am.getPath())) {
                         verif = true;
                         break;
@@ -100,21 +100,21 @@ public class DialogSelectModule {
 
     private void initMulti() {
         try {
-            String[] listModules = new String[ProjectsModules.getInstance().listOfAllAndroidModule.size()];
+            String[] listModules = new String[DataRefManager.getInstance().listAndroidModule.size()];
             boolean[] checkedItems = new boolean[listModules.length];
 
             int i = 0;
-            for (AndroidModule am : ProjectsModules.getInstance().listOfAllAndroidModule) {
+            for (AndroidModule am : DataRefManager.getInstance().listAndroidModule) {
                 checkedItems[i] = false;
-                if (am.getPath().equals(ProjectsModules.getInstance().currentAndroidModule.getPath())) {
+                if (am.getPath().equals(DataRefManager.getInstance().currentAndroidModule.getPath())) {
                     listModules[i] =
-                            ProjectsModules.getInstance().listOfAllAndroidModule.get(i).getPath() + " (Current)";
+                            DataRefManager.getInstance().listAndroidModule.get(i).getPath() + " (Current)";
                     i++;
                     continue;
                 }
-                listModules[i] = ProjectsModules.getInstance().listOfAllAndroidModule.get(i).getPath();
+                listModules[i] = DataRefManager.getInstance().listAndroidModule.get(i).getPath();
 
-                for (String m : ProjectsModules.getInstance().currentAndroidModule.getRefToOthersModules())
+                for (String m : DataRefManager.getInstance().currentAndroidModule.getRefToOthersModules())
                     if (am.getPath().equals(m)) {
                         checkedItems[i] = true;
                         break;
@@ -128,7 +128,7 @@ public class DialogSelectModule {
                             checkedItems,
                             (dialog, swich, isChecked) -> {
                                 if (!listModules[swich].equals(
-                                        ProjectsModules.getInstance().currentAndroidModule.getPath()))
+                                        DataRefManager.getInstance().currentAndroidModule.getPath()))
                                     checkedItems[swich] = isChecked;
                             })
                     .setPositiveButton(
@@ -150,14 +150,14 @@ public class DialogSelectModule {
     }
 
     private void initSingle() {
-        String[] listModules = new String[ProjectsModules.getInstance().listOfAllAndroidModule.size()];
+        String[] listModules = new String[DataRefManager.getInstance().listAndroidModule.size()];
 
-        for (int i = 0; i < ProjectsModules.getInstance().listOfAllAndroidModule.size(); i++) {
-            listModules[i] = ProjectsModules.getInstance().listOfAllAndroidModule.get(i).getPath();
+        for (int i = 0; i < DataRefManager.getInstance().listAndroidModule.size(); i++) {
+            listModules[i] = DataRefManager.getInstance().listAndroidModule.get(i).getPath();
             try {
-                if (ProjectsModules.getInstance().currentAndroidModule
+                if (DataRefManager.getInstance().currentAndroidModule
                         .getPath()
-                        .equals(ProjectsModules.getInstance().listOfAllAndroidModule.get(i).getPath()))
+                        .equals(DataRefManager.getInstance().listAndroidModule.get(i).getPath()))
                     defaultOption = i;
             } catch (Exception e) {
                 e.printStackTrace();

@@ -3,8 +3,8 @@ package jkas.androidpe.projectUtils.dataCreator;
 import android.content.Context;
 import android.widget.Toast;
 import jkas.androidpe.logger.Logger;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
 import jkas.androidpe.resources.R;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.utils.ProjectsPathUtils;
 import jkas.codeUtil.Files;
 import jkas.codeUtil.XmlManager;
@@ -51,7 +51,7 @@ public class ActivitiesCreator {
                 "Activity : " + className + C.getString(R.string.added),
                 C.getString(R.string.module)
                         + " : "
-                        + ProjectsModules.getInstance().currentAndroidModule.getPath(),
+                        + DataRefManager.getInstance().currentAndroidModule.getPath(),
                 C.getString(R.string.package_name) + " : " + pkg);
         listener.onCreate(true);
         return true;
@@ -60,7 +60,7 @@ public class ActivitiesCreator {
     private boolean writeInAMSuccessed() {
         XmlManager AM = new XmlManager(C);
         String path2Manifest =
-                ProjectsModules.getInstance().currentAndroidModule.getProjectAbsolutePath()
+                DataRefManager.getInstance().currentAndroidModule.getProjectAbsolutePath()
                         + ProjectsPathUtils.ANDROID_MANIFEST_PATH;
         if (!Files.isFile(path2Manifest)) {
             Logger.error(SRC, "AndroidManifest.xml : " + C.getString(R.string.not_found));
@@ -113,7 +113,7 @@ public class ActivitiesCreator {
     }
 
     private void init() {
-        pathCodeFile = ProjectsModules.getInstance().currentAndroidModule.getProjectAbsolutePath();
+        pathCodeFile = DataRefManager.getInstance().currentAndroidModule.getProjectAbsolutePath();
         if (Files.isDirectory(pathCodeFile + ProjectsPathUtils.KOTLIN_PATH))
             pathCodeFile += ProjectsPathUtils.KOTLIN_PATH;
         else pathCodeFile += ProjectsPathUtils.JAVA_PATH;
@@ -137,7 +137,7 @@ public class ActivitiesCreator {
         }
 
         pathLayoutFile =
-                ProjectsModules.getInstance().currentAndroidModule.getProjectAbsolutePath()
+                DataRefManager.getInstance().currentAndroidModule.getProjectAbsolutePath()
                         + ProjectsPathUtils.LAYOUT_PATH;
         pathLayoutFile += "/" + layoutName + ".xml";
         codeLayout = FilesRef.Resources.Layout.layoutXml;

@@ -9,9 +9,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import java.util.concurrent.Executors;
 import jkas.androidpe.explorer.databinding.DialogNewModuleCreatorBinding;
 import jkas.androidpe.logger.Logger;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
 import jkas.androidpe.projectUtils.dataCreator.ModulesCreator;
 import jkas.androidpe.projectUtils.dataCreator.ProjectsCreator;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.utils.ResCodeUtils;
 import jkas.androidpe.resourcesUtils.dialog.DialogBuilder;
 import jkas.androidpe.resources.R;
@@ -178,7 +178,7 @@ public class DialogNewModuleCreator {
         binding.toggleBtnModuleType.check(binding.btnAndroidLib.getId());
         binding.toggleBtnLanguage.check(binding.btnJava.getId());
 
-        String path = ProjectsModules.getInstance().P.getAbsolutePath() + "/build.gradle.kts";
+        String path = DataRefManager.getInstance().P.getAbsolutePath() + "/build.gradle.kts";
         if (Files.isFile(path)) {
             binding.cbKotlinScript.setChecked(true);
             binding.toggleBtnLanguage.check(binding.btnKotlin.getId());

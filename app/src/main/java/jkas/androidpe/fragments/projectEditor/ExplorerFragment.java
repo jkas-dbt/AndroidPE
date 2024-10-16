@@ -12,9 +12,9 @@ import androidx.fragment.app.FragmentActivity;
 import jkas.androidpe.activities.CodeEditorActivity;
 import jkas.androidpe.logger.Logger;
 import jkas.androidpe.resources.R;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
 import jkas.androidpe.databinding.FragmentPeExplorerBinding;
 import jkas.androidpe.explorer.ExplorerView;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.dialog.DialogBuilder;
 import jkas.codeUtil.CodeUtil;
 import jkas.codeUtil.Files;
@@ -75,11 +75,11 @@ public class ExplorerFragment extends Fragment {
     public void refresh() {
         if (isVisible() && binding != null) {
             try {
-                if (ProjectsModules.getInstance().currentAndroidModule == null)
-                    EV.initPath(ProjectsModules.getInstance().P.getAbsolutePath());
+                if (DataRefManager.getInstance().currentAndroidModule == null)
+                    EV.initPath(DataRefManager.getInstance().P.getAbsolutePath());
                 else
                     EV.initPath(
-                            ProjectsModules.getInstance()
+                            DataRefManager.getInstance()
                                     .currentAndroidModule
                                     .getProjectAbsolutePath());
             } catch (Exception e) {
@@ -97,7 +97,7 @@ public class ExplorerFragment extends Fragment {
                 new ExplorerView.OnAnyChangeDetected() {
 
                     public void onFileClick(View view, String path) {
-                        ProjectsModules.getInstance().filePathSelected = path;
+                        DataRefManager.getInstance().filePathSelected = path;
                         CodeUtil.startActivity(C, CodeEditorActivity.class);
                     }
 
@@ -117,24 +117,24 @@ public class ExplorerFragment extends Fragment {
     private void event() {
         binding.btnRootModule.setOnClickListener(
                 (v) -> {
-                    if (ProjectsModules.getInstance().currentAndroidModule == null) {
+                    if (DataRefManager.getInstance().currentAndroidModule == null) {
                         currentAndroidMmoduleNull();
                         return;
                     }
                     loadData(
-                            ProjectsModules.getInstance()
+                            DataRefManager.getInstance()
                                     .currentAndroidModule
                                     .getProjectAbsolutePath());
                 });
 
         binding.btnJavaKotlin.setOnClickListener(
                 (v) -> {
-                    if (ProjectsModules.getInstance().currentAndroidModule == null) {
+                    if (DataRefManager.getInstance().currentAndroidModule == null) {
                         currentAndroidMmoduleNull();
                         return;
                     }
                     final String path =
-                            ProjectsModules.getInstance()
+                            DataRefManager.getInstance()
                                             .currentAndroidModule
                                             .getProjectAbsolutePath()
                                     + "/src/main/";
@@ -146,12 +146,12 @@ public class ExplorerFragment extends Fragment {
 
         binding.btnRes.setOnClickListener(
                 (v) -> {
-                    if (ProjectsModules.getInstance().currentAndroidModule == null) {
+                    if (DataRefManager.getInstance().currentAndroidModule == null) {
                         currentAndroidMmoduleNull();
                         return;
                     }
                     loadData(
-                            ProjectsModules.getInstance()
+                            DataRefManager.getInstance()
                                             .currentAndroidModule
                                             .getProjectAbsolutePath()
                                     + "/src/main/res");
@@ -159,12 +159,12 @@ public class ExplorerFragment extends Fragment {
 
         binding.btnLayout.setOnClickListener(
                 (v) -> {
-                    if (ProjectsModules.getInstance().currentAndroidModule == null) {
+                    if (DataRefManager.getInstance().currentAndroidModule == null) {
                         currentAndroidMmoduleNull();
                         return;
                     }
                     loadData(
-                            ProjectsModules.getInstance()
+                            DataRefManager.getInstance()
                                             .currentAndroidModule
                                             .getProjectAbsolutePath()
                                     + "/src/main/res/layout");
@@ -172,12 +172,12 @@ public class ExplorerFragment extends Fragment {
 
         binding.btnValues.setOnClickListener(
                 (v) -> {
-                    if (ProjectsModules.getInstance().currentAndroidModule == null) {
+                    if (DataRefManager.getInstance().currentAndroidModule == null) {
                         currentAndroidMmoduleNull();
                         return;
                     }
                     loadData(
-                            ProjectsModules.getInstance()
+                            DataRefManager.getInstance()
                                             .currentAndroidModule
                                             .getProjectAbsolutePath()
                                     + "/src/main/res/values");
@@ -185,12 +185,12 @@ public class ExplorerFragment extends Fragment {
 
         binding.btnAssets.setOnClickListener(
                 (v) -> {
-                    if (ProjectsModules.getInstance().currentAndroidModule == null) {
+                    if (DataRefManager.getInstance().currentAndroidModule == null) {
                         currentAndroidMmoduleNull();
                         return;
                     }
                     loadData(
-                            ProjectsModules.getInstance()
+                            DataRefManager.getInstance()
                                             .currentAndroidModule
                                             .getProjectAbsolutePath()
                                     + "/src/main/assets");
@@ -198,12 +198,12 @@ public class ExplorerFragment extends Fragment {
 
         binding.btnLibs.setOnClickListener(
                 (v) -> {
-                    if (ProjectsModules.getInstance().currentAndroidModule == null) {
+                    if (DataRefManager.getInstance().currentAndroidModule == null) {
                         currentAndroidMmoduleNull();
                         return;
                     }
                     loadData(
-                            ProjectsModules.getInstance()
+                            DataRefManager.getInstance()
                                             .currentAndroidModule
                                             .getProjectAbsolutePath()
                                     + "/libs");

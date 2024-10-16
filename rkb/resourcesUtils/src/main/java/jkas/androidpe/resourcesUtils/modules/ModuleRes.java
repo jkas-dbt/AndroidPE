@@ -53,6 +53,23 @@ public class ModuleRes {
         valuesStyles.clear();
     }
 
+    public boolean exists(String ref) {
+        if (ref.contains("/")) ref = ref.split("/")[0];
+        if (drawables.containsKey(ref)) return true;
+        else if (mipmaps.containsKey(ref)) return true;
+        else if (layouts.containsKey(ref)) return true;
+        else if (menus.containsKey(ref)) return true;
+        else if (raws.containsKey(ref)) return true;
+        else if (valuesStrings.containsKey(ref)) return true;
+        else if (valuesColors.containsKey(ref)) return true;
+        else if (valuesBools.containsKey(ref)) return true;
+        else if (valuesDimens.containsKey(ref)) return true;
+        else if (valuesIntegers.containsKey(ref)) return true;
+        else if (valuesStyles.containsKey(ref)) return true;
+        else if (valuesArrays.containsKey(ref)) return true;
+        return false;
+    }
+
     public void initValues() {
         init();
         XmlManager xml = new XmlManager(C);

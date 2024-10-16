@@ -11,17 +11,22 @@ import jkas.codeUtil.Files;
 public class DataResInitializer {
     private static Context C;
     private static ModuleRes mRes;
-    private static ModuleProject module;
+    private static ModuleProject mProject;
 
     public static synchronized void init(Context c) {
         C = c;
         DataRefManager.getInstance().listModuleRes.clear();
         for (ModuleProject mp : DataRefManager.getInstance().listModuleProject) {
             mRes = new ModuleRes(C, mp.getPath());
-            module = mp;
+            mProject = mp;
             initModule();
             mRes.initValues();
             DataRefManager.getInstance().listModuleRes.add(mRes);
+        }
+
+        if (DataRefManager.getInstance().currentModuleRes != null) {
+            DataRefManager.getInstance()
+                    .setCurrentModuleRes(DataRefManager.getInstance().currentModuleRes.getPath());
         }
     }
 
@@ -36,13 +41,13 @@ public class DataResInitializer {
 
     private static void loadValues() {
         mRes.values.clear();
-        for (String path : module.getValues())
+        for (String path : mProject.getValues())
             for (String file : Files.listFile(path)) mRes.values.add(file);
     }
 
     private static void loadRaws() {
         mRes.raws.clear();
-        for (String path : module.getRaws()) {
+        for (String path : mProject.getRaws()) {
             for (String file : Files.listFile(path)) {
                 String name = Files.getNameFromAbsolutePath(file);
                 name = name.substring(0, name.lastIndexOf("."));
@@ -53,7 +58,7 @@ public class DataResInitializer {
 
     private static void loadMenus() {
         mRes.menus.clear();
-        for (String path : module.getMenus()) {
+        for (String path : mProject.getMenus()) {
             for (String file : Files.listFile(path)) {
                 String name = Files.getNameFromAbsolutePath(file);
                 name = name.substring(0, name.lastIndexOf("."));
@@ -64,7 +69,7 @@ public class DataResInitializer {
 
     private static void loadLayouts() {
         mRes.layouts.clear();
-        for (String path : module.getLayouts()) {
+        for (String path : mProject.getLayouts()) {
             for (String file : Files.listFile(path)) {
                 String name = Files.getNameFromAbsolutePath(file);
                 name = name.substring(0, name.lastIndexOf("."));
@@ -75,7 +80,7 @@ public class DataResInitializer {
 
     private static void loadMipmaps() {
         mRes.mipmaps.clear();
-        for (String path : module.getMipmaps()) {
+        for (String path : mProject.getMipmaps()) {
             for (String file : Files.listFile(path)) {
                 String name = Files.getNameFromAbsolutePath(file);
                 name = name.substring(0, name.lastIndexOf("."));
@@ -86,7 +91,7 @@ public class DataResInitializer {
 
     private static void loadDrawables() {
         mRes.drawables.clear();
-        for (String path : module.getDrawables()) {
+        for (String path : mProject.getDrawables()) {
             for (String file : Files.listFile(path)) {
                 String name = Files.getNameFromAbsolutePath(file);
                 name = name.substring(0, name.lastIndexOf("."));

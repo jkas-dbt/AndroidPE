@@ -3,11 +3,11 @@ package jkas.androidpe.initializer;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import jkas.androidpe.logger.Logger;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
 import jkas.androidpe.project.AndroidModule;
 import jkas.androidpe.projectUtils.utils.ProjectsUtils;
 import jkas.androidpe.resources.R;
 import jkas.androidpe.project.Project;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.utils.ResCodeUtils;
 import jkas.codeUtil.Files;
 
@@ -22,7 +22,7 @@ public class LogicsAnalyzer {
 
     public LogicsAnalyzer(AppCompatActivity c) {
         C = c;
-        P = ProjectsModules.getInstance().P;
+        P = DataRefManager.getInstance().P;
     }
 
     public void iniData() {
@@ -34,51 +34,62 @@ public class LogicsAnalyzer {
 
     private void setDefaultCurrentAndroidModule() {
         boolean verif = false;
-        for (AndroidModule am : ProjectsModules.getInstance().listOfAllAndroidModule) {
+        for (AndroidModule am : DataRefManager.getInstance().listAndroidModule) {
             verif = true;
             if (am.getPath().equals(":app")) {
-                ProjectsModules.getInstance().currentAndroidModule = am;
-                break;
+                DataRefManager.getInstance().currentAndroidModule = am;
+                DataRefManager.getInstance().setCurrentModuleRes(":app");
+                return;
             }
         }
-        if (verif && ProjectsModules.getInstance().currentAndroidModule == null)
-            ProjectsModules.getInstance().currentAndroidModule =
-                    ProjectsModules.getInstance().listOfAllAndroidModule.get(0);
-
-        if (ProjectsModules.getInstance().currentAndroidModule == null)
-            if (ProjectsModules.getInstance().listOfAllAndroidModule.size() > 0)
-                ProjectsModules.getInstance().currentAndroidModule =
-                        ProjectsModules.getInstance().listOfAllAndroidModule.get(0);
+        if (DataRefManager.getInstance().listAndroidModule.size() > 0) {
+            DataRefManager.getInstance().currentAndroidModule =
+                    DataRefManager.getInstance().listAndroidModule.get(0);
+        }
     }
 
     private void checkIfAllModulesExists() {
-        ProjectsModules.getInstance().listOfAllAndroidModule.clear();
-        if (includes != null)
-            for (final String s : includes) {
-                String pathModule = P.getAbsolutePath() + s.replace(":", "/");
-                String pathBuildGradle = pathModule + "/build.gradle";
+        DataRefManager.getInstance().listAndroidModule.clear();
+        for (final String s : includes) {
+            String pathModule = P.getAbsolutePath() + s.replace(":", "/");
+            String pathBuildGradle = pathModule + "/build.gradle";
 
-                if (!Files.isDirectory(pathModule)) continue;
-                if (!Files.isFile(pathBuildGradle))
-                    if (!Files.isFile(pathBuildGradle + ".kts")) continue;
-                    else pathBuildGradle += ".kts";
-                if (!Files.isFile(pathBuildGradle)) continue;
-                final AndroidModule am =
-                        new AndroidModule(Files.getNameFromAbsolutePath(pathModule), s, pathModule);
-
-                final ArrayList<String> modules = new ArrayList<>();
-                String code = Files.readFile(pathBuildGradle).replace(".", ":").trim();
-                code = ResCodeUtils.removeJavaComment(code);
-
-                for (String r : includes)
-                    if (code.contains(r) && !r.equals(am.getPath()))
-                        if (code.contains(r + "')")
-                                || code.contains(r + "\")")
-                                || code.contains(r + ")")) modules.add(r);
-                am.setRefToOthersModules(modules);
-
-                ProjectsModules.getInstance().listOfAllAndroidModule.add(am);
+            boolean found = false;
+            if (Files.isDirectory(pathModule)) {
+                found = Files.isFile(pathBuildGradle);
+                if (!found) {
+                    pathBuildGradle += ".kts";
+                    found = Files.isFile(pathBuildGradle);
+                }
             }
+
+            if (!found) {
+                Logger.error(
+                        "Modules Manager",
+                        C.getString(R.string.module)
+                                + " (\""
+                                + s
+                                + "\") "
+                                + C.getString(R.string.not_found));
+                continue;
+            }
+
+            final AndroidModule am =
+                    new AndroidModule(Files.getNameFromAbsolutePath(pathModule), s, pathModule);
+
+            final ArrayList<String> modules = new ArrayList<>();
+            String code = Files.readFile(pathBuildGradle).replace(".", ":").trim();
+            code = ResCodeUtils.removeJavaComment(code);
+
+            for (String r : includes)
+                if (code.contains(r) && !r.equals(am.getPath()))
+                    if (code.contains(r + "')")
+                            || code.contains(r + "\")")
+                            || code.contains(r + ")")) modules.add(r);
+            am.setRefToOthersModules(modules);
+
+            DataRefManager.getInstance().listAndroidModule.add(am);
+        }
     }
 
     private void searchDataInfoFromSettingsGradleFile() {
@@ -89,7 +100,7 @@ public class LogicsAnalyzer {
         } else if (Files.isFile(path + ".kts")) path = path + ".kts";
 
         includes = ProjectsUtils.Gradle.getModulesIncluded(path);
-        if (includes != null) Logger.info(SRC, C.getString(R.string.modules_found));
+        if (includes.size() > 0) Logger.info(SRC, C.getString(R.string.modules_found));
         else Logger.info(SRC, C.getString(R.string.no_modules_found));
 
         if (includes.size() == 0) {
@@ -100,7 +111,7 @@ public class LogicsAnalyzer {
                         ":app" + C.getString(R.string.added),
                         "But a problem was detected. "
                                 + "your Gradle file is not properly configured or contains errors."
-                                + " lease check your configuration file at the project root.");
+                                + " please check your configuration file at the project root.");
             }
         }
     }

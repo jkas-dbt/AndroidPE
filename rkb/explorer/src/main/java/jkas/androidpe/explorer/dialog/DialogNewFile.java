@@ -7,9 +7,9 @@ import android.widget.Toast;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import jkas.androidpe.logger.Logger;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
 import jkas.androidpe.projectUtils.dataCreator.FilesRef;
 import jkas.androidpe.projectUtils.utils.ValuesTools;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.utils.ResCodeUtils;
 import jkas.androidpe.resources.R;
 import jkas.androidpe.resourcesUtils.dialog.DialogBuilder;
@@ -238,7 +238,7 @@ public class DialogNewFile {
             txtCode = txtCode.replace("$CLASS_NAME$", txt.substring(0, txt.indexOf(".")));
             { // searching for package name
                 String stringPattern =
-                        (ProjectsModules.getInstance().P.getAbsolutePath()
+                        (DataRefManager.getInstance().P.getAbsolutePath()
                                         + "/.*"
                                         + "/src/main/java|kotlin")
                                 .replace("/", "\\/");

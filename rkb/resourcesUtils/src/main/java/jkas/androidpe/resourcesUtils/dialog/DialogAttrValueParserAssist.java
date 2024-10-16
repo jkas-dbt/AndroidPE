@@ -23,6 +23,7 @@ import jkas.androidpe.resourcesUtils.modules.ModuleProject;
 import jkas.androidpe.resourcesUtils.modules.ModuleRes;
 import jkas.androidpe.resourcesUtils.utils.ProjectsPathUtils;
 import jkas.androidpe.resourcesUtils.utils.ResourcesValuesFixer;
+import jkas.codeUtil.CodeUtil;
 import jkas.codeUtil.Files;
 import jkas.codeUtil.XmlManager;
 import org.w3c.dom.Element;
@@ -69,8 +70,8 @@ public class DialogAttrValueParserAssist {
 
     private void searchAllFilesRefForAdd() {
         ModuleProject MP = null;
+        String currentPath = DataRefManager.getInstance().currentModuleRes.getPath();
         for (ModuleProject mp : DataRefManager.getInstance().listModuleProject) {
-            String currentPath = DataRefManager.getInstance().currentModuleRes.getPath();
             if (currentPath.equals(mp.getPath())) {
                 MP = mp;
             }
@@ -95,31 +96,28 @@ public class DialogAttrValueParserAssist {
 
     private void loadData() {
         allData.clear();
-        if (typeValue.equals("@string"))
-            allData.putAll(DataRefManager.getInstance().currentModuleRes.valuesStrings);
-        else if (typeValue.contains("color"))
-            allData.putAll(DataRefManager.getInstance().currentModuleRes.valuesColors);
-        else if (typeValue.equals("@bool"))
-            allData.putAll(DataRefManager.getInstance().currentModuleRes.valuesBools);
-        else if (typeValue.equals("@dimen"))
-            allData.putAll(DataRefManager.getInstance().currentModuleRes.valuesDimens);
-        else if (typeValue.equals("@integer"))
-            allData.putAll(DataRefManager.getInstance().currentModuleRes.valuesIntegers);
-        else if (typeValue.equals("@style"))
-            allData.putAll(DataRefManager.getInstance().currentModuleRes.valuesStyles);
+        loadData(DataRefManager.getInstance().currentModuleRes);
+        for (var path : DataRefManager.getInstance().currentModuleProject.getRefToOtherModule()) {
+            for (var module : DataRefManager.getInstance().listModuleRes) {
+                if (path.equals(module.getPath())) loadData(module);
+            }
+        }
+    }
+
+    private void loadData(ModuleRes module) {
+        if (typeValue.equals("@string")) allData.putAll(module.valuesStrings);
+        else if (typeValue.contains("color")) allData.putAll(module.valuesColors);
+        else if (typeValue.equals("@bool")) allData.putAll(module.valuesBools);
+        else if (typeValue.equals("@dimen")) allData.putAll(module.valuesDimens);
+        else if (typeValue.equals("@integer")) allData.putAll(module.valuesIntegers);
+        else if (typeValue.equals("@style")) allData.putAll(module.valuesStyles);
+        else if (typeValue.equals("@layout")) allData.putAll(module.layouts);
+        else if (typeValue.equals("@menu")) allData.putAll(module.menus);
+        else if (typeValue.equals("@raw")) allData.putAll(module.raws);
         if (typeValue.contains("drawable")) {
-            allData.putAll(DataRefManager.getInstance().currentModuleRes.drawables);
-            allData.putAll(DataRefManager.getInstance().currentModuleRes.mipmaps);
-        } else if (typeValue.equals("@drawable")) {
-            allData.clear();
-            allData.putAll(DataRefManager.getInstance().currentModuleRes.drawables);
-            allData.putAll(DataRefManager.getInstance().currentModuleRes.mipmaps);
-        } else if (typeValue.equals("@layout"))
-            allData.putAll(DataRefManager.getInstance().currentModuleRes.layouts);
-        else if (typeValue.equals("@menu"))
-            allData.putAll(DataRefManager.getInstance().currentModuleRes.menus);
-        else if (typeValue.equals("@raw"))
-            allData.putAll(DataRefManager.getInstance().currentModuleRes.raws);
+            allData.putAll(module.drawables);
+            allData.putAll(module.mipmaps);
+        }
     }
 
     private void events() {
@@ -203,9 +201,26 @@ public class DialogAttrValueParserAssist {
                             .setNegativeButton(R.string.cancel, null)
                             .setPositiveButton(
                                     "OK",
-                                    (dialog, which) ->
+                                    (dialog, which) -> {
+                                        if (binding.editValue.isEnabled())
+                                            if (binding.editRef
+                                                    .getText()
+                                                    .toString()
+                                                    .trim()
+                                                    .isEmpty())
+                                                binding.editRef.setText(
+                                                        "#"
+                                                                + Integer.toHexString(
+                                                                        picker.getColor()));
+                                            else
+                                                binding.editValue.setText(
+                                                        "#"
+                                                                + Integer.toHexString(
+                                                                        picker.getColor()));
+                                        else
                                             binding.editRef.setText(
-                                                    "#" + Integer.toHexString(picker.getColor())))
+                                                    "#" + Integer.toHexString(picker.getColor()));
+                                    })
                             .show();
                 });
 
@@ -236,26 +251,15 @@ public class DialogAttrValueParserAssist {
         binding.viewFlipper.setDisplayedChild(0);
         binding.editValue.setText(ResourcesValuesFixer.getValuesAsString(C, text));
         try {
-            binding.editValue.setEnabled(true);
+            String name = "";
+            if (text.matches(".*\\/.*")) name = text.split("\\/")[1];
+            binding.editValue.setEnabled(allData.containsKey(name.intern()));
+
             if (text.trim().startsWith("@drawable")
                     || text.trim().startsWith("@mipmap")
                     || text.trim().startsWith("@android:drawable")) {
                 binding.imgValue.setImageDrawable(ResourcesValuesFixer.getDrawable(C, text));
                 binding.viewFlipper.setDisplayedChild(1);
-            } else if (typeValue.equals("@layout")
-                    || typeValue.equals("@menu")
-                    || typeValue.equals("@raw")) {
-                binding.editValue.setEnabled(false);
-            } else if (text.contains("/")) {
-                String name = text.split("\\/")[1];
-                if (allData.get(name.intern()) == null) {
-                    binding.editValue.setEnabled(false);
-                }
-            }
-
-            if (text.startsWith("@drawable")
-                    || text.startsWith("@android:drawable")
-                    || text.startsWith("@mipmap")) {
                 if (typeValue.contains("drawable")) {
                     binding.viewFlipper.setDisplayedChild(1);
                     binding.btnPickColor.setVisibility(View.GONE);
@@ -340,38 +344,32 @@ public class DialogAttrValueParserAssist {
                 return null;
             }
 
-            if (typeValue.equals("@layout")
+            if (typeValue.equals("@anim")
+                    || typeValue.equals("@layout")
                     || typeValue.equals("@menu")
-                    || typeValue.equals("@raw")) return ref;
-
-            if (typeValue.contains("drawable")) {
-                if (ref.startsWith("@android:drawable")
-                        || ref.startsWith("@drawable")
-                        || ref.startsWith("@mipmap")) {
-                    return ref;
-                }
-            }
-
-            if (value.trim().isEmpty()) return ref;
+                    || typeValue.equals("@raw")
+                    || typeValue.contains("drawable")) return ref;
 
             if (ref.contains("/")) ref = ref.split("\\/")[1];
-            for (String path : listResForAdd) {
-                final XmlManager xmlFile = new XmlManager(C);
-                xmlFile.initializeFromPath(path);
-                if (!xmlFile.isInitialized) continue;
+            if (allData.containsKey(ref)) {
+                for (String path : listResForAdd) {
+                    final XmlManager xmlFile = new XmlManager(C);
+                    xmlFile.initializeFromPath(path);
+                    if (!xmlFile.isInitialized) continue;
 
-                ArrayList<Element> listE = xmlFile.getElementsByTagName("resources");
-                if (listE.size() == 0) continue;
-                Element e = listE.get(0);
+                    ArrayList<Element> listE = xmlFile.getElementsByTagName("resources");
+                    if (listE.size() == 0) continue;
+                    Element e = listE.get(0);
 
-                for (Element child : XmlManager.getAllFirstChildFromElement(e)) {
-                    if (child.getAttribute("name").equals(ref)) {
-                        if (!child.getTextContent().equals(value)) {
-                            child.setTextContent(value);
-                            xmlFile.saveAllModif();
-                            LoggerRes.reloadResRef();
+                    for (Element child : XmlManager.getAllFirstChildFromElement(e)) {
+                        if (child.getAttribute("name").equals(ref)) {
+                            if (!child.getTextContent().equals(value)) {
+                                child.setTextContent(value);
+                                xmlFile.saveAllModif();
+                                LoggerRes.reloadResRef();
+                            }
+                            return binding.editRef.getText().toString();
                         }
-                        return binding.editRef.getText().toString();
                     }
                 }
             }

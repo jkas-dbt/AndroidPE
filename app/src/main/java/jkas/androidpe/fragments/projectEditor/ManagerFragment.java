@@ -12,7 +12,6 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentViewHolder;
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
-import jkas.androidpe.databinding.DialogStringTranslaterBinding;
 import jkas.androidpe.databinding.FragmentPeManagerBinding;
 import jkas.androidpe.dialog.StringTranslaterDialog;
 import jkas.androidpe.explorer.dialog.DialogSelectModule;
@@ -20,9 +19,9 @@ import jkas.androidpe.fragments.projectEditor.manager.ActivitiesPerformer;
 import jkas.androidpe.fragments.projectEditor.manager.PermissionsPerformer;
 import jkas.androidpe.fragments.projectEditor.manager.ServicesReceiversProvidersPerformer;
 import jkas.androidpe.logger.Logger;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.dialog.DialogBuilder;
 import jkas.androidpe.resources.R;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
 import jkas.androidpe.resourcesUtils.utils.ProjectsPathUtils;
 import jkas.codeUtil.Files;
 
@@ -99,13 +98,13 @@ public class ManagerFragment extends Fragment {
         binding.btnProvidersAdded.setText("0");
         binding.btnShowAllRefModules.setText("0");
 
-        if (ProjectsModules.getInstance().currentAndroidModule == null) {
+        if (DataRefManager.getInstance().currentAndroidModule == null) {
             setAllNullForCurrentModulesView();
             return;
         }
 
         String manifPath =
-                ProjectsModules.getInstance().currentAndroidModule.getProjectAbsolutePath()
+                DataRefManager.getInstance().currentAndroidModule.getProjectAbsolutePath()
                         + ProjectsPathUtils.ANDROID_MANIFEST_PATH;
         if (!Files.isFile(manifPath)) return;
         loadFirst();
@@ -157,12 +156,12 @@ public class ManagerFragment extends Fragment {
     }
 
     private void reference() {
-        if (ProjectsModules.getInstance().currentAndroidModule == null) {
+        if (DataRefManager.getInstance().currentAndroidModule == null) {
             setAllNullForCurrentModulesView();
             return;
         }
         setEnabledForCurrentModulesView();
-        if (ProjectsModules.getInstance().currentAndroidModule.getRefToOthersModules().size() > 0)
+        if (DataRefManager.getInstance().currentAndroidModule.getRefToOthersModules().size() > 0)
             binding.tvCurrentModules.setText(getString(R.string.the_current_module_depend_others));
         else
             binding.tvCurrentModules.setText(
@@ -171,14 +170,14 @@ public class ManagerFragment extends Fragment {
         binding.btnShowAllRefModules.setText(
                 getString(R.string.modules)
                         + " : "
-                        + ProjectsModules.getInstance()
+                        + DataRefManager.getInstance()
                                 .currentAndroidModule
                                 .getRefToOthersModules()
                                 .size());
     }
 
     private void showAllRefModules() {
-        if (!(ProjectsModules.getInstance().currentAndroidModule.getRefToOthersModules().size()
+        if (!(DataRefManager.getInstance().currentAndroidModule.getRefToOthersModules().size()
                 > 0)) {
             Toast.makeText(
                             C,
@@ -193,13 +192,13 @@ public class ManagerFragment extends Fragment {
 
         String m =
                 "["
-                        + ProjectsModules.getInstance()
+                        + DataRefManager.getInstance()
                                 .currentAndroidModule
                                 .getRefToOthersModules()
                                 .size()
                         + "]";
-        for (String s : ProjectsModules.getInstance().currentAndroidModule.getRefToOthersModules())
-            if (!s.equals(ProjectsModules.getInstance().currentAndroidModule.getPath()))
+        for (String s : DataRefManager.getInstance().currentAndroidModule.getRefToOthersModules())
+            if (!s.equals(DataRefManager.getInstance().currentAndroidModule.getPath()))
                 m += "\n" + s;
 
         DialogBuilder.getDialogBuilder(C, C.getString(R.string.modules), m).show();
@@ -220,7 +219,7 @@ public class ManagerFragment extends Fragment {
                 });
         binding.btnAddProjectsDependencies.setOnClickListener(
                 (v) -> {
-                    if (!(ProjectsModules.getInstance().currentAndroidModule != null)) {
+                    if (!(DataRefManager.getInstance().currentAndroidModule != null)) {
                         Toast.makeText(C, getString(R.string.cant_load), Toast.LENGTH_SHORT).show();
                         return;
                     }
@@ -233,7 +232,7 @@ public class ManagerFragment extends Fragment {
                                                             String msg =
                                                                     getString(R.string.module)
                                                                             + " : "
-                                                                            + ProjectsModules
+                                                                            + DataRefManager
                                                                                     .getInstance()
                                                                                     .currentAndroidModule
                                                                                     .getName()
@@ -261,7 +260,7 @@ public class ManagerFragment extends Fragment {
                                                                     return;
                                                                 }
                                                                 msg += "\n" + s;
-                                                                ProjectsModules.getInstance()
+                                                                DataRefManager.getInstance()
                                                                         .currentAndroidModule
                                                                         .getRefToOthersModules()
                                                                         .add(s);
@@ -293,7 +292,7 @@ public class ManagerFragment extends Fragment {
 
     public boolean updateGradleDependencies(String dependency) {
         pathGradleFile =
-                ProjectsModules.getInstance().currentAndroidModule.getProjectAbsolutePath()
+                DataRefManager.getInstance().currentAndroidModule.getProjectAbsolutePath()
                         + ProjectsPathUtils.gradlePath;
 
         if (!Files.isFile(pathGradleFile)) pathGradleFile += ".kts";
@@ -320,7 +319,7 @@ public class ManagerFragment extends Fragment {
 
     private void performList(final ArrayList<String> list) {
         String path =
-                ProjectsModules.getInstance().currentAndroidModule.getProjectAbsolutePath()
+                DataRefManager.getInstance().currentAndroidModule.getProjectAbsolutePath()
                         + "/build.gradle";
         if (!Files.isFile(path)) path += ".kts";
         if (!Files.isFile(path)) {

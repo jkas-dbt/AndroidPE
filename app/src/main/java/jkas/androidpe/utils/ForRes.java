@@ -1,8 +1,8 @@
 package jkas.androidpe.utils;
 
 import jkas.androidpe.projectUtils.current.Environment;
-import jkas.androidpe.projectUtils.current.ProjectsModules;
 import jkas.androidpe.resourcesUtils.bases.AttrValuesRefBase;
+import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.requests.AndroidxClassesRequested;
 import jkas.androidpe.resourcesUtils.requests.MaterialClassesRequested;
 import jkas.androidpe.resourcesUtils.requests.ProjectDataRequested;
@@ -19,7 +19,7 @@ public class ForRes {
                         new ProjectDataRequested.OnDataNeeded() {
                             @Override
                             public String onProjectAbsolutePathNeeded() {
-                                return ProjectsModules.getInstance().P.getAbsolutePath();
+                                return DataRefManager.getInstance().P.getAbsolutePath();
                             }
 
                             @Override
