@@ -248,12 +248,23 @@ public class DialogAttrValueParserAssist {
     }
 
     private void showValue(String text) {
+        binding.tvInfo.setText("...");
         binding.viewFlipper.setDisplayedChild(0);
         binding.editValue.setText(ResourcesValuesFixer.getValuesAsString(C, text));
         try {
-            String name = "";
-            if (text.matches(".*\\/.*")) name = text.split("\\/")[1];
-            binding.editValue.setEnabled(allData.containsKey(name.intern()));
+            boolean refToRes = text.matches(".*\\/.*");
+            binding.editValue.setEnabled(refToRes);
+            if (refToRes
+                    && (text.startsWith("@string")
+                            || text.startsWith("@color")
+                            || text.startsWith("@dimen")
+                            || text.startsWith("@integer"))) {
+                String ref = text;
+                ref = ref.split("\\/")[1];
+                if (!allData.containsKey(ref)) {
+                    binding.tvInfo.setText(R.string.warning_ref_not_exist_and_will_be_added);
+                }
+            }
 
             if (text.trim().startsWith("@drawable")
                     || text.trim().startsWith("@mipmap")
@@ -350,34 +361,94 @@ public class DialogAttrValueParserAssist {
                     || typeValue.equals("@raw")
                     || typeValue.contains("drawable")) return ref;
 
-            if (ref.contains("/")) ref = ref.split("\\/")[1];
-            if (allData.containsKey(ref)) {
-                for (String path : listResForAdd) {
-                    final XmlManager xmlFile = new XmlManager(C);
-                    xmlFile.initializeFromPath(path);
-                    if (!xmlFile.isInitialized) continue;
+            if (typeValue.equals("@string")
+                    || typeValue.equals("@dimen")
+                    || typeValue.equals("@integer")
+                    || typeValue.contains("@color")) {
+                if (ref.contains("/")) ref = ref.split("\\/")[1];
+                if (allData.containsKey(ref)) {
+                    for (String path : listResForAdd) {
+                        final XmlManager xmlFile = new XmlManager(C);
+                        xmlFile.initializeFromPath(path);
+                        if (!xmlFile.isInitialized) continue;
 
-                    ArrayList<Element> listE = xmlFile.getElementsByTagName("resources");
-                    if (listE.size() == 0) continue;
-                    Element e = listE.get(0);
+                        ArrayList<Element> listE = xmlFile.getElementsByTagName("resources");
+                        if (listE.size() == 0) continue;
+                        Element e = listE.get(0);
 
-                    for (Element child : XmlManager.getAllFirstChildFromElement(e)) {
-                        if (child.getAttribute("name").equals(ref)) {
-                            if (!child.getTextContent().equals(value)) {
-                                child.setTextContent(value);
-                                xmlFile.saveAllModif();
-                                LoggerRes.reloadResRef();
+                        for (Element child : XmlManager.getAllFirstChildFromElement(e)) {
+                            if (child.getAttribute("name").equals(ref)) {
+                                if (!child.getTextContent().equals(value)) {
+                                    child.setTextContent(value);
+                                    xmlFile.saveAllModif();
+                                    LoggerRes.reloadResRef();
+                                }
+                                return binding.editRef.getText().toString();
                             }
-                            return binding.editRef.getText().toString();
                         }
                     }
-                }
+                } else addToResNewRef();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return binding.editRef.getText().toString();
+    }
+
+    private void addToResNewRef() {
+        String ref = binding.editRef.getText().toString();
+        String value = binding.editValue.getText().toString();
+
+        String resType = ref.substring(1).split("\\/")[0];
+        String resName = ref.split("\\/")[1];
+        String pathToRes = getPathToRes(resType);
+
+        try {
+            XmlManager xmlFile = new XmlManager(C);
+            if (!xmlFile.initializeFromPath(pathToRes)) return;
+            LoggerRes.onSaveRequested();
+
+            Element newRes = xmlFile.getDocument().createElement(resType);
+            newRes.setAttribute("name", resName);
+            newRes.setTextContent(value);
+
+            xmlFile.getElement("resources", 0).appendChild(newRes);
+            xmlFile.saveAllModif();
+            
+            LoggerRes.reloadResRef();
+        } catch (Exception err) {
+            // ignore can not add
+        }
+    }
+
+    private String getPathToRes(String resType) {
+        String path = DataRefManager.getInstance().currentModuleProject.getAbsolutePath();
+        path += ProjectsPathUtils.VALUES_PATH + "/" + resType + "s.xml";
+        if (Files.isFile(path)) return path;
+
+        for (var pathToOtherModule :
+                DataRefManager.getInstance().currentModuleProject.getRefToOtherModule()) {
+            for (var module : DataRefManager.getInstance().listModuleProject) {
+                if (pathToOtherModule.equals(module.getPath())) {
+                    path =
+                            module.getAbsolutePath()
+                                    + ProjectsPathUtils.VALUES_PATH
+                                    + "/"
+                                    + resType
+                                    + "s.xml";
+                    if (Files.isFile(path)) return path;
+                    break;
+                }
+            }
+        }
+
+        String newRes = """
+<?xml version="1.0" encoding="UTF-8"?>
+<resources/>
+        """;
+        Files.writeFile(path, newRes);
+        return path;
     }
 
     public void show() {
