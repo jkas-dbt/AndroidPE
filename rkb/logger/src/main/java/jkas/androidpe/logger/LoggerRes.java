@@ -22,11 +22,19 @@ public class LoggerRes {
         logListeners.remove(Objects.requireNonNull(listener));
     }
 
+    public static void onSaveRequested() {
+        for (final var listener : logListeners) listener.onSaveRequested();
+    }
+
     public static void reloadResRef() {
         for (final var listener : logListeners) listener.reloadResRef();
     }
 
     public interface LogListener {
         public void reloadResRef();
+
+        public default void onSaveRequested() {
+            // will be implemented elsewhere.
+        }
     }
 }
