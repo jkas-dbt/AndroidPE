@@ -160,7 +160,7 @@
     <string name="for_more_informations">For more informations</string>
     <string name="auto_save">Auto Save</string>
     <string name="select_view_to_get_id">Select a View to get it\'s ID</string>
-
+    
     <!-- PREFERENCES -->
     <string name="ui_mode_desc">Select UI Mode for app</string>
     <string name="material_you_desc">Select the default theme (Requires application restart)</string>
@@ -283,7 +283,8 @@
     <string name="warning_view_not_parent">This view is not a parent view, it can cause problems when compiling your code. Do you want to continue anyway ?</string>
     <string name="warning_add_view_constraints">The selected view cannot have children.  If it\'s a custom view or you think it\'s an error on the part of the application, please do it manually in the XML code and report the problem to us in order to do a good follow-up on the application.</string>
     <string name="warning_before_translate_string_res">Before continuing, know that all data linked with the selected languages will be deleted to make way for the news.\n Do you want to continue ?</string>
-
+    <string name="warning_ref_not_exist_and_will_be_added">This reference does not exist. It will be added to your resources if you continue.</string>
+    
     <!-- MESSAGE INFO -->
     <string name="info_a_batter_dependency_will_be_implemented">A better dependency implementation will be implemented for a good code change in the next updates.</string>
     <string name="info_no_data_to_display_was_found">No data to display was found.</string>
