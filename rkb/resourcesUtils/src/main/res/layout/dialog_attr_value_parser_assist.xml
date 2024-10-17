@@ -1,151 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:layout_height="match_parent"
-	android:layout_width="match_parent"
-	android:orientation="vertical">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
 
-	<LinearLayout
-		android:layout_height="wrap_content"
-		android:layout_width="match_parent"
-		android:gravity="center"
-		android:padding="8dp"
-		android:orientation="horizontal">
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:padding="8dp"
+        android:orientation="horizontal">
 
-		<com.google.android.material.textfield.TextInputLayout
-			android:layout_height="wrap_content"
-			android:layout_width="match_parent"
-			android:layout_margin="4dp"
-			android:layout_weight="1.0"
-			android:id="@+id/tilRef">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_margin="4dp"
+            android:layout_weight="1.0"
+            app:endIconMode="clear_text"
+            android:id="@+id/tilRef">
 
-			<AutoCompleteTextView
-				android:layout_height="wrap_content"
-				android:layout_width="match_parent"
-				android:padding="12dp"
-				android:textSize="12sp"
-				android:id="@+id/editRef"/>
+            <AutoCompleteTextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:padding="12dp"
+                android:textSize="12sp"
+                android:id="@+id/editRef" />
 
-		</com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-		<ImageView
-			android:layout_height="35dp"
-			android:layout_width="35dp"
-			android:adjustViewBounds="true"
-			android:src="@drawable/ic_sync"
-			android:layout_margin="4dp"
-			android:padding="4dp"
-			android:id="@+id/imgSwitch"/>
+        <ImageView
+            android:layout_height="35dp"
+            android:layout_width="35dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_sync"
+            android:layout_margin="4dp"
+            android:padding="4dp"
+            android:id="@+id/imgSwitch" />
 
-	</LinearLayout>
+    </LinearLayout>
 
-	<TextView
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:gravity="center"
-		android:id="@+id/tvInfo"
-		android:paddingLeft="8dp"
-		android:paddingRight="8dp"
-		android:text="..."
-		android:textColor="?colorTertiary"
-		android:layout_marginBottom="8dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/tvInfo"
+        android:paddingLeft="8dp"
+        android:textSize="10sp"
+        android:paddingRight="8dp"
+        android:text="..."
+        android:textColor="?colorTertiary"
+        android:layout_marginBottom="8dp" />
 
-	<ViewFlipper
-		android:layout_height="300dp"
-		android:layout_width="match_parent"
-		android:id="@+id/viewFlipper">
+    <ViewFlipper
+        android:layout_height="300dp"
+        android:layout_width="match_parent"
+        android:id="@+id/viewFlipper">
 
-		<com.google.android.material.textfield.TextInputLayout
-			android:layout_height="match_parent"
-			android:layout_width="match_parent"
-			android:hint="@string/value"
-			android:layout_margin="12dp"
-			android:layout_weight="1.0"
-			android:id="@+id/tilValue">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:hint="@string/value"
+            android:layout_margin="12dp"
+            android:layout_weight="1.0"
+            android:id="@+id/tilValue">
 
-			<com.google.android.material.textfield.TextInputEditText
-				android:layout_height="match_parent"
-				android:layout_width="match_parent"
-				android:padding="12dp"
-				android:textSize="14sp"
-				android:id="@+id/editValue"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:padding="12dp"
+                android:textSize="14sp"
+                android:id="@+id/editValue" />
 
-		</com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-		<ImageView
-			android:layout_height="match_parent"
-			android:layout_width="match_parent"
-			android:adjustViewBounds="true"
-			android:id="@+id/imgValue"/>
+        <ImageView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:adjustViewBounds="true"
+            android:id="@+id/imgValue" />
 
-	</ViewFlipper>
+    </ViewFlipper>
 
-	<Button
-		android:layout_height="40dp"
-		android:layout_width="match_parent"
-		android:visibility="gone"
-		android:textSize="14sp"
-		android:backgroundTint="#00ffffff"
-		android:layout_marginLeft="12dp"
-		android:layout_marginRight="12dp"
-		android:text="@string/choose"
-		android:id="@+id/btnPickColor"
-		android:textStyle="bold"/>
+    <Button
+        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:textSize="14sp"
+        android:backgroundTint="#00ffffff"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:text="@string/choose"
+        android:id="@+id/btnPickColor"
+        android:textStyle="bold" />
 
-	<Button
-		android:layout_height="40dp"
-		android:layout_width="match_parent"
-		android:visibility="gone"
-		android:layout_margin="12dp"
-		android:textSize="14sp"
-		style="?attr/materialButtonOutlinedStyle"
-		android:text="@string/imports"
-		android:id="@+id/btnImports"
-		android:textStyle="bold"/>
+    <Button
+        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_margin="12dp"
+        android:textSize="14sp"
+        style="?attr/materialButtonOutlinedStyle"
+        android:text="@string/imports"
+        android:id="@+id/btnImports"
+        android:textStyle="bold" />
 
-	<LinearLayout
-		android:layout_height="wrap_content"
-		android:layout_width="match_parent"
-		android:gravity="center_vertical"
-		android:padding="8dp"
-		android:orientation="horizontal">
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:padding="8dp"
+        android:orientation="horizontal">
 
-		<Button
-			android:layout_height="40dp"
-			android:layout_width="40dp"
-			android:gravity="center"
-			android:padding="4dp"
-			android:layout_margin="2dp"
-			android:textSize="14sp"
-			style="?attr/materialButtonOutlinedStyle"
-			android:id="@+id/btnPrevious"
-			android:textStyle="bold"
-			android:text="-"/>
+        <Button
+            android:layout_height="40dp"
+            android:layout_width="40dp"
+            android:gravity="center"
+            android:padding="4dp"
+            android:layout_margin="2dp"
+            android:textSize="14sp"
+            style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/btnPrevious"
+            android:textStyle="bold"
+            android:text="-" />
 
-		<com.google.android.material.slider.RangeSlider
-			android:layout_height="wrap_content"
-			android:layout_width="match_parent"
-			android:layout_marginEnd="4dp"
-			android:valueTo="20.0"
-			android:valueFrom="1.0"
-			android:stepSize="1.0"
-			android:layout_marginStart="4dp"
-			android:layout_weight="1.0"
-			android:id="@+id/discreteRangeSlider"/>
+        <com.google.android.material.slider.RangeSlider
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginEnd="4dp"
+            android:valueTo="20.0"
+            android:valueFrom="1.0"
+            android:stepSize="1.0"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1.0"
+            android:id="@+id/discreteRangeSlider" />
 
-		<Button
-			android:layout_height="40dp"
-			android:layout_width="40dp"
-			android:gravity="center"
-			android:padding="4dp"
-			android:layout_margin="2dp"
-			android:textSize="14sp"
-			style="?attr/materialButtonOutlinedStyle"
-			android:id="@+id/btnNext"
-			android:textStyle="bold"
-			android:text="+"/>
+        <Button
+            android:layout_height="40dp"
+            android:layout_width="40dp"
+            android:gravity="center"
+            android:padding="4dp"
+            android:layout_margin="2dp"
+            android:textSize="14sp"
+            style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/btnNext"
+            android:textStyle="bold"
+            android:text="+" />
 
-	</LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
