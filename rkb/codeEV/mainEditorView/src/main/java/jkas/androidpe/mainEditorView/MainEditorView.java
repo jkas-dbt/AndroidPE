@@ -75,6 +75,11 @@ public class MainEditorView {
         updateData();
     }
 
+    public void reloadCode() {
+        CEV.parseCode(Files.readFile(path));
+        reload();
+    }
+
     public void saveContent() {
         CEV.saveContent(path);
     }

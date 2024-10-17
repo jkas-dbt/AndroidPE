@@ -49,7 +49,7 @@ public class ProjectCategory {
         pkgNamePrefix.setIcon(R.drawable.ic_cube_outline);
         pkgNamePrefix.setOnPreferenceClickListener(
                 pref -> {
-                    DialogEditText dialog = new DialogEditText(context, true);
+                    final DialogEditText dialog = new DialogEditText(context, true);
                     dialog.setTitle(context.getString(R.string.rename));
                     dialog.setDefaultValue(RKBDataAppSettings.getAppPnp());
                     dialog.setHint(context.getString(R.string.package_name_prefix));

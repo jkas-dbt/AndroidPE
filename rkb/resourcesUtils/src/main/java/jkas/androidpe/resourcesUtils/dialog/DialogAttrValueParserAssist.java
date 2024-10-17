@@ -22,6 +22,7 @@ import jkas.androidpe.resourcesUtils.databinding.DialogAttrValueParserAssistBind
 import jkas.androidpe.resourcesUtils.modules.ModuleProject;
 import jkas.androidpe.resourcesUtils.modules.ModuleRes;
 import jkas.androidpe.resourcesUtils.utils.ProjectsPathUtils;
+import jkas.androidpe.resourcesUtils.utils.ResCodeUtils;
 import jkas.androidpe.resourcesUtils.utils.ResourcesValuesFixer;
 import jkas.codeUtil.CodeUtil;
 import jkas.codeUtil.Files;
@@ -40,7 +41,6 @@ public class DialogAttrValueParserAssist {
     private String typeValue;
     private String currentValue;
     private Element element;
-    private Map<String, String> allData = new HashMap<>();
     private ArrayList<String> listAdapter = new ArrayList<>();
     private ArrayList<String> listAdapterAssist = new ArrayList<>();
     private ArrayList<String> listResForAdd = new ArrayList<>();
@@ -63,26 +63,20 @@ public class DialogAttrValueParserAssist {
         searchAllFilesRefForAdd();
         init();
         events();
-        loadData();
         loadDefault();
         loadDefaultSetting();
     }
 
     private void searchAllFilesRefForAdd() {
-        ModuleProject MP = null;
-        String currentPath = DataRefManager.getInstance().currentModuleRes.getPath();
-        for (ModuleProject mp : DataRefManager.getInstance().listModuleProject) {
-            if (currentPath.equals(mp.getPath())) {
-                MP = mp;
-            }
-        }
+        ModuleProject MP = DataRefManager.getInstance().currentModuleProject;
+
         { // add for current module
             String path = DataRefManager.getProjectAbsolutePath();
             path += DataRefManager.getInstance().currentModuleRes.getPath().replace(":", "/");
             path += ProjectsPathUtils.VALUES_PATH;
             for (String p : Files.listFile(path)) if (p.endsWith(".xml")) listResForAdd.add(p);
         }
-        if (MP == null) return;
+
         for (String pathModuleRes : MP.getRefToOtherModule()) {
             for (ModuleRes mr : DataRefManager.getInstance().listModuleRes) {
                 if (!mr.getPath().equals(pathModuleRes)) continue;
@@ -94,29 +88,27 @@ public class DialogAttrValueParserAssist {
         }
     }
 
-    private void loadData() {
-        allData.clear();
-        loadData(DataRefManager.getInstance().currentModuleRes);
-        for (var path : DataRefManager.getInstance().currentModuleProject.getRefToOtherModule()) {
-            for (var module : DataRefManager.getInstance().listModuleRes) {
-                if (path.equals(module.getPath())) loadData(module);
-            }
+    public void fixRef(String ref) {
+        if (!ref.matches("(\\?|\\@)[a-z].*")) {
+            binding.tilRef.setError(C.getString(R.string.warning_ref_not_correct));
+            return;
         }
-    }
+        String type = "", name = ResourcesValuesFixer.parseReferName(ref);
 
-    private void loadData(ModuleRes module) {
-        if (typeValue.equals("@string")) allData.putAll(module.valuesStrings);
-        else if (typeValue.contains("color")) allData.putAll(module.valuesColors);
-        else if (typeValue.equals("@bool")) allData.putAll(module.valuesBools);
-        else if (typeValue.equals("@dimen")) allData.putAll(module.valuesDimens);
-        else if (typeValue.equals("@integer")) allData.putAll(module.valuesIntegers);
-        else if (typeValue.equals("@style")) allData.putAll(module.valuesStyles);
-        else if (typeValue.equals("@layout")) allData.putAll(module.layouts);
-        else if (typeValue.equals("@menu")) allData.putAll(module.menus);
-        else if (typeValue.equals("@raw")) allData.putAll(module.raws);
-        if (typeValue.contains("drawable")) {
-            allData.putAll(module.drawables);
-            allData.putAll(module.mipmaps);
+        if (ref.matches(".*\\/.*\\:.*") || ref.matches(".*\\:.*")) type = ref.split("\\:")[0] + ":";
+        if (ref.contains("/")) type = ref.split("\\/")[0] + "/";
+        if (ref.matches("\\?[a-zA-Z0-9_]")) type = "?";
+
+        String finalRef = type + ResCodeUtils.ResAndCodeFilesFixer.fixXmlIdName(name);
+        if (!finalRef.equals(ref)) {
+            int p = binding.editRef.getSelectionStart();
+            binding.editRef.setText(finalRef);
+            if (p >= finalRef.length()) binding.editRef.setSelection(finalRef.length());
+            else binding.editRef.setSelection(p);
+        }
+
+        if (!ResourcesValuesFixer.matchesToDefaultRefRes(finalRef)) {
+            binding.tilRef.setError(C.getString(R.string.warning_ref_not_correct));
         }
     }
 
@@ -134,14 +126,20 @@ public class DialogAttrValueParserAssist {
 
                     @Override
                     public void afterTextChanged(Editable editable) {
-                        if (editable.toString().trim().length() == 0) {
+                        binding.tilRef.setError(null);
+                        if (editable.toString().trim().isEmpty()) {
                             new Handler(Looper.getMainLooper())
                                     .postDelayed(() -> binding.editRef.showDropDown(), 43);
+                        } else if (!ResourcesValuesFixer.matchesToDefaultRefRes(
+                                editable.toString())) {
+                            binding.tilRef.setError(
+                                    C.getString(R.string.warning_only_ref_are_supported_here));
                         }
-                        showValue(editable.toString());
                         if (editable.toString().equals(currentValue))
                             binding.imgSwitch.setVisibility(View.GONE);
                         else binding.imgSwitch.setVisibility(View.VISIBLE);
+                        showValue(editable.toString());
+                        fixRef(editable.toString());
                     }
                 });
 
@@ -248,12 +246,27 @@ public class DialogAttrValueParserAssist {
     }
 
     private void showValue(String text) {
+        binding.tvInfo.setText("...");
         binding.viewFlipper.setDisplayedChild(0);
         binding.editValue.setText(ResourcesValuesFixer.getValuesAsString(C, text));
         try {
-            String name = "";
-            if (text.matches(".*\\/.*")) name = text.split("\\/")[1];
-            binding.editValue.setEnabled(allData.containsKey(name.intern()));
+            boolean refToRes = ResourcesValuesFixer.matchesToDefaultRefRes(text);
+            binding.editValue.setEnabled(refToRes);
+            if (text.trim().isEmpty()) binding.editValue.setEnabled(true);
+            else if (refToRes
+                    && (text.startsWith("@string/")
+                            || text.startsWith("@bool/")
+                            || text.startsWith("@color/")
+                            || text.startsWith("@dimen/")
+                            || text.startsWith("@integer/"))) {
+                if (!ResourcesValuesFixer.exists(text)) {
+                    binding.tvInfo.setText(R.string.warning_ref_not_exist_and_will_be_added);
+                }
+            }
+
+            if (ResourcesValuesFixer.existsInAndroidRes(text)) {
+                binding.editValue.setEnabled(false);
+            }
 
             if (text.trim().startsWith("@drawable")
                     || text.trim().startsWith("@mipmap")
@@ -284,16 +297,6 @@ public class DialogAttrValueParserAssist {
         if (typeValue.contains("drawable")) binding.btnImports.setVisibility(View.VISIBLE);
         else binding.btnImports.setVisibility(View.GONE);
 
-        if (allData.size() == 0) {
-            if (typeValue.contains("drawable")
-                    || typeValue.equals("@layout")
-                    || typeValue.equals("@menu")) {
-                binding.btnPrevious.setEnabled(false);
-                binding.btnNext.setEnabled(false);
-                binding.discreteRangeSlider.setEnabled(false);
-                binding.btnPickColor.setEnabled(false);
-            }
-        }
         binding.discreteRangeSlider.setValueTo((float) listAdapter.size());
         if (typeValue.contains("drawable")) binding.viewFlipper.setDisplayedChild(1);
         else binding.viewFlipper.setDisplayedChild(0);
@@ -307,7 +310,10 @@ public class DialogAttrValueParserAssist {
     private void loadDefault() {
         builder.setTitle(typeValue.substring(1).toUpperCase());
         binding.tilRef.setHint(attr);
-        binding.editRef.setText(currentValue);
+
+        if (ResourcesValuesFixer.matchesToDefaultRefRes(currentValue))
+            binding.editRef.setText(currentValue);
+        else binding.editValue.setText(currentValue);
     }
 
     private void init() {
@@ -346,31 +352,42 @@ public class DialogAttrValueParserAssist {
 
             if (typeValue.equals("@anim")
                     || typeValue.equals("@layout")
+                    || typeValue.equals("@style")
+                    || typeValue.equals("@attr")
                     || typeValue.equals("@menu")
                     || typeValue.equals("@raw")
                     || typeValue.contains("drawable")) return ref;
 
-            if (ref.contains("/")) ref = ref.split("\\/")[1];
-            if (allData.containsKey(ref)) {
-                for (String path : listResForAdd) {
-                    final XmlManager xmlFile = new XmlManager(C);
-                    xmlFile.initializeFromPath(path);
-                    if (!xmlFile.isInitialized) continue;
+            if (!ResourcesValuesFixer.existsInAndroidRes(ref)) {
+                if (typeValue.equals("@string")
+                        || typeValue.equals("@bool")
+                        || typeValue.equals("@dimen")
+                        || typeValue.equals("@integer")
+                        || typeValue.contains("@color")) {
+                    if (ResourcesValuesFixer.existsInProjectRes(ref)) {
+                        if (ref.contains("/")) ref = ref.split("\\/")[1];
+                        for (String path : listResForAdd) {
+                            final XmlManager xmlFile = new XmlManager(C);
+                            xmlFile.initializeFromPath(path);
+                            if (!xmlFile.isInitialized) continue;
 
-                    ArrayList<Element> listE = xmlFile.getElementsByTagName("resources");
-                    if (listE.size() == 0) continue;
-                    Element e = listE.get(0);
+                            ArrayList<Element> listE = xmlFile.getElementsByTagName("resources");
+                            if (listE.size() == 0) continue;
+                            Element e = listE.get(0);
 
-                    for (Element child : XmlManager.getAllFirstChildFromElement(e)) {
-                        if (child.getAttribute("name").equals(ref)) {
-                            if (!child.getTextContent().equals(value)) {
-                                child.setTextContent(value);
-                                xmlFile.saveAllModif();
-                                LoggerRes.reloadResRef();
+                            for (Element child : XmlManager.getAllFirstChildFromElement(e)) {
+                                if (child.getAttribute("name").equals(ref)) {
+                                    if (!child.getTextContent().equals(value)) {
+                                        child.setTextContent(value);
+                                        xmlFile.saveAllModif();
+                                        LoggerRes.reloadResRef();
+                                    }
+                                    return binding.editRef.getText().toString();
+                                }
                             }
-                            return binding.editRef.getText().toString();
                         }
-                    }
+                        addToResNewRef();
+                    } else addToResNewRef();
                 }
             }
         } catch (Exception e) {
@@ -378,6 +395,61 @@ public class DialogAttrValueParserAssist {
         }
 
         return binding.editRef.getText().toString();
+    }
+
+    private void addToResNewRef() {
+        String ref = binding.editRef.getText().toString();
+        String value = binding.editValue.getText().toString();
+
+        String resType = ref.substring(1).split("\\/")[0];
+        String resName = ref.split("\\/")[1];
+        String pathToRes = getPathToRes(resType);
+
+        try {
+            XmlManager xmlFile = new XmlManager(C);
+            if (!xmlFile.initializeFromPath(pathToRes)) return;
+            LoggerRes.onSaveRequested();
+
+            Element newRes = xmlFile.getDocument().createElement(resType);
+            newRes.setAttribute("name", resName);
+            newRes.setTextContent(value);
+
+            xmlFile.getElement("resources", 0).appendChild(newRes);
+            xmlFile.saveAllModif();
+
+            LoggerRes.reloadResRef();
+        } catch (Exception err) {
+            // ignore can not add
+        }
+    }
+
+    private String getPathToRes(String resType) {
+        String path = DataRefManager.getInstance().currentModuleProject.getAbsolutePath();
+        path += ProjectsPathUtils.VALUES_PATH + "/" + resType + "s.xml";
+        if (Files.isFile(path)) return path;
+
+        for (var pathToOtherModule :
+                DataRefManager.getInstance().currentModuleProject.getRefToOtherModule()) {
+            for (var module : DataRefManager.getInstance().listModuleProject) {
+                if (pathToOtherModule.equals(module.getPath())) {
+                    path =
+                            module.getAbsolutePath()
+                                    + ProjectsPathUtils.VALUES_PATH
+                                    + "/"
+                                    + resType
+                                    + "s.xml";
+                    if (Files.isFile(path)) return path;
+                    break;
+                }
+            }
+        }
+
+        String newRes = """
+<?xml version="1.0" encoding="UTF-8"?>
+<resources/>
+        """;
+        Files.writeFile(path, newRes);
+        return path;
     }
 
     public void show() {

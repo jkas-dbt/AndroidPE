@@ -31,24 +31,20 @@ import org.w3c.dom.Element;
  */
 public class ResourcesValuesFixer {
 
+    public static boolean existsInProjectRes(String reference) {
+        return DataRefManager.getInstance().currentModuleRes.exists(reference);
+    }
+
+    public static boolean existsInAndroidRes(String reference) {
+        if (AttrValuesRefBase.listRefAndroid.contains(reference.intern())) return true;
+        else if (AttrValuesRefBase.listRefAndroidX.contains(reference.intern())) return true;
+        else if (AttrValuesRefBase.listRefMaterial3.contains(reference.intern())) return true;
+        return false;
+    }
+
     public static boolean exists(String reference) {
-        boolean found = false;
-
-        if (DataRefManager.getInstance().currentModuleRes.exists(reference)) return true;
-
-        for (var path : DataRefManager.getInstance().currentModuleProject.getRefToOtherModule()) {
-            for (var module : DataRefManager.getInstance().listModuleRes) {
-                if (module.getPath().equals(path)) {
-                    if (DataRefManager.getInstance().currentModuleRes.exists(reference))
-                        found = true;
-                }
-            }
-        }
-
-        if (found) return true;
-        else if (AttrValuesRefBase.listRefAndroid.contains(reference)) return true;
-        else if (AttrValuesRefBase.listRefAndroidX.contains(reference)) return true;
-        else if (AttrValuesRefBase.listRefMaterial3.contains(reference)) return true;
+        if (existsInProjectRes(reference)) return true;
+        if (existsInAndroidRes(reference)) return true;
         return false;
     }
 
@@ -103,7 +99,7 @@ public class ResourcesValuesFixer {
                 int id = CodeUtil.getSystemResourceId(MaterialR.getStringClass(), name);
                 if (id == -1) id = CodeUtil.getSystemResourceId(AndroidX.getStringClass(), name);
                 if (id != -1) return C.getString(id);
-                return name;
+                return ref;
             }
             if (value.startsWith("@android:string/") || value.startsWith("@string/"))
                 value = getString(C, value);
@@ -321,22 +317,7 @@ public class ResourcesValuesFixer {
 
     public static int getAttr(String attr) {
         try {
-            String name;
-            if (attr.startsWith("?android:attr/")) {
-                name = parseReferName(attr);
-            } else if (attr.startsWith("?android:")) {
-                name = parseReferName(attr, ":");
-            } else if (attr.startsWith("@android:attr/")) {
-                name = parseReferName(attr);
-            } else if (attr.startsWith("?attr/android:")) {
-                name = parseReferName(attr, ":");
-            } else if (attr.startsWith("?attr/")) {
-                name = parseReferName(attr, "/");
-            } else if (attr.startsWith("?")) {
-                name = attr.substring(1);
-            } else {
-                return -1;
-            }
+            String name = parseReferName(attr);
             int id = CodeUtil.getSystemResourceId(android.R.attr.class, name);
             if (id == -1) id = CodeUtil.getSystemResourceId(AndroidX.getAttrClass(), name);
             if (id == -1) id = CodeUtil.getSystemResourceId(MaterialR.getAttrClass(), name);
@@ -347,17 +328,20 @@ public class ResourcesValuesFixer {
         return -1;
     }
 
-    public static String parseReferName(final String reference) {
-        return parseReferName(reference, "/");
+    public static String parseReferName(String ref) {
+        return ref.substring(ref.lastIndexOf("/") + 1)
+                .substring(ref.lastIndexOf(":") + 1)
+                .substring(ref.lastIndexOf("?") + 1);
     }
 
-    public static String parseReferName(final String reference, String sep) {
-        return reference.substring(reference.indexOf(sep) + 1);
-    }
-
-    public static boolean matchToDefaultRefRes(String ref) {
-        String pattern = "\\@[a-z]\\/[a-zA-Z][a-zA-Z0-9_]";
-        return ref.matches(pattern);
+    public static boolean matchesToDefaultRefRes(String ref) {
+        return ref.matches("\\?[a-zA-Z][a-zA-Z0-9_]*")
+                || ref.matches("\\?attr\\/[a-zA-Z][a-zA-Z0-9_]*")
+                || ref.matches("\\?attr\\/android\\:[a-zA-Z][a-zA-Z0-9_]*")
+                || ref.matches("\\?android\\:[a-zA-Z][a-zA-Z0-9_]*")
+                || ref.matches("\\?android\\:attr\\/[a-zA-Z][a-zA-Z0-9_]*")
+                || ref.matches("\\@android\\:[a-z]*\\/[a-zA-Z][a-zA-Z0-9_]*")
+                || ref.matches("\\@[a-z]*\\/[a-zA-Z][a-zA-Z0-9_]*");
     }
 
     public static class ImageXmlUtil {

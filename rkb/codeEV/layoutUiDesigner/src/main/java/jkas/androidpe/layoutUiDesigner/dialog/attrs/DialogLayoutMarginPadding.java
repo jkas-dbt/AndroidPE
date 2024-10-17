@@ -31,9 +31,12 @@ public class DialogLayoutMarginPadding {
     private MaterialAlertDialogBuilder dialog;
     private ArrayList<String> listId = new ArrayList<>();
     private String attr = maring;
+    private ArrayList<String> listItem = new ArrayList<>();
 
     public DialogLayoutMarginPadding(Context c) {
         this.C = c;
+        listItem.clear();
+        listItem.addAll(AttrViewDataAdapter.getListAssist("@dimen"));
     }
 
     private void events() {
@@ -60,14 +63,15 @@ public class DialogLayoutMarginPadding {
     }
 
     private void setEdit(
-            final TextInputLayout til, final AutoCompleteTextView edit,final boolean global) {
-        CustomAutoCompleteAdapter adapter =
-                new CustomAutoCompleteAdapter(
-                        C,
-                        android.R.layout.simple_dropdown_item_1line,
-                        AttrViewDataAdapter.getListAssist("@dimen"));
+            final TextInputLayout til, final AutoCompleteTextView edit, final boolean global) {
         edit.setText(
                 element.getAttribute("android:" + attr + (global ? "" : til.getHint().toString())));
+        if (edit.getAdapter() != null) return;
+
+        final ArrayList<String> list = new ArrayList<>();
+        list.addAll(listItem);
+        CustomAutoCompleteAdapter adapter =
+                new CustomAutoCompleteAdapter(C, android.R.layout.simple_dropdown_item_1line, list);
         edit.setAdapter(adapter);
         edit.addTextChangedListener(
                 new TextWatcher() {
@@ -114,7 +118,7 @@ public class DialogLayoutMarginPadding {
         binding.editRight.setText("");
         binding.editTop.setText("");
         binding.editBottom.setText("");
-        
+
         dialog = new MaterialAlertDialogBuilder(C);
         dialog.setTitle("Margin - Padding");
         dialog.setView(binding.getRoot());

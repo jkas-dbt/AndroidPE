@@ -4,6 +4,7 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
+import jkas.androidpe.resourcesUtils.utils.ResourcesValuesFixer;
 import jkas.codeUtil.XmlManager;
 import jkas.codeUtil.Files;
 import org.w3c.dom.Element;
@@ -54,19 +55,19 @@ public class ModuleRes {
     }
 
     public boolean exists(String ref) {
-        if (ref.contains("/")) ref = ref.split("/")[0];
-        if (drawables.containsKey(ref)) return true;
-        else if (mipmaps.containsKey(ref)) return true;
-        else if (layouts.containsKey(ref)) return true;
-        else if (menus.containsKey(ref)) return true;
-        else if (raws.containsKey(ref)) return true;
-        else if (valuesStrings.containsKey(ref)) return true;
-        else if (valuesColors.containsKey(ref)) return true;
-        else if (valuesBools.containsKey(ref)) return true;
-        else if (valuesDimens.containsKey(ref)) return true;
-        else if (valuesIntegers.containsKey(ref)) return true;
-        else if (valuesStyles.containsKey(ref)) return true;
-        else if (valuesArrays.containsKey(ref)) return true;
+        String name = ResourcesValuesFixer.parseReferName(ref);
+        if (drawables.containsKey(name.intern())) return true;
+        else if (mipmaps.containsKey(name.intern())) return true;
+        else if (layouts.containsKey(name.intern())) return true;
+        else if (menus.containsKey(name.intern())) return true;
+        else if (raws.containsKey(name.intern())) return true;
+        else if (valuesStrings.containsKey(name.intern())) return true;
+        else if (valuesColors.containsKey(name.intern())) return true;
+        else if (valuesBools.containsKey(name.intern())) return true;
+        else if (valuesDimens.containsKey(name.intern())) return true;
+        else if (valuesIntegers.containsKey(name.intern())) return true;
+        else if (valuesStyles.containsKey(name.intern())) return true;
+        else if (valuesArrays.containsKey(name.intern())) return true;
         return false;
     }
 

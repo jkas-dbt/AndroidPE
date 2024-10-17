@@ -7,6 +7,11 @@ android {
     buildToolsVersion rootProject.ext.buildTools
     namespace rootProject.ext.packageName + ".logger"
     
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdk
+        targetSdkVersion rootProject.ext.targetSdk
+    }
+    
     compileOptions {
 		sourceCompatibility JavaVersion.VERSION_17
 		targetCompatibility JavaVersion.VERSION_17

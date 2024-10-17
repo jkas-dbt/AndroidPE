@@ -89,7 +89,7 @@
                              android:textSize="8dp"
                              android:textColor="?colorTertiary"
                              android:typeface="monospace"
-                             android:text="v1.3 (181102)"
+                             android:text="v1.5 (181102)"
                              android:textStyle="bold" />
 
                     </LinearLayout>

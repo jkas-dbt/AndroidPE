@@ -63,7 +63,19 @@ public class FilesManager {
             restoreContent();
         }
         loading = false;
-        LoggerRes.addLogListener(() -> currentOpenedFile.reload());
+        LoggerRes.addLogListener(
+                new LoggerRes.LogListener() {
+
+                    @Override
+                    public void reloadResRef() {
+                        for (var pair : tmpListOpenedFiles) pair.second.reloadCode();
+                    }
+
+                    @Override
+                    public void onSaveRequested() {
+                        save();
+                    }
+                });
     }
 
     private MainEditorView addMainEV(final String path) {

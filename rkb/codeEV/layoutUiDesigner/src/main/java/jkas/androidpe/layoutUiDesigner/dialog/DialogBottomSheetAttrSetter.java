@@ -71,7 +71,7 @@ public class DialogBottomSheetAttrSetter {
     }
 
     private void listener() {
-        ResCodeUtils.ResAndCodeFilesFixer.fixCodeFileNameAndAssign(binding.tilId, binding.editId);
+        ResCodeUtils.ResAndCodeFilesFixer.fixXmlIdNameAndAssign(binding.tilId, binding.editId);
         binding.editId.addTextChangedListener(
                 new TextWatcher() {
 

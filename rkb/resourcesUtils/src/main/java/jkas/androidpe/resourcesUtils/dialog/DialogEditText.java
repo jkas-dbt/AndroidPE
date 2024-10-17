@@ -47,7 +47,6 @@ public class DialogEditText {
     }
 
     public void setDefaultValue(@NonNull String value) {
-        binding.textInput.setText(value);
         text = value;
     }
 
@@ -69,7 +68,6 @@ public class DialogEditText {
 
     public void show() {
         dialog.show();
-        binding.textInput.setText("");
         binding.textInput.setText(text);
     }
 
@@ -79,14 +77,11 @@ public class DialogEditText {
             builder.setPositiveButton(
                     R.string.save,
                     (d, v) -> {
-                        listener.onTextChanged(binding.textInput.getText().toString());
-                        if (pattern != null) {
-                            if (text.matches(pattern) || (text + "rkb").matches(pattern))
-                                listener.onValueConfirmed(true);
-                            else {
-                                listener.onValueConfirmed(false);
-                            }
-                        } else listener.onValueConfirmed(true);
+                        listener.onTextChanged(text);
+                        if (pattern == null) listener.onValueConfirmed(true);
+                        else if (text.matches(pattern) || (text + "rkb").matches(pattern))
+                            listener.onValueConfirmed(true);
+                        else listener.onValueConfirmed(false);
                     });
         }
 
@@ -102,16 +97,15 @@ public class DialogEditText {
                     @Override
                     public void afterTextChanged(Editable edit) {
                         binding.til.setError(null);
-                        if (pattern == null) return;
                         text = edit.toString();
+                        listener.onTextChanged(text);
+                        if (pattern == null) return;
                         if (text.matches(pattern)) {
-                            listener.onTextChanged(text);
                             if (!withConfirmation) listener.onValueConfirmed(true);
                         } else if ((text + "rkb").matches(pattern)) {
-                            listener.onTextChanged(text);
                             if (!withConfirmation) listener.onValueConfirmed(true);
                         } else {
-                            listener.onValueConfirmed(false);
+                            if (!withConfirmation) listener.onValueConfirmed(false);
                             binding.til.setError(msgError);
                         }
                     }
