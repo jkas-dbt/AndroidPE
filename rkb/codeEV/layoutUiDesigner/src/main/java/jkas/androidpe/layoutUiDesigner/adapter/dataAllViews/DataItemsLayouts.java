@@ -30,6 +30,7 @@ public class DataItemsLayouts {
                         "RelativeLayout", R.drawable.ic_widget_relative_layout));
         list.add(
                 new ViewPalettesAdapter.DataItem("FrameLayout", R.drawable.ic_widget_frame_layout));
+        list.add(new ViewPalettesAdapter.DataItem("TableLayout", R.drawable.ic_widget_tab_layout));
         list.add(new ViewPalettesAdapter.DataItem("TableRow", R.drawable.ic_widget_tab_layout));
         list.add(new ViewPalettesAdapter.DataItem("GridLayout", R.drawable.ic_widget_grid_layout));
         list.add(
