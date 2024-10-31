@@ -70,8 +70,7 @@ public class ResourcesValuesFixer {
         } else
         // integer
         if (reference.startsWith("@integer") || reference.startsWith("@android:integer")) {
-            if (CodeUtil.isColor(reference)) return reference;
-
+            return "" + getInteger(C, reference);
         } else
         // attr
         {
