@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<resources>
+<?xml version="1.0" encoding="UTF-8"?><resources>
     <string name="app_name">AndroidPE</string>
     <string name="jkas">JKas</string>
     <string name="by_jkas">By : JKas</string>
@@ -272,6 +271,7 @@
     <string name="surround">Surround</string>
     <string name="inside">Inside</string>
     <string name="before">Before</string>
+    <string name="tools">Tools</string>
 
     <!-- MESSAGE WARNING -->
     <string name="warning_delete">This action is irreversible, do you want to delete</string>
@@ -303,5 +303,4 @@
     <string name="msg_error_activity_creating">We got an error while creating the activity.</string>
     <string name="msg_error_archiving_process">The archiving process was interrupted due to an error that occurred</string>
     <string name="msg_error_crash_handler">a fatal error has been detected.  Sorry but for proper functioning, the project will be reset again.  Error details are noted in the file</string>
-
 </resources>
