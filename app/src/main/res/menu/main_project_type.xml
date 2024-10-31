@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<item
+		android:title="Android Project"
+		app:showAsAction="always"
+		android:id="@+id/android_project"
+		android:icon="@drawable/ic_android"/>
+
+	<item
+		android:title="Soon"
+		app:showAsAction="always"
+		android:id="@+id/soon"
+		android:icon="@drawable/ic_grid_outline"/>
+
+	<item
+		android:title="@string/tools"
+		app:showAsAction="always"
+		android:id="@+id/tools"
+		android:icon="@drawable/ic_tools"/>
+
+</menu>
