@@ -2,7 +2,6 @@
 plugins {
    alias libs.plugins.android.application apply false
    alias libs.plugins.android.library apply false
-   alias libs.plugins.kotlin apply false
 }
 
 task clean(type: Delete) {
@@ -16,5 +15,5 @@ ext {
     minSdk= 26
     packageName = "jkas.androidpe"
     versionCode = 181102
-    versionName = "1.5"
+    versionName = "1.6"
 }

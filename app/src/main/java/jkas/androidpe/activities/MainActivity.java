@@ -5,12 +5,10 @@ import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import com.google.android.material.elevation.SurfaceColors;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
-import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.IntDef;
@@ -77,12 +75,8 @@ public class MainActivity extends AppCompatActivity {
             if (!ActivityCompat.shouldShowRequestPermissionRationale(
                     activity, androidPermissionName)) {
                 return BLOCKED_OR_NEVER_ASKED;
-            } else {
-                return DENIED;
-            }
-        } else {
-            return GRANTED;
-        }
+            } else return DENIED;
+        } else return GRANTED;
     }
 
     @Override
@@ -294,5 +288,25 @@ public class MainActivity extends AppCompatActivity {
     private void initInstances() {
         SP = new SearchingProjects(C);
         newProject = new NewProject(C);
+
+        if (CodeUtil.isScreenLandscape(this)) {
+            GradientDrawable gradient = new GradientDrawable();
+            gradient.setColor(SurfaceColors.SURFACE_3.getColor(this));
+            gradient.setCornerRadii(new float[] {0, 0, 43, 43, 43, 43, 0, 0});
+            binding.navRailView.setBackground(gradient);
+            binding.navRailView.setOnItemSelectedListener(
+                    item -> {
+                        return false;
+                    });
+        } else {
+            CodeUtil.setNavigationBarColor(this, SurfaceColors.SURFACE_3.getColor(this));
+            binding.bottomAppBar.setBackgroundColor(SurfaceColors.SURFACE_3.getColor(this));
+            binding.bottomAppBar
+                    .getMenu()
+                    .getItem(0)
+                    .setIconTintList(
+                            ColorStateList.valueOf(
+                                    ResourcesValuesFixer.getColor(C, "?colorPrimary")));
+        }
     }
 }

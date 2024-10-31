@@ -2233,11 +2233,8 @@ public class AttributeSetter {
                                             .currentModuleRes
                                             .menus
                                             .get(sVal.intern());
-                            MenuItemCreator.buildMenu(
-                                    C,
-                                    (Menu) CodeUtil.invoke(v, "getMenu", null, new Object[] {}),
-                                    path);
-
+                            Menu menu = (Menu) CodeUtil.invoke(v, "getMenu", null, new Object[] {});
+                            MenuItemCreator.buildMenu(C, menu, path);
                         } else if (debug != null)
                             debug.w(
                                     TAG,

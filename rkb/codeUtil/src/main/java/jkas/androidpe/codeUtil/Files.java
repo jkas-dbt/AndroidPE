@@ -41,7 +41,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
-
 /**
  * @auther JKas
  */
@@ -207,8 +206,14 @@ public class Files {
         deleteDir(sourcePath);
     }
 
-    public static void deleteDir(String path) throws IOException {
-        if (isDirectory(path)) org.apache.commons.io.FileUtils.deleteDirectory(new File(path));
+    public static boolean deleteDir(String path) {
+        try {
+            if (isDirectory(path)) org.apache.commons.io.FileUtils.deleteDirectory(new File(path));
+            return true;
+        } catch (IOException err) {
+            err.printStackTrace();
+        }
+        return false;
     }
 
     public static void copyFile(String srcPath, String destPath) throws IOException {

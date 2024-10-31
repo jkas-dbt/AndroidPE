@@ -93,109 +93,125 @@
 
 		</LinearLayout>
 
-		<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+		<LinearLayout
 			android:layout_height="match_parent"
 			android:layout_width="match_parent"
-			android:id="@+id/swipeRefreshLayout">
+			android:orientation="horizontal"
+			android:layout_marginTop="8dp">
 
-			<ViewSwitcher
+			<com.google.android.material.navigationrail.NavigationRailView
+				android:layout_height="match_parent"
+				android:layout_width="wrap_content"
+				android:id="@+id/navRailView"
+				app:menu="@menu/main_project_type"
+				android:padding="14dp"
+				android:layout_marginBottom="16dp"/>
+
+			<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 				android:layout_height="match_parent"
 				android:layout_width="match_parent"
-				android:id="@+id/viewSwitcher">
+				android:id="@+id/swipeRefreshLayout">
 
-				<LinearLayout
+				<ViewSwitcher
 					android:layout_height="match_parent"
 					android:layout_width="match_parent"
-					android:gravity="center"
-					android:padding="8dp"
-					android:orientation="vertical">
+					android:id="@+id/viewSwitcher">
 
 					<LinearLayout
-						android:layout_height="wrap_content"
-						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:layout_width="match_parent"
 						android:gravity="center"
+						android:padding="8dp"
 						android:orientation="vertical">
-
-						<TextView
-							android:layout_height="wrap_content"
-							android:layout_width="250dp"
-							android:gravity="center"
-							android:alpha="0.43"
-							android:textSize="10dp"
-							android:typeface="serif"
-							android:text="@string/swipe_refresh_data_or_create_new_project"/>
 
 						<LinearLayout
 							android:layout_height="wrap_content"
 							android:layout_width="wrap_content"
 							android:gravity="center"
-							android:orientation="horizontal">
+							android:orientation="vertical">
 
 							<TextView
 								android:layout_height="wrap_content"
-								android:layout_width="wrap_content"
+								android:layout_width="250dp"
+								android:gravity="center"
+								android:alpha="0.43"
 								android:textSize="10dp"
-								android:textColor="?colorTertiary"
 								android:typeface="serif"
-								android:text="Storage Access Status : "/>
+								android:text="@string/swipe_refresh_data_or_create_new_project"/>
 
-							<TextView
+							<LinearLayout
 								android:layout_height="wrap_content"
 								android:layout_width="wrap_content"
-								android:textSize="10dp"
-								android:textColor="?colorPrimary"
-								android:typeface="serif"
-								android:textStyle="bold"
-								android:id="@+id/tvStatusPermission"
-								android:text="Loading ..."/>
+								android:gravity="center"
+								android:orientation="horizontal">
+
+								<TextView
+									android:layout_height="wrap_content"
+									android:layout_width="wrap_content"
+									android:textSize="10dp"
+									android:textColor="?colorTertiary"
+									android:typeface="serif"
+									android:text="Storage Access Status : "/>
+
+								<TextView
+									android:layout_height="wrap_content"
+									android:layout_width="wrap_content"
+									android:textSize="10dp"
+									android:textColor="?colorPrimary"
+									android:typeface="serif"
+									android:textStyle="bold"
+									android:id="@+id/tvStatusPermission"
+									android:text="Loading ..."/>
+
+							</LinearLayout>
 
 						</LinearLayout>
 
 					</LinearLayout>
 
-				</LinearLayout>
-
-				<RelativeLayout
-					android:layout_height="match_parent"
-					android:layout_width="match_parent"
-					android:gravity="center_horizontal"
-					android:padding="4dp">
-
-					<androidx.core.widget.NestedScrollView
+					<RelativeLayout
 						android:layout_height="match_parent"
-						android:layout_width="match_parent">
+						android:layout_width="match_parent"
+						android:gravity="center_horizontal"
+						android:padding="4dp">
 
-						<GridLayout
-							android:layout_height="wrap_content"
+						<androidx.core.widget.NestedScrollView
+							android:layout_height="match_parent"
+							android:layout_width="match_parent">
+
+							<GridLayout
+								android:layout_height="wrap_content"
+								android:layout_width="match_parent"
+								android:scrollbars="vertical"
+								android:layout_marginBottom="143dp"
+								android:horizontalSpacing="8dp"
+								android:layout_marginLeft="76dp"
+								android:layout_marginRight="76dp"
+								android:layout_marginTop="15dp"
+								android:verticalSpacing="8dp"
+								android:columnCount="2"
+								android:id="@+id/gridLayoutListProjects"/>
+
+						</androidx.core.widget.NestedScrollView>
+
+						<View
+							android:layout_height="20dp"
 							android:layout_width="match_parent"
-							android:scrollbars="vertical"
-							android:layout_marginBottom="143dp"
-							android:horizontalSpacing="8dp"
-							android:layout_marginLeft="76dp"
-							android:layout_marginRight="76dp"
-							android:layout_marginTop="15dp"
-							android:verticalSpacing="8dp"
-							android:columnCount="2"
-							android:id="@+id/gridLayoutListProjects"/>
+							android:id="@+id/viewGradientTop"/>
 
-					</androidx.core.widget.NestedScrollView>
+						<View
+							android:layout_height="76dp"
+							android:layout_width="match_parent"
+							android:layout_alignParentBottom="true"
+							android:id="@+id/viewGradientBottom"/>
 
-					<View
-						android:layout_height="20dp"
-						android:layout_width="match_parent"
-						android:id="@+id/viewGradientTop"/>
+					</RelativeLayout>
 
-					<View
-						android:layout_height="76dp"
-						android:layout_width="match_parent"
-						android:layout_alignParentBottom="true"
-						android:id="@+id/viewGradientBottom"/>
+				</ViewSwitcher>
 
-				</RelativeLayout>
+			</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-			</ViewSwitcher>
-
-		</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+		</LinearLayout>
 
 	</LinearLayout>
 

@@ -88,29 +88,36 @@ public class DialogAttrValueParserAssist {
         }
     }
 
+    /* // This code creates fatal errors.
     public void fixRef(String ref) {
-        if (!ref.matches("(\\?|\\@)[a-z].*")) {
-            binding.tilRef.setError(C.getString(R.string.warning_ref_not_correct));
-            return;
-        }
-        String type = "", name = ResourcesValuesFixer.parseReferName(ref);
+        try {
+            if (!ref.matches("(\\?|\\@)[a-z].*")) {
+                binding.tilRef.setError(C.getString(R.string.warning_ref_not_correct));
+                return;
+            }
+            String type = "", name = ResourcesValuesFixer.parseReferName(ref);
 
-        if (ref.matches(".*\\/.*\\:.*") || ref.matches(".*\\:.*")) type = ref.split("\\:")[0] + ":";
-        if (ref.contains("/")) type = ref.split("\\/")[0] + "/";
-        if (ref.matches("\\?[a-zA-Z0-9_]")) type = "?";
+            if (ref.matches("\\?attr\\/android\\:[a-zA-Z0-9_]*")
+                    || ref.matches("\\?android\\:[a-zA-Z0-9_]*")) type = ref.split("\\:")[0] + ":";
+            else if (ref.contains("/")) type = ref.split("\\/")[0] + "/";
+            else if (ref.matches("\\?[a-zA-Z0-9_]*")) type = "?";
+            else return;
 
-        String finalRef = type + ResCodeUtils.ResAndCodeFilesFixer.fixXmlIdName(name);
-        if (!finalRef.equals(ref)) {
-            int p = binding.editRef.getSelectionStart();
-            binding.editRef.setText(finalRef);
-            if (p >= finalRef.length()) binding.editRef.setSelection(finalRef.length());
-            else binding.editRef.setSelection(p);
-        }
+            String finalRef = type + ResCodeUtils.ResAndCodeFilesFixer.fixXmlIdName(name);
+            if (!finalRef.equals(ref)) {
+                int p = binding.editRef.getSelectionStart();
+                binding.editRef.setText(finalRef);
+                if (p >= finalRef.length()) binding.editRef.setSelection(finalRef.length());
+                else binding.editRef.setSelection(p);
+            }
 
-        if (!ResourcesValuesFixer.matchesToDefaultRefRes(finalRef)) {
-            binding.tilRef.setError(C.getString(R.string.warning_ref_not_correct));
+            if (!ResourcesValuesFixer.matchesToDefaultRefRes(finalRef)) {
+                binding.tilRef.setError(C.getString(R.string.warning_ref_not_correct));
+            }
+        } catch (Exception err) {
+            // ignore
         }
-    }
+    }*/
 
     private void events() {
         binding.imgSwitch.setOnClickListener(v -> binding.editRef.setText(currentValue));
@@ -139,7 +146,7 @@ public class DialogAttrValueParserAssist {
                             binding.imgSwitch.setVisibility(View.GONE);
                         else binding.imgSwitch.setVisibility(View.VISIBLE);
                         showValue(editable.toString());
-                        fixRef(editable.toString());
+                        // fixRef(editable.toString()); will be reviewed or deleted if necessary.
                     }
                 });
 
@@ -246,10 +253,11 @@ public class DialogAttrValueParserAssist {
     }
 
     private void showValue(String text) {
-        binding.tvInfo.setText("...");
-        binding.viewFlipper.setDisplayedChild(0);
-        binding.editValue.setText(ResourcesValuesFixer.getValuesAsString(C, text));
         try {
+            binding.tvInfo.setText("...");
+            binding.viewFlipper.setDisplayedChild(0);
+            binding.editValue.setText(ResourcesValuesFixer.getValuesAsString(C, text));
+
             boolean refToRes = ResourcesValuesFixer.matchesToDefaultRefRes(text);
             binding.editValue.setEnabled(refToRes);
             if (text.trim().isEmpty()) binding.editValue.setEnabled(true);

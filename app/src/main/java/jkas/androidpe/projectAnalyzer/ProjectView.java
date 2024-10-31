@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.widget.PopupMenu;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.elevation.SurfaceColors;
+import java.util.concurrent.Executors;
 import jkas.androidpe.activities.ProjectEditorActivity;
 import jkas.androidpe.resources.R;
 import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
@@ -118,7 +119,7 @@ public class ProjectView {
                 R.string.delete,
                 (b1, b2) -> {
                     try {
-                        Files.deleteDir(path);
+                        Executors.newSingleThreadExecutor().execute(() -> Files.deleteDir(path));
                         view.setVisibility(View.GONE);
                     } catch (Exception e) {
                         Toast.makeText(

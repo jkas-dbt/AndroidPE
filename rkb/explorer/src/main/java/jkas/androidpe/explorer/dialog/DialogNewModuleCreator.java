@@ -137,38 +137,33 @@ public class DialogNewModuleCreator {
             return;
         }
 
-        Executors.newSingleThreadExecutor()
-                .execute(
-                        () -> {
-                            ModulesCreator mc = new ModulesCreator(C);
-                            mc.setFolderName(binding.textInputModuleName.getText().toString());
-                            mc.setPackageName(binding.textInputPkg.getText().toString());
-                            mc.setRootProjectPath(binding.textInputFinalPath.getText().toString());
-                            mc.setSdkMin(21);
-                            mc.setSdkTarget(33);
-                            mc.setModuleGradleScript(
-                                    binding.cbKotlinScript.isChecked()
-                                            ? ProjectsCreator.SCRIPT_KOTLIN
-                                            : ProjectsCreator.SCRIPT_GROOVY);
-                            mc.setRootProjectType(ProjectsCreator.PROJECT_TYPE_ANDROIDX);
-                            mc.setType(moduleType);
-                            mc.setLanguage(language);
-                            mc.writeModule();
+        ModulesCreator mc = new ModulesCreator(C);
+        mc.setFolderName(binding.textInputModuleName.getText().toString());
+        mc.setPackageName(binding.textInputPkg.getText().toString());
+        mc.setRootProjectPath(binding.textInputFinalPath.getText().toString());
+        mc.setSdkMin(21);
+        mc.setSdkTarget(33);
+        mc.setModuleGradleScript(
+                binding.cbKotlinScript.isChecked()
+                        ? ProjectsCreator.SCRIPT_KOTLIN
+                        : ProjectsCreator.SCRIPT_GROOVY);
+        mc.setRootProjectType(ProjectsCreator.PROJECT_TYPE_ANDROIDX);
+        mc.setType(moduleType);
+        mc.setLanguage(language);
+        mc.writeModule();
 
-                            Logger.success(
-                                    SRC,
-                                    C.getString(R.string.module)
-                                            + " : "
-                                            + binding.textInputModuleName.getText().toString(),
-                                    C.getString(R.string.created)
-                                            + " : "
-                                            + binding.textInputFinalPath.getText().toString()
-                                            + "/"
-                                            + binding.textInputModuleName.getText().toString(),
-                                    "Gradle file (settings.gradle ...) "
-                                            + C.getString(R.string.modified));
-                        });
-
+        Logger.success(
+                SRC,
+                C.getString(R.string.module)
+                        + " : "
+                        + binding.textInputModuleName.getText().toString(),
+                C.getString(R.string.created)
+                        + " : "
+                        + binding.textInputFinalPath.getText().toString()
+                        + "/"
+                        + binding.textInputModuleName.getText().toString(),
+                "Gradle file (settings.gradle ...) " + C.getString(R.string.modified));
+        listener.saved();
         Toast.makeText(C, R.string.created, Toast.LENGTH_SHORT).show();
     }
 
