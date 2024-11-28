@@ -47,6 +47,42 @@ public class AttrViews {
         usedByAssist.add("gravity");
         usedByAssist.add("layout_gravity");
         usedByAssist.add("alpha");
+        usedByAssist.add("layout_constraintLeft_toLeftOf");
+        usedByAssist.add("layout_constraintLeft_toRightOf");
+        usedByAssist.add("layout_constraintRight_toLeftOf");
+        usedByAssist.add("layout_constraintRight_toRightOf");
+        usedByAssist.add("layout_constraintTop_toTopOf");
+        usedByAssist.add("layout_constraintTop_toBottomOf");
+        usedByAssist.add("layout_constraintBottom_toTopOf");
+        usedByAssist.add("layout_constraintBottom_toBottomOf");
+        usedByAssist.add("layout_constraintBaseline_toBaselineOf");
+        usedByAssist.add("layout_constraintStart_toEndOf");
+        usedByAssist.add("layout_constraintStart_toStartOf");
+        usedByAssist.add("layout_constraintEnd_toStartOf");
+        usedByAssist.add("layout_constraintEnd_toEndOf");
+        usedByAssist.add("layout_marginBaseline");
+        usedByAssist.add("layout_goneMarginStart");
+        usedByAssist.add("layout_goneMarginEnd");
+        usedByAssist.add("layout_goneMarginLeft");
+        usedByAssist.add("layout_goneMarginTop");
+        usedByAssist.add("layout_goneMarginRight");
+        usedByAssist.add("layout_goneMarginBottom");
+        usedByAssist.add("layout_goneMarginBaseline");
+        usedByAssist.add("layout_constraintCircle");
+        usedByAssist.add("layout_constraintCircleRadius");
+        usedByAssist.add("layout_constraintCircleAngle");
+        usedByAssist.add("layout_constrainedWidth");
+        usedByAssist.add("layout_constrainedHeight");
+        usedByAssist.add("layout_constraintWidth_min");
+        usedByAssist.add("layout_constraintHeight_min");
+        usedByAssist.add("layout_constraintWidth_max");
+        usedByAssist.add("layout_constraintHeight_max");
+        usedByAssist.add("layout_constraintWidth_percent");
+        usedByAssist.add("layout_constraintHeight_percent");
+        usedByAssist.add("layout_constraintWidth_default");
+        usedByAssist.add("layout_constraintHeight_default");
+        usedByAssist.add("layout_constraintHorizontal_weight");
+        usedByAssist.add("layout_constraintVertical_weight");
     }
 
     private static void initBaseAttrs() {
