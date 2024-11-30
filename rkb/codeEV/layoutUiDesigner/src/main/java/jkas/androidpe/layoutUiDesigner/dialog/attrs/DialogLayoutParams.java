@@ -137,7 +137,7 @@ public class DialogLayoutParams {
         events();
 
         if (type != WEIGHT) {
-            ArrayList<String> suggestions = AttrViewDataAdapter.getListAssist("@dimen");
+            ArrayList<String> suggestions = AttrViewDataAdapter.getAllData("@dimen");
             suggestions.add(0, "match_parent");
             suggestions.add(0, "wrap_content");
             CustomAutoCompleteAdapter adapter =
