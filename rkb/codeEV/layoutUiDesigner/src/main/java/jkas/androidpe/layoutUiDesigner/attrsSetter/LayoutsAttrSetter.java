@@ -165,10 +165,9 @@ public class LayoutsAttrSetter {
                 vrl -> dialogRelativeLayout.show(dialog.element));
 
         dialog.binding.btnConstraintLayout.setOnClickListener(
-                vcdl -> dialogConstraintLayout.show(dialog.element));
+                vconstl -> dialogConstraintLayout.show(dialog.element));
 
         dialog.binding.btnCoordinatorLayout.setOnClickListener(
-                vcdl -> dialogCoordinatorLayout.show(dialog.element));
-        ;
+                vcoordl -> dialogCoordinatorLayout.show(dialog.element));
     }
 }

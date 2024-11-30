@@ -156,7 +156,7 @@ public class DialogAdditionnalAttr {
         if (autoCompAssist != null) {
             listValueAdapter.clear();
             if (autoCompAssist[0].startsWith("@"))
-                listValueAdapter = AttrViewDataAdapter.getListAssist(autoCompAssist[0]);
+                listValueAdapter = AttrViewDataAdapter.getAllData(autoCompAssist[0]);
             else for (String v : autoCompAssist) listValueAdapter.add(v);
             adapter =
                     new CustomAutoCompleteAdapter(

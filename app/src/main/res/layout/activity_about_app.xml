@@ -89,7 +89,7 @@
 							android:textSize="8dp"
 							android:textColor="?colorTertiary"
 							android:typeface="monospace"
-							android:text="v1.6 (181102)"
+							android:text="v1.76 (181102)"
 							android:textStyle="bold"
 							android:alpha="0.76"/>
 

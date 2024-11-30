@@ -61,7 +61,7 @@ public class CommonAttrSetter {
                             dialog.element,
                             "android:tint",
                             "@color",
-                            AttrViewDataAdapter.getListAssist("@color"));
+                            AttrViewDataAdapter.getAllData("@color"));
                     AD.setOnSaveListener(
                             finalValue -> {
                                 if (finalValue.trim().isEmpty())
@@ -82,7 +82,7 @@ public class CommonAttrSetter {
                             dialog.element,
                             "android:background",
                             "@(color|drawable)",
-                            AttrViewDataAdapter.getListAssist("@(color|drawable)"));
+                            AttrViewDataAdapter.getAllData("@(color|drawable)"));
                     AD.setOnSaveListener(
                             finalValue -> {
                                 if (finalValue.trim().isEmpty())
@@ -103,7 +103,7 @@ public class CommonAttrSetter {
                             dialog.element,
                             "android:backgroundTint",
                             "@color",
-                            AttrViewDataAdapter.getListAssist("@color"));
+                            AttrViewDataAdapter.getAllData("@color"));
                     AD.setOnSaveListener(
                             finalValue -> {
                                 if (finalValue.trim().isEmpty())

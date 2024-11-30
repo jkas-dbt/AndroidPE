@@ -26,6 +26,8 @@
 -dontwarn java.beans.Introspector
 -dontwarn java.beans.PropertyDescriptor
 
+-dontwarn javax.annotation.ParametersAreNonnullByDefault
+
 -dontwarn androidx.appcompat.graphics.drawable.DrawableWrapper
 -dontwarn androidx.databinding.DataBinderMapperImpl
 -dontwarn androidx.databinding.DataBindingComponent

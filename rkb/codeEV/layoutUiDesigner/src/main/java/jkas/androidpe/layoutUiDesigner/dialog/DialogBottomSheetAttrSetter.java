@@ -5,6 +5,8 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -263,9 +265,9 @@ public class DialogBottomSheetAttrSetter {
     }
 
     private void loadAttrData() {
-        additionalAttrSetter.init();
-        commonAttrSetter.init();
         layoutsAttrSetter.init();
+        commonAttrSetter.init();
+        new Handler(Looper.getMainLooper()).postDelayed(() -> additionalAttrSetter.init(), 43);
     }
 
     private void isParent() {
@@ -338,14 +340,12 @@ public class DialogBottomSheetAttrSetter {
         binding.editId.setText(id);
 
         loadAttrData();
-        setVisibilityModel();
         refreshNeeded = false;
     }
 
     public void show(Element e) {
-        prepare(e);
         BSD.show();
-        refreshNeeded = false;
+        prepare(e);
         binding.editId.clearFocus();
         updateCopyPastNode();
     }

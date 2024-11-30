@@ -45,7 +45,9 @@ public class AdditionnalAttrSetter {
             String elementAttr = (String) pair.first;
             boolean used = false;
             for (String usedAttr : AttrViews.usedByAssist) {
-                if (elementAttr.equals(usedAttr) || elementAttr.equals("android:" + usedAttr)) {
+                if (elementAttr.equals(usedAttr)
+                        || elementAttr.equals("android:" + usedAttr)
+                        || elementAttr.equals("app:" + usedAttr)) {
                     used = true;
                     break;
                 }
