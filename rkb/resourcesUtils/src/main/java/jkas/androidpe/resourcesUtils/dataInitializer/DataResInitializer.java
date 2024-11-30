@@ -32,7 +32,6 @@ public class DataResInitializer {
 
     private static void initModule() {
         loadDrawables();
-        loadMipmaps();
         loadLayouts();
         loadMenus();
         loadRaws();
@@ -47,55 +46,63 @@ public class DataResInitializer {
 
     private static void loadRaws() {
         mRes.raws.clear();
+        mRes.listRaws.clear();
         for (String path : mProject.getRaws()) {
             for (String file : Files.listFile(path)) {
                 String name = Files.getNameFromAbsolutePath(file);
                 name = name.substring(0, name.lastIndexOf("."));
                 mRes.raws.put(name.intern(), file);
+                mRes.listRaws.add("@raw/" + name.intern());
             }
         }
     }
 
     private static void loadMenus() {
         mRes.menus.clear();
+        mRes.listMenus.clear();
         for (String path : mProject.getMenus()) {
             for (String file : Files.listFile(path)) {
                 String name = Files.getNameFromAbsolutePath(file);
                 name = name.substring(0, name.lastIndexOf("."));
                 mRes.menus.put(name.intern(), file);
+                mRes.listMenus.add("@menu/" + name.intern());
             }
         }
     }
 
     private static void loadLayouts() {
         mRes.layouts.clear();
+        mRes.listLayouts.clear();
         for (String path : mProject.getLayouts()) {
             for (String file : Files.listFile(path)) {
                 String name = Files.getNameFromAbsolutePath(file);
                 name = name.substring(0, name.lastIndexOf("."));
                 mRes.layouts.put(name.intern(), file);
-            }
-        }
-    }
-
-    private static void loadMipmaps() {
-        mRes.mipmaps.clear();
-        for (String path : mProject.getMipmaps()) {
-            for (String file : Files.listFile(path)) {
-                String name = Files.getNameFromAbsolutePath(file);
-                name = name.substring(0, name.lastIndexOf("."));
-                mRes.mipmaps.put(name.intern(), file);
+                mRes.listLayouts.add("@layout/" + name.intern());
             }
         }
     }
 
     private static void loadDrawables() {
         mRes.drawables.clear();
+        mRes.listDrawables.clear();
         for (String path : mProject.getDrawables()) {
             for (String file : Files.listFile(path)) {
                 String name = Files.getNameFromAbsolutePath(file);
                 name = name.substring(0, name.lastIndexOf("."));
                 mRes.drawables.put(name.intern(), file);
+                mRes.listDrawables.add("@drawable/" + name.intern());
+            }
+        }
+
+        // loading mipmap data
+        mRes.mipmaps.clear();
+        for (String path : mProject.getMipmaps()) {
+            for (String file : Files.listFile(path)) {
+                String name = Files.getNameFromAbsolutePath(file);
+                name = name.substring(0, name.lastIndexOf("."));
+                mRes.mipmaps.put(name.intern(), file);
+                mRes.listDrawables.add("@mipmap/" + name.intern());
             }
         }
     }
