@@ -15,5 +15,5 @@ ext {
     minSdk= 26
     packageName = "jkas.androidpe"
     versionCode = 181102
-    versionName = "1.7"
+    versionName = "1.76"
 }
