@@ -354,7 +354,7 @@ public class DialogLayoutConstraintLayout {
                             element.getAttribute("android:layout_margin" + value).trim().isEmpty()
                                     ? "16dp"
                                     : element.getAttribute("android:layout_margin" + value).trim());
-                    dialog.setListForAutoCompletion(AttrViewDataAdapter.getListAssist("@dimen"));
+                    dialog.setListForAutoCompletion(AttrViewDataAdapter.getAllData("@dimen"));
                     dialog.setOnChangeDetected(
                             new DialogAutoComplete.OnChangeDetected() {
                                 private String tmpValue = "";
@@ -658,9 +658,7 @@ public class DialogLayoutConstraintLayout {
         tv.setText(C.getString(R.string.select_view_to_get_id) + "   :   ");
         lin.addView(tv);
 
-        final MaterialButton btn =
-                new MaterialButton(
-                        C, null, ResourcesValuesFixer.getAttr("?attr/materialButtonOutlinedStyle"));
+        final MaterialButton btn = new MaterialButton(C);
         btn.setText(R.string.select);
         btn.setOnClickListener(v -> loadViewsForIDcompletion(dialog, attr));
         lin.addView(btn);
