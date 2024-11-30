@@ -20,14 +20,14 @@ import rkb.datasaver.RKBDataAppSettings;
 /**
  * @author JKas
  */
-public class SearchingProjects {
+public class ProjectLoader {
     private AppCompatActivity C;
     private OnProjectFoundListener listener;
     private ArrayList<Pair<String, String>> listPathToAllProjects = new ArrayList<>();
-    private ExecutorService exec = Executors.newSingleThreadExecutor();
+    private ExecutorService exec = Executors.newCachedThreadPool();
     private int i = 0;
 
-    public SearchingProjects(Context c) {
+    public ProjectLoader(Context c) {
         C = (AppCompatActivity) c;
     }
 
