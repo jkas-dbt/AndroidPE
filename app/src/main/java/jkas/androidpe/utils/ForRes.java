@@ -12,8 +12,6 @@ import jkas.androidpe.resourcesUtils.requests.ProjectDataRequested;
  */
 public class ForRes {
     public static void initEventsResquest() {
-        
-        
         ProjectDataRequested.getInstance()
                 .setOnDataNeeded(
                         new ProjectDataRequested.OnDataNeeded() {
@@ -136,6 +134,6 @@ public class ForRes {
                             }
                         });
 
-        AttrValuesRefBase.initBase();
+        AttrValuesRefBase.initRef();
     }
 }
