@@ -122,22 +122,24 @@ public class AttrViewAdapter {
     }
 
     private void adapter() {
+        assist(false);
         listAdapter.clear();
         listAdapterAssist.clear();
         valueType = null;
         if (listValuesAssist == null) return;
+        if (listValuesAssist.length == 0) return;
         valueType = listValuesAssist[0];
-        if (!valueType.startsWith("@")
-                || valueType.startsWith("@id")
-                || valueType.startsWith("@+id")) {
+        if (valueType.startsWith("@id")
+                || valueType.startsWith("@+id")
+                || !valueType.startsWith("@")) {
             for (String s : listValuesAssist) {
                 listAdapter.add(s);
                 listAdapterAssist.add(s);
             }
             assist(false);
         } else {
-            listAdapter.addAll(AttrViewDataAdapter.getListAssist(valueType));
-            listAdapterAssist.addAll(AttrViewDataAdapter.getListAssist(valueType));
+            listAdapter.addAll(AttrViewDataAdapter.getAllData(valueType));
+            listAdapterAssist.addAll(AttrViewDataAdapter.getAllData(valueType));
             assist(true);
         }
         final CustomAutoCompleteAdapter adapter =
