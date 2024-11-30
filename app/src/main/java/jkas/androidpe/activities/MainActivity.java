@@ -30,7 +30,7 @@ import jkas.androidpe.projectAnalyzer.ProjectView;
 import jkas.androidpe.resources.R;
 import jkas.androidpe.explorer.SelectFF;
 import jkas.androidpe.project.Project;
-import jkas.androidpe.projectAnalyzer.SearchingProjects;
+import jkas.androidpe.projectAnalyzer.ProjectLoader;
 import jkas.androidpe.resourcesUtils.dataInitializer.DataRefManager;
 import jkas.androidpe.resourcesUtils.utils.ResourcesValuesFixer;
 import jkas.codeUtil.CodeUtil;
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private NewProject newProject;
     private AppCompatActivity C = this;
     private ActivityMainBinding binding;
-    private SearchingProjects SP;
+    private ProjectLoader projectLoader;
     private ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(
                     new ActivityResultContracts.RequestPermission(),
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
         }
         binding.tvStatusPermission.setText("GRANTED");
         binding.gridLayoutListProjects.removeAllViews();
-        SP.load();
+        projectLoader.load();
     }
 
     private boolean checkIfPermissionGranted() {
@@ -221,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
 
         final Project p = new Project(p2p, folderName);
         p.setPackageName("...");
-        p.setPackageName(SearchingProjects.tryFindPkg(p));
+        p.setPackageName(ProjectLoader.tryFindPkg(p));
         new ProjectView(C, p);
         DataRefManager.getInstance().P = p;
         CodeUtil.startActivity(C, ProjectEditorActivity.class);
@@ -235,8 +235,8 @@ public class MainActivity extends AppCompatActivity {
                     openProject(path);
                     loadProjectView();
                 });
-        SP.setOnProjectFound(
-                new SearchingProjects.OnProjectFoundListener() {
+        projectLoader.setOnProjectFound(
+                new ProjectLoader.OnProjectFoundListener() {
                     private boolean found = false;
 
                     @Override
@@ -286,7 +286,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initInstances() {
-        SP = new SearchingProjects(C);
+        projectLoader = new ProjectLoader(C);
         newProject = new NewProject(C);
 
         if (CodeUtil.isScreenLandscape(this)) {
