@@ -36,7 +36,7 @@ public class DialogLayoutMarginPadding {
     public DialogLayoutMarginPadding(Context c) {
         this.C = c;
         listItem.clear();
-        listItem.addAll(AttrViewDataAdapter.getListAssist("@dimen"));
+        listItem.addAll(AttrViewDataAdapter.getAllData("@dimen"));
     }
 
     private void events() {
