@@ -36,9 +36,19 @@ public class ResourcesValuesFixer {
     }
 
     public static boolean existsInAndroidRes(String reference) {
-        if (AttrValuesRefBase.listRefAndroid.contains(reference.intern())) return true;
-        else if (AttrValuesRefBase.listRefAndroidX.contains(reference.intern())) return true;
-        else if (AttrValuesRefBase.listRefMaterial3.contains(reference.intern())) return true;
+        if (AttrValuesRefBase.listAnims.contains(reference.intern())) return true;
+        else if (AttrValuesRefBase.listArrays.contains(reference.intern())) return true;
+        else if (AttrValuesRefBase.listAttrs.contains(reference.intern())) return true;
+        else if (AttrValuesRefBase.listBools.contains(reference.intern())) return true;
+        else if (AttrValuesRefBase.listColors.contains(reference.intern())) return true;
+        else if (AttrValuesRefBase.listDimens.contains(reference.intern())) return true;
+        else if (AttrValuesRefBase.listDrawables.contains(reference.intern())) return true;
+        else if (AttrValuesRefBase.listIntegers.contains(reference.intern())) return true;
+        else if (AttrValuesRefBase.listLayouts.contains(reference.intern())) return true;
+        else if (AttrValuesRefBase.listMenus.contains(reference.intern())) return true;
+        else if (AttrValuesRefBase.listRaws.contains(reference.intern())) return true;
+        else if (AttrValuesRefBase.listStrings.contains(reference.intern())) return true;
+        else if (AttrValuesRefBase.listStyles.contains(reference.intern())) return true;
         return false;
     }
 
