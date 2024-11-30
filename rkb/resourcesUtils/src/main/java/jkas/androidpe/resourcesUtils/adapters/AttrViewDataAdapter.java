@@ -11,154 +11,74 @@ import java.util.ArrayList;
  * @author JKas
  */
 public class AttrViewDataAdapter {
-    public static ArrayList<String> getListAssist(String valueType) {
-        if (valueType == null) return new ArrayList<>();
-        return loadData(valueType);
+    public static ArrayList<String> getAllData(String valueType) {
+        final ArrayList<String> listAdapter = new ArrayList<>();
+        listAdapter.addAll(getModuleList(valueType));
+        listAdapter.addAll(getDefaultList(valueType));
+        return listAdapter;
     }
 
-    private static ArrayList<String> loadData(String valueType) {
-        ArrayList<String> listAdapter = new ArrayList<>();
+    public static ArrayList<String> getModuleList(String valueType) {
+        final ArrayList<String> listAdapter = new ArrayList<>();
         ModuleRes mr = DataRefManager.getInstance().currentModuleRes;
         listAdapter.clear();
-        if (valueType.equals("@string")) {
-            for (Map.Entry entry : mr.valuesStrings.entrySet())
-                listAdapter.add("@string/" + entry.getKey().toString());
-            for (String ref : AttrValuesRefBase.listRefAndroid)
-                if (ref.startsWith("@android:string/"))
-                    if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefAndroidX)
-                if (ref.startsWith("@string/"))
-                    if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefMaterial3)
-                if (ref.startsWith("@string/"))
-                    if (!listAdapter.contains(ref)) listAdapter.add(ref);
-        } else if (valueType.equals("@array")) {
-            for (Map.Entry entry : mr.valuesArrays.entrySet())
-                listAdapter.add("@array/" + entry.getKey().toString());
-            for (String ref : AttrValuesRefBase.listRefAndroid)
-                if (ref.startsWith("@android:array/"))
-                    if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefAndroidX)
-                if (ref.startsWith("@array/")) if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefMaterial3)
-                if (ref.startsWith("@array/")) if (!listAdapter.contains(ref)) listAdapter.add(ref);
-        } else if (valueType.equals("@bool")) {
+        if (valueType.equals("@string")) listAdapter.addAll(mr.listStrings);
+        else if (valueType.equals("@array")) listAdapter.addAll(mr.listArrays);
+        else if (valueType.equals("@bool")) {
             listAdapter.add("true");
             listAdapter.add("false");
-            for (Map.Entry entry : mr.valuesBools.entrySet())
-                listAdapter.add("@bool/" + entry.getKey().toString());
-            for (String ref : AttrValuesRefBase.listRefAndroid)
-                if (ref.startsWith("@android:bool/"))
-                    if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefAndroidX)
-                if (ref.startsWith("@bool/")) if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefMaterial3)
-                if (ref.startsWith("@bool/")) if (!listAdapter.contains(ref)) listAdapter.add(ref);
-        } else if (valueType.equals("@dimen")) {
-            for (Map.Entry entry : mr.valuesDimens.entrySet())
-                listAdapter.add("@dimen/" + entry.getKey().toString());
-            for (String ref : AttrValuesRefBase.listRefAndroid)
-                if (ref.startsWith("@android:dimen/"))
-                    if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefAndroidX)
-                if (ref.startsWith("@dimen/")) if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefMaterial3)
-                if (ref.startsWith("@dimen/")) if (!listAdapter.contains(ref)) listAdapter.add(ref);
-        } else if (valueType.equals("@integer")) {
-            for (Map.Entry entry : mr.valuesIntegers.entrySet())
-                listAdapter.add("@integer/" + entry.getKey().toString());
-            for (String ref : AttrValuesRefBase.listRefAndroid)
-                if (ref.startsWith("@android:integer/"))
-                    if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefAndroidX)
-                if (ref.startsWith("@integer/"))
-                    if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefMaterial3)
-                if (ref.startsWith("@integer/"))
-                    if (!listAdapter.contains(ref)) listAdapter.add(ref);
-        } else if (valueType.equals("@menu")) {
-            for (Map.Entry entry : mr.menus.entrySet())
-                listAdapter.add("@menu/" + entry.getKey().toString());
-            for (String ref : AttrValuesRefBase.listRefAndroid)
-                if (ref.startsWith("@android:menu/"))
-                    if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefAndroidX)
-                if (ref.startsWith("@menu/")) if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefMaterial3)
-                if (ref.startsWith("@menu/")) if (!listAdapter.contains(ref)) listAdapter.add(ref);
-        } else if (valueType.equals("@layout")) {
-            for (Map.Entry entry : mr.layouts.entrySet())
-                listAdapter.add("@layout/" + entry.getKey().toString());
-            for (String ref : AttrValuesRefBase.listRefAndroid)
-                if (ref.startsWith("@android:layout/"))
-                    if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefAndroidX)
-                if (ref.startsWith("@layout/"))
-                    if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefMaterial3)
-                if (ref.startsWith("@layout/"))
-                    if (!listAdapter.contains(ref)) listAdapter.add(ref);
-        } else if (valueType.startsWith("@raw")) {
-            for (Map.Entry entry : mr.raws.entrySet())
-                listAdapter.add("@raw/" + entry.getKey().toString());
-            for (String ref : AttrValuesRefBase.listRefAndroid)
-                if (ref.startsWith("@android:raw/"))
-                    if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefAndroidX)
-                if (ref.startsWith("@raw/")) if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefMaterial3)
-                if (ref.startsWith("@raw/")) if (!listAdapter.contains(ref)) listAdapter.add(ref);
-        } else if (valueType.equals("@style")) {
-            for (Map.Entry entry : mr.valuesStyles.entrySet())
-                listAdapter.add("@style/" + entry.getKey().toString());
-            for (String ref : AttrValuesRefBase.listRefAndroid)
-                if (ref.startsWith("@android:style/"))
-                    if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefAndroidX)
-                if (ref.startsWith("@style/")) if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefMaterial3)
-                if (ref.startsWith("@style/")) if (!listAdapter.contains(ref)) listAdapter.add(ref);
-        } else if (valueType.equals("@color") || valueType.contains("color")) {
-            for (Map.Entry entry : mr.valuesColors.entrySet())
-                listAdapter.add("@color/" + entry.getKey().toString());
-            for (String ref : AttrValuesRefBase.listRefAndroid)
-                if (ref.startsWith("@android:color/"))
-                    if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefAndroidX)
-                if (ref.startsWith("@color/")) if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefMaterial3)
-                if (ref.startsWith("@color/")) if (!listAdapter.contains(ref)) listAdapter.add(ref);
+            listAdapter.addAll(mr.listBools);
+        } else if (valueType.equals("@dimen")) listAdapter.addAll(mr.listDimens);
+        else if (valueType.equals("@integer")) listAdapter.addAll(mr.listIntegers);
+        else if (valueType.equals("@menu")) listAdapter.addAll(mr.listMenus);
+        else if (valueType.equals("@layout")) listAdapter.addAll(mr.listLayouts);
+        else if (valueType.startsWith("@raw")) listAdapter.addAll(mr.listRaws);
+        else if (valueType.equals("@style")) listAdapter.addAll(mr.listStyles);
+        else if (valueType.equals("@color") || valueType.contains("color")) {
+            listAdapter.addAll(mr.listColors);
         }
 
         if (valueType.equals("@drawable") || valueType.contains("drawable")) {
             if (valueType.equals("@drawable")) listAdapter.clear();
-            for (Map.Entry entry : mr.drawables.entrySet())
-                listAdapter.add("@drawable/" + entry.getKey().toString());
-            for (Map.Entry entry : mr.mipmaps.entrySet())
-                listAdapter.add("@mipmap/" + entry.getKey().toString());
-            for (String ref : AttrValuesRefBase.listRefAndroid)
-                if (ref.startsWith("@android:drawable/"))
-                    if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefAndroidX)
-                if (ref.startsWith("@drawable/"))
-                    if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefMaterial3)
-                if (ref.startsWith("@drawable/"))
-                    if (!listAdapter.contains(ref)) listAdapter.add(ref);
+            listAdapter.addAll(mr.listDrawables);
         }
 
         if (valueType.contains("color")
                 || valueType.contains("style")
                 || valueType.contains("dimen")) {
-            for (String ref : AttrValuesRefBase.listRefAndroid)
-                if (ref.matches("\\?.*")) if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefAndroidX)
-                if (ref.matches("\\?.*")) if (!listAdapter.contains(ref)) listAdapter.add(ref);
-            for (String ref : AttrValuesRefBase.listRefMaterial3)
-                if (ref.matches("\\?.*")) if (!listAdapter.contains(ref)) listAdapter.add(ref);
+            listAdapter.addAll(AttrValuesRefBase.listAttrs);
         }
 
-        Collections.sort(listAdapter);
+        return listAdapter;
+    }
+
+    public static ArrayList<String> getDefaultList(String valueType) {
+        if (valueType == null) return new ArrayList<>();
+        final ArrayList<String> listAdapter = new ArrayList<>();
+        listAdapter.clear();
+        if (valueType.equals("@string")) listAdapter.addAll(AttrValuesRefBase.listStrings);
+        else if (valueType.equals("@array")) listAdapter.addAll(AttrValuesRefBase.listArrays);
+        else if (valueType.equals("@bool")) listAdapter.addAll(AttrValuesRefBase.listBools);
+        else if (valueType.equals("@dimen")) listAdapter.addAll(AttrValuesRefBase.listDimens);
+        else if (valueType.equals("@integer")) listAdapter.addAll(AttrValuesRefBase.listIntegers);
+        else if (valueType.equals("@menu")) listAdapter.addAll(AttrValuesRefBase.listMenus);
+        else if (valueType.equals("@layout")) listAdapter.addAll(AttrValuesRefBase.listLayouts);
+        else if (valueType.startsWith("@raw")) listAdapter.addAll(AttrValuesRefBase.listRaws);
+        else if (valueType.equals("@style")) listAdapter.addAll(AttrValuesRefBase.listStyles);
+        else if (valueType.equals("@color") || valueType.contains("color"))
+            listAdapter.addAll(AttrValuesRefBase.listColors);
+
+        if (valueType.equals("@drawable") || valueType.contains("drawable")) {
+            if (valueType.equals("@drawable")) listAdapter.clear();
+            listAdapter.addAll(AttrValuesRefBase.listDrawables);
+        }
+
+        if (valueType.contains("color")
+                || valueType.contains("style")
+                || valueType.contains("dimen")) {
+            listAdapter.addAll(AttrValuesRefBase.listAttrs);
+        }
+
         return listAdapter;
     }
 }
