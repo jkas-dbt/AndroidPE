@@ -5,6 +5,11 @@
   An application to efficiently and quickly manage your resources of your Android projects based on Gradle on your Android phone.
 </p>
 
+
+> [!WARNING]
+> 
+> THIS PROJECT IS STILL MAINTAINED but the source code will not be shared here anymore (for the moment). Only the latest versions of the application will be accessible from the Telegram group.
+
 ### Features
 - [X] Layout Editor
     - [X] WYSIWYG editing
